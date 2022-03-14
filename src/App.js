@@ -1,9 +1,16 @@
 import "./App.css";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
+import Router from "./router/Router";
 
 function App() {
   return (
     <div className="App">
-      <h1>App</h1>
+      <>
+        <NavBar />
+        <Router className="mt-20" />
+        <Footer />
+      </>
     </div>
   );
 }
