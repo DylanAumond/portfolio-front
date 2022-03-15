@@ -1,47 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCustomers, getProjects, getTechnologies } from "../api";
+import CustomerSlider from "../components/CustomerSlider";
 
 export default function Home() {
-  const Projects = [
-    {
-      id: 1,
-      libelle: "LuckyByz",
-      state: false,
-      desciption: "C'est un site de vente de tombola en ligne",
-    },
-    {
-      id: 2,
-      libelle: "PortFolio",
-      state: false,
-      desciption: "C'st mon site",
-    },
-    {
-      id: 3,
-      libelle: "HorsePlateform",
-      state: false,
-      desciption: "Site de gestion de haras",
-    },
-    {
-      id: 4,
-      libelle: "MesJeux.fr",
-      state: true,
-      desciption: "Site de mini-jeux",
-    },
-  ];
-  const Customers = [
-    { id: 1, libelle: "forlindev", img: "fds" },
-    { id: 2, libelle: "athenaRp", img: "zfds" },
-    { id: 3, libelle: "VictorPetit", img: "dsfs" },
-  ];
-  const Technologies = [
-    { id: 1, libelle: "reactJs" },
-    { id: 2, libelle: "JavaScript" },
-    { id: 4, libelle: "NodeJs" },
-    { id: 5, libelle: "Symfony" },
-    { id: 6, libelle: "Sql" },
-    { id: 7, libelle: "Mongodb" },
-    { id: 8, libelle: "Html" },
-    { id: 9, libelle: "Css" },
-  ];
+  const customers = useSelector((state) => state.customersReducer);
+  const projects = useSelector((state) => state.projectsReducer);
+  const technologies = useSelector((state) => state.technologiesReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCustomers());
+    dispatch(getProjects());
+    dispatch(getTechnologies());
+  }, [dispatch]);
+
   return (
     <div>
       <div className="w-full h-96 flex">
@@ -56,9 +29,9 @@ export default function Home() {
 
       <div className="bg-black-light h-96 text-white">
         <h2>Projects</h2>
-        {Projects.map((project) => {
+        {projects.map((project) => {
           return (
-            <div key={project.id}>
+            <div key={project._id}>
               <p>{project.libelle}</p>
             </div>
           );
@@ -68,21 +41,13 @@ export default function Home() {
 
       <div className="h-40">
         <h2>Customers</h2>
-        <div className="flex">
-          {Customers.map((customer) => {
-            return (
-              <div key={customer.id}>
-                <p>{customer.libelle}</p>
-              </div>
-            );
-          })}
-        </div>
+        <CustomerSlider customers={customers} />
       </div>
 
       <div className="bg-black-light text-white h-96">
-        {Technologies.map((technologie) => {
+        {technologies.map((technologie) => {
           return (
-            <div key={technologie.id}>
+            <div key={technologie._id}>
               <p>{technologie.libelle}</p>
             </div>
           );

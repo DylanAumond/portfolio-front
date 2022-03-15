@@ -1,0 +1,1 @@
+export const GET_TECHNOLOGIES = "GET_TECHNOLOGIES";
