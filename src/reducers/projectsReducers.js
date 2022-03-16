@@ -1,4 +1,4 @@
-import { GET_PROJECTS } from "../constant/projects";
+import { GET_PROJECT, GET_PROJECTS } from "../constant/projects";
 const initialState = [];
 
 export default function projectsReducer(state = initialState, action) {

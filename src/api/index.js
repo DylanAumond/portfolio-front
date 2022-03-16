@@ -1,6 +1,6 @@
 import axios from "axios";
 import { GET_CUSTOMERS } from "../constant/customers";
-import { GET_PROJECTS } from "../constant/projects";
+import { GET_PROJECT, GET_PROJECTS } from "../constant/projects";
 import { GET_TECHNOLOGIES } from "../constant/technologies";
 
 export const API = axios.create({
@@ -22,6 +22,14 @@ export const getProjects = () => {
   return (dispatch) => {
     API.get("/projects")
       .then((res) => dispatch({ type: GET_PROJECTS, payload: res.data }))
+      .catch((err) => console.log(err));
+  };
+};
+
+export const getProject = (libelle) => {
+  return (dispatch) => {
+    API.get(`/projects/${libelle}`)
+      .then((res) => dispatch({ type: GET_PROJECT, payload: res.data }))
       .catch((err) => console.log(err));
   };
 };
