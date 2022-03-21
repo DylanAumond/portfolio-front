@@ -6,8 +6,8 @@ import CustomerSlider from "../components/CustomerSlider";
 import Technocard from "../components/Technocard";
 
 export default function Home() {
-  const reducers = useSelector((state) => state);
-  console.log(reducers);
+  /*const reducers = useSelector((state) => state);
+  console.log(reducers);*/
   const customers = useSelector((state) => state.customersReducer);
   const projects = useSelector((state) => state.projectsReducer);
   const technologies = useSelector((state) => state.technologiesReducer);

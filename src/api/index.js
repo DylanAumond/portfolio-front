@@ -18,6 +18,16 @@ export const getCustomers = () => {
   };
 };
 
+export const postCustomer = (customer) => {
+  axios("http://127.0.0.1:5000/customers", {
+    method: "post",
+    data: customer,
+    headers: {
+      "Content-type": "multipart/form-data",
+    },
+  }).catch((err) => console.log(err));
+};
+
 export const getProjects = () => {
   return (dispatch) => {
     API.get("/projects")
@@ -34,6 +44,16 @@ export const getProject = (libelle) => {
   };
 };
 
+export const postProject = (project) => {
+  axios("http://127.0.0.1:5000/projects", {
+    method: "post",
+    data: project,
+    headers: {
+      "Content-type": "multipart/form-data",
+    },
+  }).catch((err) => console.log(err));
+};
+
 export const getTechnologies = () => {
   return (dispatch) => {
     API.get("/technologies")
@@ -41,15 +61,12 @@ export const getTechnologies = () => {
       .catch((err) => console.log(err));
   };
 };
-
-/*
-export const getCustomers = () => {
-  return (dispatch) => {
-    return axios
-      .get(`${process.env.REACT_APP_API_URL}/customers/`)
-      .then((res) => {
-        dispatch({ type: "GET_CUSTOMERS", payload: res.data });
-      })
-      .catch((err) => console.log(err));
-  };
-};*/
+export const postTechnology = (technology) => {
+  axios("http://127.0.0.1:5000/technologies", {
+    method: "post",
+    data: technology,
+    headers: {
+      "Content-type": "multipart/form-data",
+    },
+  }).catch((err) => console.log(err));
+};

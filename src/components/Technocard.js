@@ -8,8 +8,6 @@ export default function Technocard({ technologie }) {
       style={{
         backgroundImage: `url(http://localhost:5000/public/images/${technologie.logo})`,
       }}
-    >
-      <h3>{technologie.libelle}</h3>
-    </div>
+    ></div>
   );
 }

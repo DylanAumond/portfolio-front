@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="h-40 flex items-center justify-evenly">
+    <div className="h-40 flex items-center justify-evenly static bottom-0">
       <div>
         <h3>Social Network:</h3>
         <div className="flex">
