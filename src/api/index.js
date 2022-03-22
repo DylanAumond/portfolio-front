@@ -1,7 +1,15 @@
 import axios from "axios";
-import { GET_CUSTOMERS } from "../constant/customers";
+import {
+  ADD_CUSTOMER,
+  DELETE_CUSTOMER,
+  GET_CUSTOMERS,
+} from "../constant/customers";
 import { GET_PROJECT, GET_PROJECTS } from "../constant/projects";
-import { GET_TECHNOLOGIES } from "../constant/technologies";
+import {
+  ADD_TECHNOLOGY,
+  DELETE_TECHNOLOGY,
+  GET_TECHNOLOGIES,
+} from "../constant/technologies";
 
 export const API = axios.create({
   baseURL: "http://127.0.0.1:5000/",
@@ -19,13 +27,27 @@ export const getCustomers = () => {
 };
 
 export const postCustomer = (customer) => {
-  axios("http://127.0.0.1:5000/customers", {
-    method: "post",
-    data: customer,
-    headers: {
-      "Content-type": "multipart/form-data",
-    },
-  }).catch((err) => console.log(err));
+  return (dispatch) => {
+    axios("http://127.0.0.1:5000/customers", {
+      method: "post",
+      data: customer,
+      headers: {
+        "Content-type": "multipart/form-data",
+      },
+    })
+      .then((res) => {
+        return dispatch({ type: ADD_CUSTOMER, payload: res.data });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const deleteCustomer = (customerId) => {
+  return (dispatch) => {
+    API.delete(`/customers/${customerId}`).then(() =>
+      dispatch({ type: DELETE_CUSTOMER, payload: customerId })
+    );
+  };
 };
 
 export const getProjects = () => {
@@ -62,11 +84,23 @@ export const getTechnologies = () => {
   };
 };
 export const postTechnology = (technology) => {
-  axios("http://127.0.0.1:5000/technologies", {
-    method: "post",
-    data: technology,
-    headers: {
-      "Content-type": "multipart/form-data",
-    },
-  }).catch((err) => console.log(err));
+  return (dispatch) => {
+    axios("http://127.0.0.1:5000/technologies", {
+      method: "post",
+      data: technology,
+      headers: {
+        "Content-type": "multipart/form-data",
+      },
+    })
+      .then((res) => dispatch({ type: ADD_TECHNOLOGY, payload: res.data }))
+      .catch((err) => console.log(err));
+  };
+};
+
+export const deleteTechnology = (technologyId) => {
+  return (dispatch) => {
+    API.delete(`/technologies/${technologyId}`).then(() =>
+      dispatch({ type: DELETE_TECHNOLOGY, payload: technologyId })
+    );
+  };
 };

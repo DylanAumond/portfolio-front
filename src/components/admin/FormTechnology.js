@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { postTechnology } from "../../api";
 
 export default function FormTechnology() {
+  const dispatch = useDispatch();
   const initForm = {
     libelle: "",
     logo: "",
@@ -27,7 +29,7 @@ export default function FormTechnology() {
         formData.append(key, value);
       }
     }
-    postTechnology(formData);
+    dispatch(postTechnology(formData));
   };
   return (
     <div>

@@ -1,8 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import FormCustomer from "../pages/admin/FormCustomer.js";
-import FormProject from "../pages/admin/FormProject.js";
-import FormTechnology from "../pages/admin/FormTechnology.js";
+import CustomersAdmin from "../pages/admin/CustomersAdmin.js";
+import TechnologiesAdmin from "../pages/admin/TechnologiesAdmin.js";
 import Home from "../pages/Home.js";
 import Project from "../pages/Project.js";
 import Projects from "../pages/Projects.js";
@@ -15,9 +14,8 @@ export default function Router() {
         <Route path="projects" element={<Projects />} />
         <Route path="project/:libelle" element={<Project />} />
         <Route path="admin">
-          <Route path="project/form" element={<FormProject />} />
-          <Route path="technology/form" element={<FormTechnology />} />
-          <Route path="customer/form" element={<FormCustomer />} />
+          <Route path="customers" element={<CustomersAdmin />} />
+          <Route path="Technologies" element={<TechnologiesAdmin />} />
         </Route>
       </Route>
     </Routes>
