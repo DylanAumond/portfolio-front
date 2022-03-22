@@ -46,7 +46,7 @@ export default function Home() {
         <CustomerSlider customers={customers} />
       </div>
 
-      <div className="bg-black-light text-white h-96">
+      <div className="bg-black-light text-white h-96 grid grid-cols-10">
         {technologies.map((technologie) => {
           return <Technocard key={technologie._id} technologie={technologie} />;
         })}

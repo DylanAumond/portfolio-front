@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import CustomersAdmin from "../pages/admin/CustomersAdmin.js";
+import ProjectsAdmin from "../pages/admin/ProjectsAdmin.js";
 import TechnologiesAdmin from "../pages/admin/TechnologiesAdmin.js";
 import Home from "../pages/Home.js";
 import Project from "../pages/Project.js";
@@ -16,6 +17,7 @@ export default function Router() {
         <Route path="admin">
           <Route path="customers" element={<CustomersAdmin />} />
           <Route path="Technologies" element={<TechnologiesAdmin />} />
+          <Route path="Projects" element={<ProjectsAdmin />} />
         </Route>
       </Route>
     </Routes>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { postProject } from "../../api";
 
 export default function FormProject() {
+  const dispatch = useDispatch();
   const initForm = {
     libelle: "",
     description: "",
@@ -23,14 +25,13 @@ export default function FormProject() {
     for (const [key, value] of Object.entries(project)) {
       if (key === "imgs") {
         for (const img of value) {
-          console.log(img);
           formData.append(key, img, img.name);
         }
       } else {
         formData.append(key, value);
       }
     }
-    postProject(formData);
+    dispatch(postProject(formData));
   };
   return (
     <div>

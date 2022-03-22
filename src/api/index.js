@@ -4,7 +4,12 @@ import {
   DELETE_CUSTOMER,
   GET_CUSTOMERS,
 } from "../constant/customers";
-import { GET_PROJECT, GET_PROJECTS } from "../constant/projects";
+import {
+  ADD_PROJECT,
+  DELETE_PROJECT,
+  GET_PROJECT,
+  GET_PROJECTS,
+} from "../constant/projects";
 import {
   ADD_TECHNOLOGY,
   DELETE_TECHNOLOGY,
@@ -67,13 +72,25 @@ export const getProject = (libelle) => {
 };
 
 export const postProject = (project) => {
-  axios("http://127.0.0.1:5000/projects", {
-    method: "post",
-    data: project,
-    headers: {
-      "Content-type": "multipart/form-data",
-    },
-  }).catch((err) => console.log(err));
+  return (dispatch) => {
+    axios("http://127.0.0.1:5000/projects", {
+      method: "post",
+      data: project,
+      headers: {
+        "Content-type": "multipart/form-data",
+      },
+    })
+      .then((res) => dispatch({ type: ADD_PROJECT, payload: res.data }))
+      .catch((err) => console.log(err));
+  };
+};
+
+export const deleteProject = (projectId) => {
+  return (dispatch) => {
+    API.delete(`/projects/${projectId}`).then(() =>
+      dispatch({ type: DELETE_PROJECT, payload: projectId })
+    );
+  };
 };
 
 export const getTechnologies = () => {
