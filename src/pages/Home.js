@@ -33,7 +33,7 @@ export default function Home() {
 
       <div className="bg-black-light h-96 text-white text-center">
         <h2>Projects</h2>
-        <div className="flex h-5/6 justify-around">
+        <div className="grid grid-cols-3 h-5/6 justify-around">
           {projects.map((project) => {
             return <CardProject key={project._id} project={project} />;
           })}
@@ -46,7 +46,7 @@ export default function Home() {
         <CustomerSlider customers={customers} />
       </div>
 
-      <div className="bg-black-light text-white h-96 grid grid-cols-10">
+      <div className="bg-black-light text-white grid grid-cols-10">
         {technologies.map((technologie) => {
           return <Technocard key={technologie._id} technologie={technologie} />;
         })}
