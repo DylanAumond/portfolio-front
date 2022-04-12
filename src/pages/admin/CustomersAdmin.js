@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { deleteCustomer, getCustomers } from "../../api";
 import FormCustomer from "../../components/admin/FormCustomer";
 
@@ -9,7 +10,6 @@ export default function CustomersAdmin() {
   useEffect(() => {
     dispatch(getCustomers());
   }, [dispatch]);
-
   return (
     <div>
       <FormCustomer />
@@ -31,9 +31,13 @@ export default function CustomersAdmin() {
                 >
                   Delete
                 </button>
-                <button className="bg-orange-600 p-1 text-white text-sm">
+                <Link
+                  className="bg-orange-600 p-1 text-white text-sm"
+                  to={`/admin/customers/${customer.libelle}`}
+                  state={customer}
+                >
                   Update
-                </button>
+                </Link>
               </div>
             </div>
           );

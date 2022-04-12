@@ -18,12 +18,12 @@ export default function FormTechnology() {
 
   const handleFiles = (e) => {
     setTechnology({ ...technology, logo: e.target.files });
+    console.log(technology);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     for (const [key, value] of Object.entries(technology)) {
       if (key === "logo") {
-        console.log(value[0]);
         formData.append(key, value[0], value[0].name);
       } else {
         formData.append(key, value);
@@ -49,6 +49,18 @@ export default function FormTechnology() {
           onInput={(e) => handleFiles(e)}
           multiple
         />
+        {technology.logo ? (
+          <div
+            className="w-16 h-16 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${URL.createObjectURL(
+                technology.logo[0]
+              )})`,
+            }}
+          ></div>
+        ) : (
+          ""
+        )}
         <button type="submit">create</button>
       </form>
     </div>

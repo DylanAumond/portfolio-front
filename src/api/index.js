@@ -3,6 +3,7 @@ import {
   ADD_CUSTOMER,
   DELETE_CUSTOMER,
   GET_CUSTOMERS,
+  UPDATE_CUSTOMER,
 } from "../constant/customers";
 import {
   ADD_PROJECT,
@@ -10,16 +11,20 @@ import {
   GET_PROJECT,
   GET_PROJECTS,
 } from "../constant/projects";
+import { ADD_ROLE, DELETE_ROLE, GET_ROLES } from "../constant/roles";
 import {
   ADD_TECHNOLOGY,
   DELETE_TECHNOLOGY,
   GET_TECHNOLOGIES,
 } from "../constant/technologies";
 
+const xsrf_token = localStorage.getItem("xsrf_token");
 export const API = axios.create({
-  baseURL: "http://127.0.0.1:5000/",
+  baseURL: process.env.REACT_APP_API_URL,
+  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
+    "x-xsrf-token": xsrf_token,
   },
 });
 
@@ -33,7 +38,7 @@ export const getCustomers = () => {
 
 export const postCustomer = (customer) => {
   return (dispatch) => {
-    axios("http://127.0.0.1:5000/customers", {
+    axios(process.env.REACT_APP_API_URL + "customers", {
       method: "post",
       data: customer,
       headers: {
@@ -42,6 +47,22 @@ export const postCustomer = (customer) => {
     })
       .then((res) => {
         return dispatch({ type: ADD_CUSTOMER, payload: res.data });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const updateCustomer = (customer, customerId) => {
+  return (dispatch) => {
+    axios(process.env.REACT_APP_API_URL + "customers/" + customerId, {
+      method: "PATCH",
+      data: customer,
+      headers: {
+        "Content-type": "multipart/form-data",
+      },
+    })
+      .then((res) => {
+        return dispatch({ type: UPDATE_CUSTOMER, payload: res.data });
       })
       .catch((err) => console.log(err));
   };
@@ -73,7 +94,7 @@ export const getProject = (libelle) => {
 
 export const postProject = (project) => {
   return (dispatch) => {
-    axios("http://127.0.0.1:5000/projects", {
+    axios(process.env.REACT_APP_API_URL + "/projects", {
       method: "post",
       data: project,
       headers: {
@@ -102,7 +123,7 @@ export const getTechnologies = () => {
 };
 export const postTechnology = (technology) => {
   return (dispatch) => {
-    axios("http://127.0.0.1:5000/technologies", {
+    axios(process.env.REACT_APP_API_URL + "technologies", {
       method: "post",
       data: technology,
       headers: {
@@ -118,6 +139,42 @@ export const deleteTechnology = (technologyId) => {
   return (dispatch) => {
     API.delete(`/technologies/${technologyId}`).then(() =>
       dispatch({ type: DELETE_TECHNOLOGY, payload: technologyId })
+    );
+  };
+};
+
+export const login = (user) => {
+  API.post(`/users/login`, user).then((res) => {
+    if (res.status === 200) {
+      localStorage.setItem("xsrf_token", res.data);
+    }
+  });
+};
+
+export const register = (user) => {
+  API.post("users", user);
+};
+
+export const getRoles = () => {
+  return (dispatch) => {
+    API.get("/roles")
+      .then((res) => dispatch({ type: GET_ROLES, payload: res.data }))
+      .catch((err) => console.log(err));
+  };
+};
+
+export const createRole = (role) => {
+  return (dispatch) => {
+    API.post("/roles", role)
+      .then((res) => dispatch({ type: ADD_ROLE, payload: res.data }))
+      .catch((err) => console.log(err));
+  };
+};
+
+export const deleteRole = (roleId) => {
+  return (dispatch) => {
+    API.delete(`/roles/${roleId}`).then(() =>
+      dispatch({ type: DELETE_ROLE, payload: roleId })
     );
   };
 };

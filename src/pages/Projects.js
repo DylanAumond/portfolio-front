@@ -9,7 +9,6 @@ export default function Projects() {
   useEffect(() => {
     dispatch(getProjects());
   }, [dispatch]);
-  console.log(projects);
 
   return (
     <div>

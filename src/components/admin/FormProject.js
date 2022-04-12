@@ -101,6 +101,7 @@ export default function FormProject() {
               type={"text"}
               placeholder="search for a customer"
               name="inputCustomerSearch"
+              autoComplete="off"
               value={inputCustomerSearch}
               onChange={(e) => {
                 handleChange(e);
@@ -154,6 +155,7 @@ export default function FormProject() {
           placeholder="search for a technology"
           name="inputTechnologySearch"
           value={inputTechnologySearch}
+          autoComplete="off"
           onChange={(e) => {
             handleChange(e);
             handleSearchTechnology(inputTechnologySearch);

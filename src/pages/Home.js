@@ -20,11 +20,13 @@ export default function Home() {
   return (
     <div>
       <div className="w-full h-screen flex">
-        <div className="h-full w-1/2 bg-red-800">
-          <h1>
-            Dylan <br /> Aumond
-          </h1>
-          <p>Developer FullStack Junior</p>
+        <div className="h-full w-1/2 bg-red-800 flex flex-col justify-center items-center">
+          <div>
+            <h1 className="text-3xl">
+              Dylan <br /> Aumond
+            </h1>
+            <p>Developer FullStack Junior</p>
+          </div>
         </div>
         <div className="h-full w-1/2 bg-blue-800">
           <p>sqd</p>
@@ -46,7 +48,7 @@ export default function Home() {
         <CustomerSlider customers={customers} />
       </div>
 
-      <div className="bg-black-light text-white grid grid-cols-10">
+      <div className="bg-black-light grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8">
         {technologies.map((technologie) => {
           return <Technocard key={technologie._id} technologie={technologie} />;
         })}

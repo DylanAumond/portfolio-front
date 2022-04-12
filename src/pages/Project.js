@@ -10,7 +10,6 @@ export default function Project() {
   useEffect(() => {
     dispatch(getProject(location.state));
   }, [dispatch]);
-  console.log(project);
   return (
     <div>
       <h1 className="mt-6 ml-10 text-2xl">{project.libelle}</h1>
