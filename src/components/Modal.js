@@ -13,7 +13,7 @@ export default function Modal(props) {
   };
   return (
     <div
-      className={`h-1/2 w-1/2 bg-white z-20 fixed left-1/4 top-1/4 ${modalShow(
+      className={`h-fit lg:w-1/2 sm:w-10/12 w-11/12 bg-white z-20 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${modalShow(
         props.state.show
       )}`}
     >

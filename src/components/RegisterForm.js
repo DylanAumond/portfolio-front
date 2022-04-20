@@ -33,7 +33,7 @@ export default function RegisterForm() {
           placeholder="Prénom"
           value={formData.firstName}
           onChange={(e) => handleChange(e)}
-          className="w-96 border-b-2 border-black-light"
+          className="w-72 lg:w-96 border-b-2 border-black-light"
         />
         <input
           type={"text"}
@@ -41,7 +41,7 @@ export default function RegisterForm() {
           placeholder="Nom"
           value={formData.lastName}
           onChange={(e) => handleChange(e)}
-          className="w-96 border-b-2 border-black-light"
+          className="w-72 lg:w-96 border-b-2 border-black-light"
         />
         <input
           type={"email"}
@@ -49,7 +49,7 @@ export default function RegisterForm() {
           placeholder="Adresse e-mail"
           value={formData.mail}
           onChange={(e) => handleChange(e)}
-          className="w-96 border-b-2 border-black-light"
+          className="w-72 lg:w-96 border-b-2 border-black-light"
         />
         <input
           type={"password"}
@@ -57,7 +57,7 @@ export default function RegisterForm() {
           placeholder="mot de passe"
           value={formData.password}
           onChange={(e) => handleChange(e)}
-          className="w-96 border-b-2 border-black-light"
+          className="w-72 lg:w-96 border-b-2 border-black-light"
         />
         <input
           type={"password"}
@@ -65,9 +65,9 @@ export default function RegisterForm() {
           placeholder="confirmez mot de passe"
           value={formData.confirmPassword}
           onChange={(e) => handleChange(e)}
-          className="w-96 border-b-2 border-black-light"
+          className="w-72 lg:w-96 border-b-2 border-black-light"
         />
-        <button type="submit" className="bg-gray-900 text-white w-96">
+        <button type="submit" className="bg-gray-900 text-white w-72 lg:w-96">
           Enregistrement
         </button>
       </form>

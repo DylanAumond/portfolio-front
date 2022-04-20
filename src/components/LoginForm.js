@@ -28,7 +28,7 @@ export default function LoginForm() {
           placeholder="e-mail"
           value={formData.mail}
           onChange={(e) => handleChange(e)}
-          className="w-96 border-b-2 border-black-light"
+          className=" w-72 lg:w-96 border-b-2 border-black-light"
         />
         <input
           type={"password"}
@@ -36,7 +36,7 @@ export default function LoginForm() {
           placeholder="mot de passe"
           value={formData.password}
           onChange={(e) => handleChange(e)}
-          className="w-96  border-b-2 border-black-light"
+          className="w-72 lg:w-96  border-b-2 border-black-light"
         />
         <p
           onClick={() => dispatch({ type: REGISTER })}
@@ -44,7 +44,7 @@ export default function LoginForm() {
         >
           Pas encore de compte ? Créer un compte
         </p>
-        <button type="submit" className="bg-gray-900 text-white w-96">
+        <button type="submit" className="bg-gray-900 text-white w-72 lg:w-96">
           connexion
         </button>
       </form>
