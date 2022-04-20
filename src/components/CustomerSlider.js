@@ -16,14 +16,14 @@ export default function CustomerSlider({ customers }) {
       <Slider {...settings}>
         {customers.map((customer, i) => {
           return (
-            <div className="w-32 h-32" data-index={i} key={i}>
+            <div className="w-1/4" data-index={i} key={i}>
               <div
-                className=" lg:w-1/4 sm:w-1/2 w-full h-5/6 m-auto bg-center bg-cover"
+                className="w-16 h-16 md:w-32 md:h-32 m-auto bg-center bg-cover"
                 style={{
                   backgroundImage: `url(http://localhost:5000/public/images/${customer.logo})`,
                 }}
               ></div>
-              <p>{customer.libelle}</p>
+              <p className=" text-xs">{customer.libelle}</p>
             </div>
           );
         })}

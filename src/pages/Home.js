@@ -43,9 +43,27 @@ export default function Home() {
         <button className="bg-white text-black-light">Show More</button>
       </div>
 
-      <div className="h-40 text-center">
+      <div className="h-fit text-center">
         <h2>Clients</h2>
-        <CustomerSlider customers={customers} />
+        {customers.length > 4 ? (
+          <CustomerSlider customers={customers} />
+        ) : (
+          <div className="flex justify-around">
+            {customers.map((customer, i) => {
+              return (
+                <div className="w-1/4" data-index={i} key={i}>
+                  <div
+                    className="w-16 h-16 md:w-32 md:h-32 m-auto bg-center bg-cover"
+                    style={{
+                      backgroundImage: `url(http://localhost:5000/public/images/${customer.logo})`,
+                    }}
+                  ></div>
+                  <p className=" text-xs">{customer.libelle}</p>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div className="bg-black-light grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8">
