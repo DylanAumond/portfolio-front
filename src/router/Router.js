@@ -7,7 +7,9 @@ import CustomersAdmin from "../pages/admin/CustomersAdmin.js";
 import ProjectsAdmin from "../pages/admin/ProjectsAdmin.js";
 import RolesAdmin from "../pages/admin/RolesAdmin.js";
 import TechnologiesAdmin from "../pages/admin/TechnologiesAdmin.js";
+import TechnologyAdmin from "../pages/admin/TechnologyAdmin.js";
 import Home from "../pages/Home.js";
+import Page403 from "../pages/Page403.js";
 import Page404 from "../pages/Page404.js";
 import Project from "../pages/Project.js";
 import Projects from "../pages/Projects.js";
@@ -24,11 +26,13 @@ export default function Router() {
         <Route path="admin">
           <Route path="customers" element={<CustomersAdmin />} />
           <Route path="customers/:libelle" element={<CustomerAdmin />} />
-          <Route path="Technologies" element={<TechnologiesAdmin />} />
-          <Route path="Projects" element={<ProjectsAdmin />} />
+          <Route path="technologies" element={<TechnologiesAdmin />} />
+          <Route path="technologies/:libelle" element={<TechnologyAdmin />} />
+          <Route path="projects" element={<ProjectsAdmin />} />
           <Route path="roles" element={<RolesAdmin />} />
         </Route>
         {/*catch all routes*/}
+        <Route path="403" element={<Page403 />} />
         <Route path="*" element={<Page404 />} />
       </Route>
     </Routes>

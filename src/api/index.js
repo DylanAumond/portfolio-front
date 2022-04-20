@@ -16,6 +16,7 @@ import {
   ADD_TECHNOLOGY,
   DELETE_TECHNOLOGY,
   GET_TECHNOLOGIES,
+  UPDATE_TECHNOLOGY,
 } from "../constant/technologies";
 
 const xsrf_token = localStorage.getItem("xsrf_token");
@@ -27,6 +28,21 @@ export const API = axios.create({
     "x-xsrf-token": xsrf_token,
   },
 });
+
+API.interceptors.response.use(
+  (res) => res,
+  (error) => {
+    let code = error.response.status;
+    switch (code) {
+      case 403: {
+        return (window.location.href = "/403");
+      }
+      default: {
+        return (window.location.href = "/404");
+      }
+    }
+  }
+);
 
 export const getCustomers = () => {
   return (dispatch) => {
@@ -131,6 +147,22 @@ export const postTechnology = (technology) => {
       },
     })
       .then((res) => dispatch({ type: ADD_TECHNOLOGY, payload: res.data }))
+      .catch((err) => console.log(err));
+  };
+};
+
+export const updateTechnology = (technology, technologyId) => {
+  return (dispatch) => {
+    axios(process.env.REACT_APP_API_URL + "technologies/" + technologyId, {
+      method: "PATCH",
+      data: technology,
+      headers: {
+        "Content-type": "multipart/form-data",
+      },
+    })
+      .then((res) => {
+        return dispatch({ type: UPDATE_TECHNOLOGY, payload: res.data });
+      })
       .catch((err) => console.log(err));
   };
 };

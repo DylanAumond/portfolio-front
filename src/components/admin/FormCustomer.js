@@ -19,6 +19,7 @@ export default function FormCustomer({ editCustomer }) {
   const formData = new FormData();
 
   const [customer, setCustomer] = useState(initForm);
+
   const handleChange = (e) => {
     setCustomer({ ...customer, [e.target.name]: e.target.value });
   };
@@ -26,6 +27,7 @@ export default function FormCustomer({ editCustomer }) {
   const handleFiles = (e) => {
     setCustomer({ ...customer, logo: e.target.files });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     for (const [key, value] of Object.entries(customer)) {
@@ -66,16 +68,24 @@ export default function FormCustomer({ editCustomer }) {
           onInput={(e) => handleFiles(e)}
           multiple
         />
-        {/*customer.logo ? (
+        {customer.logo ? (
           <div
             className="w-16 h-16 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${URL.createObjectURL(customer.logo[0])})`,
-            }}
+            style={
+              customer.logo[0] instanceof Blob
+                ? {
+                    backgroundImage: `url(${URL.createObjectURL(
+                      customer.logo[0]
+                    )})`,
+                  }
+                : {
+                    backgroundImage: `url(http://localhost:5000/public/images/${customer.logo})`,
+                  }
+            }
           ></div>
         ) : (
           <p>No image upload yet</p>
-        )*/}
+        )}
 
         <button type="submit" className=" bg-green-400 w-48 m-8 rounded-lg">
           {editCustomer ? "update customer" : "add customer"}

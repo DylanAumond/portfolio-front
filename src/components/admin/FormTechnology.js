@@ -1,35 +1,49 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { postTechnology } from "../../api";
+import { postTechnology, updateTechnology } from "../../api";
 
-export default function FormTechnology() {
+export default function FormTechnology({ editTechnology }) {
   const dispatch = useDispatch();
-  const initForm = {
-    libelle: "",
-    logo: "",
+  const onEdit = () => {
+    if (editTechnology != null) {
+      return editTechnology;
+    } else {
+      return {
+        libelle: "",
+        logo: "",
+      };
+    }
   };
+  const [initForm, setInitForm] = useState(onEdit);
 
   const formData = new FormData();
 
   const [technology, setTechnology] = useState(initForm);
+
   const handleChange = (e) => {
     setTechnology({ ...technology, [e.target.name]: e.target.value });
   };
 
   const handleFiles = (e) => {
     setTechnology({ ...technology, logo: e.target.files });
-    console.log(technology);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     for (const [key, value] of Object.entries(technology)) {
       if (key === "logo") {
-        formData.append(key, value[0], value[0].name);
+        if (value[0] instanceof Blob) {
+          formData.append(key, value[0], value[0].name);
+        }
       } else {
         formData.append(key, value);
       }
     }
-    dispatch(postTechnology(formData));
+    if (editTechnology != null) {
+      dispatch(updateTechnology(formData, technology._id));
+    } else {
+      dispatch(postTechnology(formData));
+    }
   };
   return (
     <div>
@@ -52,16 +66,24 @@ export default function FormTechnology() {
         {technology.logo ? (
           <div
             className="w-16 h-16 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${URL.createObjectURL(
-                technology.logo[0]
-              )})`,
-            }}
+            style={
+              technology.logo[0] instanceof Blob
+                ? {
+                    backgroundImage: `url(${URL.createObjectURL(
+                      technology.logo[0]
+                    )})`,
+                  }
+                : {
+                    backgroundImage: `url(http://localhost:5000/public/images/${technology.logo})`,
+                  }
+            }
           ></div>
         ) : (
-          ""
+          <p>No image upload yet</p>
         )}
-        <button type="submit">create</button>
+        <button type="submit">
+          {editTechnology ? "update technology" : "add technology"}
+        </button>
       </form>
     </div>
   );

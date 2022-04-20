@@ -8,10 +8,6 @@ export default function RegisterForm() {
     mail: "",
     password: "",
     confirmPassword: "",
-    town: "",
-    postalCode: "",
-    street: "",
-    country: "",
   };
   const [formData, setFormData] = useState(initForm);
   const handleChange = (e) => {
@@ -26,7 +22,7 @@ export default function RegisterForm() {
   };
   return (
     <div>
-      <h2>RegisterForm</h2>
+      <h2 className="ml-24">Créer un compte</h2>
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="flex flex-col items-center justify-around h-96"
@@ -71,39 +67,9 @@ export default function RegisterForm() {
           onChange={(e) => handleChange(e)}
           className="w-96 border-b-2 border-black-light"
         />
-        <input
-          type={"text"}
-          name="postalCode"
-          placeholder="code postal"
-          value={formData.postalCode}
-          onChange={(e) => handleChange(e)}
-          className="w-96 border-b-2 border-black-light"
-        />
-        <input
-          type={"text"}
-          name="town"
-          placeholder="Ville"
-          value={formData.town}
-          onChange={(e) => handleChange(e)}
-          className="w-96 border-b-2 border-black-light"
-        />
-        <input
-          type={"text"}
-          name="street"
-          placeholder="rue"
-          value={formData.street}
-          onChange={(e) => handleChange(e)}
-          className="w-96 border-b-2 border-black-light"
-        />
-        <input
-          type={"text"}
-          name="country"
-          placeholder="pays"
-          value={formData.country}
-          onChange={(e) => handleChange(e)}
-          className="w-96 border-b-2 border-black-light"
-        />
-        <button type="submit">Register</button>
+        <button type="submit" className="bg-gray-900 text-white w-96">
+          Enregistrement
+        </button>
       </form>
     </div>
   );

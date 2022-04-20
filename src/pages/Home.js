@@ -25,7 +25,7 @@ export default function Home() {
             <h1 className="text-3xl">
               Dylan <br /> Aumond
             </h1>
-            <p>Developer FullStack Junior</p>
+            <p>Développeur FullStack Junior</p>
           </div>
         </div>
         <div className="h-full w-1/2 bg-blue-800">
@@ -44,7 +44,7 @@ export default function Home() {
       </div>
 
       <div className="h-40 text-center">
-        <h2>Customers</h2>
+        <h2>Clients</h2>
         <CustomerSlider customers={customers} />
       </div>
 

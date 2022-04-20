@@ -33,7 +33,7 @@ export default function LoginForm() {
         <input
           type={"password"}
           name="password"
-          placeholder="password"
+          placeholder="mot de passe"
           value={formData.password}
           onChange={(e) => handleChange(e)}
           className="w-96  border-b-2 border-black-light"
@@ -45,7 +45,7 @@ export default function LoginForm() {
           Pas encore de compte ? Créer un compte
         </p>
         <button type="submit" className="bg-gray-900 text-white w-96">
-          Login
+          connexion
         </button>
       </form>
     </div>

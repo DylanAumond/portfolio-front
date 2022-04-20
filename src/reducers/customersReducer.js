@@ -1,6 +1,7 @@
 import {
   ADD_CUSTOMER,
   DELETE_CUSTOMER,
+  GET_CUSTOMER,
   GET_CUSTOMERS,
   UPDATE_CUSTOMER,
 } from "../constant/customers";

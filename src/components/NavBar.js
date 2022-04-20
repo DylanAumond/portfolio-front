@@ -10,18 +10,18 @@ export default function NavBar() {
       <h1>DA</h1>
       <nav>
         <Link to={"/"} className="mx-4">
-          Home
+          Accueil
         </Link>
         <Link to={"/"} className="mx-4">
-          About
+          A propos
         </Link>
         <Link to={"/projects"} className="mx-4">
-          Projects
+          Projets
         </Link>
         <Link to={"/"} className="mx-4">
           Contact
         </Link>
-        <button onClick={() => dispatch({ type: LOGIN })}>Login</button>
+        <button onClick={() => dispatch({ type: LOGIN })}>Connexion</button>
       </nav>
     </div>
   );
