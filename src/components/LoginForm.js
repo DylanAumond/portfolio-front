@@ -12,7 +12,7 @@ export default function LoginForm() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(formData);
+    dispatch(login(formData));
     setFormData(initForm);
   };
   return (

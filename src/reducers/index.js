@@ -5,6 +5,7 @@ import technologiesReducer from "./technologiesReducer";
 import projectReducer from "./projectReducer";
 import modalReducer from "./modalReducer";
 import rolesReducer from "./rolesReducer";
+import toastsReducer from "./toastsReducer";
 
 export default combineReducers({
   customersReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   projectReducer,
   modalReducer,
   rolesReducer,
+  toastsReducer,
 });

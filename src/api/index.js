@@ -18,6 +18,7 @@ import {
   GET_TECHNOLOGIES,
   UPDATE_TECHNOLOGY,
 } from "../constant/technologies";
+import { ADD_TOAST } from "../constant/toasts";
 
 const xsrf_token = localStorage.getItem("xsrf_token");
 export const API = axios.create({
@@ -37,8 +38,11 @@ API.interceptors.response.use(
       case 403: {
         return (window.location.href = "/403");
       }
-      default: {
+      case 404: {
         return (window.location.href = "/404");
+      }
+      default: {
+        return error;
       }
     }
   }
@@ -176,11 +180,22 @@ export const deleteTechnology = (technologyId) => {
 };
 
 export const login = (user) => {
-  API.post(`/users/login`, user).then((res) => {
-    if (res.status === 200) {
-      localStorage.setItem("xsrf_token", res.data);
-    }
-  });
+  return (dispatch) => {
+    API.post(`/users/login`, user).then((res) => {
+      if (res.status === 200) {
+        localStorage.setItem("xsrf_token", res.data);
+        dispatch({
+          type: ADD_TOAST,
+          payload: { text: "connexion réussite!", color: "green-600" },
+        });
+      } else {
+        dispatch({
+          type: ADD_TOAST,
+          payload: { text: "connexion échoué!", color: "red-600" },
+        });
+      }
+    });
+  };
 };
 
 export const register = (user) => {

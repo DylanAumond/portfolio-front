@@ -15,7 +15,7 @@ export default function RegisterForm() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.password == formData.confirmPassword) {
+    if (formData.password === formData.confirmPassword) {
       register(formData);
       setFormData(initForm);
     }
