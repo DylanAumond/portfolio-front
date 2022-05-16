@@ -3,12 +3,12 @@ import {
   DELETE_PROJECT,
   GET_PROJECTS,
 } from "../constant/projects";
-const initialState = [];
 
-export default function projectsReducer(state = initialState, action) {
+export default function projectsReducer(state = [], action) {
   switch (action.type) {
     case GET_PROJECTS:
-      return action.payload;
+      state = action.payload;
+      return state;
     case ADD_PROJECT:
       return [...state, action.payload];
     case DELETE_PROJECT:

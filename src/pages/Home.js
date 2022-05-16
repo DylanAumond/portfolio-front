@@ -1,22 +1,27 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getCustomers, getProjects, getTechnologies } from "../api";
 import CardProject from "../components/CardProject";
 import CustomerSlider from "../components/CustomerSlider";
 import Technocard from "../components/Technocard";
 
 export default function Home() {
+  const dispatch = useDispatch();
+
   const customers = useSelector((state) => state.customersReducer);
   const projects = useSelector((state) => state.projectsReducer);
   const technologies = useSelector((state) => state.technologiesReducer);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCustomers());
     dispatch(getProjects());
     dispatch(getTechnologies());
   }, [dispatch]);
-
+  console.log(projects);
+  if (projects === undefined) {
+    return <p>Loading</p>;
+  }
   return (
     <div>
       <div className="w-full h-screen flex">
@@ -34,13 +39,15 @@ export default function Home() {
       </div>
 
       <div className="bg-black-light h-96 text-white text-center">
-        <h2>Projects</h2>
-        <div className="grid grid-cols-3 h-5/6 justify-around">
-          {projects.map((project) => {
-            return <CardProject key={project._id} project={project} />;
-          })}
+        <h2 className="mb-2">Projets</h2>
+        <div className="grid grid-cols-3 h-5/6 gap-x-12">
+          {projects.map((project) => (
+            <CardProject key={project._id} project={project} />
+          ))}
         </div>
-        <button className="bg-white text-black-light">Show More</button>
+        <Link to={`/projects`} className="bg-white text-black-light mt-4">
+          Voir plus
+        </Link>
       </div>
 
       <div className="h-fit text-center">
@@ -66,7 +73,7 @@ export default function Home() {
         )}
       </div>
 
-      <div className="bg-black-light grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8">
+      <div className="bg-black-light grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 py-6">
         {technologies.map((technologie) => {
           return <Technocard key={technologie._id} technologie={technologie} />;
         })}

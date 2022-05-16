@@ -10,6 +10,7 @@ import Router from "./router/Router";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {}, [dispatch]);
+
   const modal = useSelector((state) => state.modalReducer);
   const toasts = useSelector((state) => state.toastsReducer);
   return (

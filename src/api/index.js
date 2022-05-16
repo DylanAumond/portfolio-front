@@ -8,7 +8,6 @@ import {
 import {
   ADD_PROJECT,
   DELETE_PROJECT,
-  GET_PROJECT,
   GET_PROJECTS,
 } from "../constant/projects";
 import { ADD_ROLE, DELETE_ROLE, GET_ROLES } from "../constant/roles";
@@ -29,7 +28,7 @@ export const API = axios.create({
     "x-xsrf-token": xsrf_token,
   },
 });
-
+/*
 API.interceptors.response.use(
   (res) => res,
   (error) => {
@@ -46,7 +45,7 @@ API.interceptors.response.use(
       }
     }
   }
-);
+);*/
 
 export const getCustomers = () => {
   return (dispatch) => {
@@ -104,17 +103,17 @@ export const getProjects = () => {
   };
 };
 
-export const getProject = (libelle) => {
+export const getProject = (id) => {
   return (dispatch) => {
-    API.get(`/projects/${libelle}`)
-      .then((res) => dispatch({ type: GET_PROJECT, payload: res.data }))
+    API.get(`/projects/${id}`)
+      .then((res) => dispatch({ type: GET_PROJECTS, payload: res.data }))
       .catch((err) => console.log(err));
   };
 };
 
 export const postProject = (project) => {
   return (dispatch) => {
-    axios(process.env.REACT_APP_API_URL + "/projects", {
+    axios(process.env.REACT_APP_API_URL + "projects", {
       method: "post",
       data: project,
       headers: {

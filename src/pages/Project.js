@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getProject } from "../api";
 
 export default function Project() {
-  const location = useLocation();
-  const project = useSelector((state) => state.projectReducer);
+  const { id } = useParams();
   const dispatch = useDispatch();
+  const project = useSelector((state) => state.projectsReducer[0]);
   useEffect(() => {
-    dispatch(getProject(location.state));
-  }, [dispatch]);
+    dispatch(getProject(id));
+  }, [dispatch, id]);
   return (
     <div>
       <h1 className="mt-6 ml-10 text-2xl">{project.libelle}</h1>

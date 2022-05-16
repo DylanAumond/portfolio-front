@@ -1,8 +1,6 @@
 import { ADD_ROLE, DELETE_ROLE, GET_ROLES } from "../constant/roles";
 
-const initialState = [];
-
-export default function rolesReducer(state = initialState, action) {
+export default function rolesReducer(state = [], action) {
   switch (action.type) {
     case GET_ROLES:
       return action.payload;

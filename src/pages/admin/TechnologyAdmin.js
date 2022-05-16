@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { getTechnologies } from "../../api";
@@ -28,7 +28,7 @@ export default function TechnologyAdmin() {
           ></div>
         </div>
       ) : (
-        <p>le client n'existe pas</p>
+        <p>la technologie n'existe pas</p>
       )}
     </div>
   );

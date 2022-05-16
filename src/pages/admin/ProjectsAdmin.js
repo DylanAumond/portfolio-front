@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { deleteProject, getProjects } from "../../api";
 import FormProject from "../../components/admin/FormProject";
 
@@ -30,9 +31,13 @@ export default function ProjectsAdmin() {
                 >
                   Delete
                 </button>
-                <button className="bg-orange-600 p-1 text-white text-sm">
+                <Link
+                  to={`/admin/projects/${project.libelle}`}
+                  state={project}
+                  className="bg-orange-600 p-1 text-white text-sm"
+                >
                   Update
-                </button>
+                </Link>
               </div>
             </div>
           );

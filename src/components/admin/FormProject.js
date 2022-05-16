@@ -9,7 +9,7 @@ export default function FormProject() {
   useEffect(() => {
     dispatch(getCustomers());
     dispatch(getTechnologies());
-  }, []);
+  }, [dispatch]);
 
   const initForm = {
     libelle: "",

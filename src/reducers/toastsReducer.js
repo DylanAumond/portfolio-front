@@ -1,8 +1,6 @@
 import { ADD_TOAST, DELETE_TOAST, GET_TOASTS } from "../constant/toasts";
 
-const initialState = [];
-
-export default function toastsReducer(state = initialState, action) {
+export default function toastsReducer(state = [], action) {
   switch (action.type) {
     case GET_TOASTS:
       return action.payload;

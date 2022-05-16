@@ -1,14 +1,11 @@
 import {
   ADD_CUSTOMER,
   DELETE_CUSTOMER,
-  GET_CUSTOMER,
   GET_CUSTOMERS,
   UPDATE_CUSTOMER,
 } from "../constant/customers";
 
-const initialState = [];
-
-export default function customersReducer(state = initialState, action) {
+export default function customersReducer(state = [], action) {
   switch (action.type) {
     case GET_CUSTOMERS:
       return action.payload;

@@ -1,4 +1,5 @@
 import React from "react";
+import { BsLinkedin, BsGithub } from "react-icons/bs";
 
 export default function Footer() {
   const today = new Date();
@@ -9,8 +10,22 @@ export default function Footer() {
         <div>
           <h3>Réseaux Sociaux:</h3>
           <div className="flex">
-            <p>Linkedin</p>
-            <p>GitHub</p>
+            <a
+              className=" text-3xl"
+              href="https://www.linkedin.com/in/dylan-aumond-0786b91b2/"
+              target={"_blank"}
+              rel="noreferrer"
+            >
+              <BsLinkedin />
+            </a>
+            <a
+              className=" text-3xl"
+              href="https://github.com/DylanAumond"
+              target={"_blank"}
+              rel="noreferrer"
+            >
+              <BsGithub />
+            </a>
           </div>
         </div>
 
