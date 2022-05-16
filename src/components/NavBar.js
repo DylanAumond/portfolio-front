@@ -12,15 +12,15 @@ export default function NavBar() {
         <Link to={"/"} className="mx-4">
           Accueil
         </Link>
-        <Link to={"/"} className="mx-4">
+        {/*<Link to={"/"} className="mx-4">
           A propos
-        </Link>
+        </Link>*/}
         <Link to={"/projects"} className="mx-4">
           Projets
         </Link>
-        <Link to={"/"} className="mx-4">
+        {/*<Link to={"/"} className="mx-4">
           Contact
-        </Link>
+        </Link>*/}
         <button onClick={() => dispatch({ type: LOGIN })}>Connexion</button>
       </nav>
     </div>

@@ -6,10 +6,10 @@ export default function Footer() {
   const year = today.getFullYear();
   return (
     <div className="h-40 static bottom-0 text-center">
-      <div className="flex justify-around w-full mt-4">
+      <div className="sm:flex sm:justify-around w-full mt-4">
         <div>
           <h3>Réseaux Sociaux:</h3>
-          <div className="flex">
+          <div className="flex justify-around sm:w-full">
             <a
               className=" text-3xl"
               href="https://www.linkedin.com/in/dylan-aumond-0786b91b2/"

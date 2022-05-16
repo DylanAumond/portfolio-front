@@ -10,11 +10,14 @@ export default function Project() {
   useEffect(() => {
     dispatch(getProject(id));
   }, [dispatch, id]);
+  if (project === undefined) {
+    return <p>Loading ...</p>;
+  }
   return (
     <div>
       <h1 className="mt-6 ml-10 text-2xl">{project.libelle}</h1>
-      <div className="h-96 mt-8 flex justify-around">
-        <div className="w-6/12">
+      <div className="md:h-96 mt-8 md:flex md:justify-around">
+        <div className="md:w-6/12 w-10/12">
           {project.imgs ? (
             project.imgs.map((img, i) => {
               return (
@@ -31,15 +34,15 @@ export default function Project() {
             <p>No images yet</p>
           )}
         </div>
-        <div className=" w-2/12">
+        <div className="w-full md:w-2/12">
           <h2>technologies:</h2>
-          <div>
+          <div className=" flex">
             {project.technologies ? (
               project.technologies.map((technology, i) => {
                 return (
                   <div
                     key={i}
-                    className="h-20 w-20 bg-cover bg-center"
+                    className="h-10 w-10 bg-cover bg-center"
                     style={{
                       backgroundImage: `url(http://localhost:5000/public/images/${technology.logo})`,
                     }}
@@ -47,7 +50,7 @@ export default function Project() {
                 );
               })
             ) : (
-              <p>No technologies</p>
+              <p>Pas de technologies associées</p>
             )}
           </div>
         </div>

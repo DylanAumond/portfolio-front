@@ -13,7 +13,7 @@ export default function Projects() {
   return (
     <div>
       <h1>Pojects</h1>
-      <div className=" h-72 grid grid-cols-3 gap-10 mx-8">
+      <div className="h-96 sm:h-72 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mx-8">
         {projects.map((project, i) => (
           <CardProject key={i} project={project} />
         ))}

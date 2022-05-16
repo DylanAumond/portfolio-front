@@ -18,10 +18,6 @@ export default function Home() {
     dispatch(getProjects());
     dispatch(getTechnologies());
   }, [dispatch]);
-  console.log(projects);
-  if (projects === undefined) {
-    return <p>Loading</p>;
-  }
   return (
     <div>
       <div className="w-full h-screen flex">
@@ -38,9 +34,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-black-light h-96 text-white text-center">
+      <div className="bg-black-light h-fit sm:h-96 text-white text-center">
         <h2 className="mb-2">Projets</h2>
-        <div className="grid grid-cols-3 h-5/6 gap-x-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-12 sm:gap-x-12">
           {projects.map((project) => (
             <CardProject key={project._id} project={project} />
           ))}
