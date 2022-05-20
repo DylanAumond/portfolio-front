@@ -60,8 +60,10 @@ export const postCustomer = (customer) => {
     axios(process.env.REACT_APP_API_URL + "customers", {
       method: "post",
       data: customer,
+      withCredentials: true,
       headers: {
         "Content-type": "multipart/form-data",
+        "x-xsrf-token": xsrf_token,
       },
     })
       .then((res) => {
@@ -76,8 +78,10 @@ export const updateCustomer = (customer, customerId) => {
     axios(process.env.REACT_APP_API_URL + "customers/" + customerId, {
       method: "PATCH",
       data: customer,
+      withCredentials: true,
       headers: {
         "Content-type": "multipart/form-data",
+        "x-xsrf-token": xsrf_token,
       },
     })
       .then((res) => {
@@ -116,8 +120,10 @@ export const postProject = (project) => {
     axios(process.env.REACT_APP_API_URL + "projects", {
       method: "post",
       data: project,
+      withCredentials: true,
       headers: {
         "Content-type": "multipart/form-data",
+        "x-xsrf-token": xsrf_token,
       },
     })
       .then((res) => dispatch({ type: ADD_PROJECT, payload: res.data }))
@@ -145,8 +151,10 @@ export const postTechnology = (technology) => {
     axios(process.env.REACT_APP_API_URL + "technologies", {
       method: "post",
       data: technology,
+      withCredentials: true,
       headers: {
         "Content-type": "multipart/form-data",
+        "x-xsrf-token": xsrf_token,
       },
     })
       .then((res) => dispatch({ type: ADD_TECHNOLOGY, payload: res.data }))
@@ -159,8 +167,10 @@ export const updateTechnology = (technology, technologyId) => {
     axios(process.env.REACT_APP_API_URL + "technologies/" + technologyId, {
       method: "PATCH",
       data: technology,
+      withCredentials: true,
       headers: {
         "Content-type": "multipart/form-data",
+        "x-xsrf-token": xsrf_token,
       },
     })
       .then((res) => {
@@ -185,12 +195,20 @@ export const login = (user) => {
         localStorage.setItem("xsrf_token", res.data);
         dispatch({
           type: ADD_TOAST,
-          payload: { text: "connexion réussite!", color: "green-600" },
+          payload: {
+            text: "connexion réussite!",
+            color: "green-600",
+            icon: "checked",
+          },
         });
       } else {
         dispatch({
           type: ADD_TOAST,
-          payload: { text: "connexion échoué!", color: "red-600" },
+          payload: {
+            text: "connexion échoué!",
+            color: "red-600",
+            icon: "error",
+          },
         });
       }
     });

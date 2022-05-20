@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProject } from "../api";
+import Caroussel from "../components/Caroussel";
 
 export default function Project() {
   const { id } = useParams();
@@ -17,19 +18,9 @@ export default function Project() {
     <div>
       <h1 className="mt-6 ml-10 text-2xl">{project.libelle}</h1>
       <div className="md:h-96 mt-8 md:flex md:justify-around">
-        <div className="md:w-6/12 w-10/12">
+        <div className="md:w-6/12 w-full h-96">
           {project.imgs ? (
-            project.imgs.map((img, i) => {
-              return (
-                <div
-                  key={i}
-                  className=" h-96 w-full bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url(http://localhost:5000/public/images/${img})`,
-                  }}
-                ></div>
-              );
-            })
+            <Caroussel images={project.imgs} />
           ) : (
             <p>No images yet</p>
           )}
@@ -40,13 +31,12 @@ export default function Project() {
             {project.technologies ? (
               project.technologies.map((technology, i) => {
                 return (
-                  <div
+                  <img
+                    className="w-10 h-10"
+                    src={`http://localhost:5000/public/images/${technology.logo}`}
+                    alt={technology.libelle}
                     key={i}
-                    className="h-10 w-10 bg-cover bg-center"
-                    style={{
-                      backgroundImage: `url(http://localhost:5000/public/images/${technology.logo})`,
-                    }}
-                  ></div>
+                  />
                 );
               })
             ) : (

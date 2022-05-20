@@ -20,8 +20,18 @@ export default function Home() {
   }, [dispatch]);
   return (
     <div>
-      <div className="w-full h-screen flex">
-        <div className="h-full w-1/2 bg-red-800 flex flex-col justify-center items-center">
+      <div
+        className="w-full h-screen flex bg-center bg-cover items-center justify-center"
+        style={{
+          backgroundImage:
+            "url(https://img.freepik.com/free-photo/professional-programmer-working-late-dark-office_1098-18705.jpg?w=1380&t=st=1652811928~exp=1652812528~hmac=a525c29eaf2fa42e1eb77de567530cfed28ca51023dc4147bcc002185956eaa2)",
+        }}
+      >
+        <div className="text-white text-center">
+          <h1 className="text-4xl md:text-8xl">Dylan Aumond</h1>
+          <p className="text-2xl md:text-4xl">Développeur FullStack Junior</p>
+        </div>
+        {/*<div className="h-full w-1/2 bg-red-800 flex flex-col justify-center items-center">
           <div>
             <h1 className="text-3xl">
               Dylan <br /> Aumond
@@ -31,7 +41,7 @@ export default function Home() {
         </div>
         <div className="h-full w-1/2 bg-blue-800">
           <p>sqd</p>
-        </div>
+        </div>*/}
       </div>
 
       <div className="bg-black-light h-fit sm:h-96 text-white text-center">

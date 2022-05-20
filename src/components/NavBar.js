@@ -9,7 +9,7 @@ export default function NavBar() {
     <div className="w-full h-20 text-white bg-gray-900  flex items-center justify-between fixed top-0">
       <h1>DA</h1>
       <nav>
-        <Link to={"/"} className="mx-4">
+        <Link to={"/"} className="">
           Accueil
         </Link>
         {/*<Link to={"/"} className="mx-4">
@@ -21,7 +21,9 @@ export default function NavBar() {
         {/*<Link to={"/"} className="mx-4">
           Contact
         </Link>*/}
-        <button onClick={() => dispatch({ type: LOGIN })}>Connexion</button>
+        <button className="mr-4" onClick={() => dispatch({ type: LOGIN })}>
+          Connexion
+        </button>
       </nav>
     </div>
   );
