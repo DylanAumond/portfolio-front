@@ -43,6 +43,19 @@ export default function Project() {
               <p>Pas de technologies associées</p>
             )}
           </div>
+          <h2>Client:</h2>
+          {project.customer !== undefined ? (
+            <div className="flex justify-around items-center">
+              <img
+                className="w-10 h-10"
+                src={`http://localhost:5000/public/images/${project.customer.logo}`}
+                alt={project.customer.libelle}
+              />
+              <p>{project.customer.libelle}</p>
+            </div>
+          ) : (
+            <p>Pas de client associé</p>
+          )}
         </div>
       </div>
       <h2 className="mt-6 ml-10 text-2xl">Description</h2>

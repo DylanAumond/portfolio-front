@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 export default function Caroussel({ images }) {
-  /*const images = [
-    "https://picsum.photos/id/1/1920/1080",
-    "https://picsum.photos/id/15/1920/1080",
-    "https://picsum.photos/1920/1080",
-  ];*/
   const [currentSlide, setCurrentSlide] = useState(0);
   const displaySlide = (newCurrentSlide) => {
     if (newCurrentSlide > images.length - 1) {
@@ -29,7 +24,8 @@ export default function Caroussel({ images }) {
           key={i}
           src={`http://localhost:5000/public/images/${image}`}
           className={
-            "w-full h-full " + (i === currentSlide ? "absolute" : "hidden")
+            "w-auto h-full translate-x-1/2 right-1/2 " +
+            (i === currentSlide ? "absolute" : "hidden")
           }
         />
       ))}

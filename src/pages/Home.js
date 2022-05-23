@@ -31,17 +31,6 @@ export default function Home() {
           <h1 className="text-4xl md:text-8xl">Dylan Aumond</h1>
           <p className="text-2xl md:text-4xl">Développeur FullStack Junior</p>
         </div>
-        {/*<div className="h-full w-1/2 bg-red-800 flex flex-col justify-center items-center">
-          <div>
-            <h1 className="text-3xl">
-              Dylan <br /> Aumond
-            </h1>
-            <p>Développeur FullStack Junior</p>
-          </div>
-        </div>
-        <div className="h-full w-1/2 bg-blue-800">
-          <p>sqd</p>
-        </div>*/}
       </div>
 
       <div className="bg-black-light h-fit sm:h-96 text-white text-center">
