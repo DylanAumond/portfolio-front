@@ -22,7 +22,6 @@ export default function Toast({ text, color, id, icon }) {
         return <AiFillWarning className="w-8 h-8" />;
       default:
         return <AiFillWarning className="w-8 h-8" />;
-        break;
     }
   };
   return (

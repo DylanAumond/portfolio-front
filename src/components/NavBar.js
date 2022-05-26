@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { LOGIN } from "../constant/Modal";
+import { CONTACT, LOGIN } from "../constant/Modal";
 
 export default function NavBar() {
   const dispatch = useDispatch();
@@ -15,6 +15,9 @@ export default function NavBar() {
         <Link to={"/projects"} className="mx-4">
           Projets
         </Link>
+        <button className="mr-4" onClick={() => dispatch({ type: CONTACT })}>
+          Contact
+        </button>
         <button className="mr-4" onClick={() => dispatch({ type: LOGIN })}>
           Connexion
         </button>

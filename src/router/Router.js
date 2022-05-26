@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import ContactForm from "../components/ContactForm.js";
 import LoginForm from "../components/LoginForm.js";
 import RegisterForm from "../components/RegisterForm.js";
 import CustomerAdmin from "../pages/admin/CustomerAdmin.js";
@@ -21,6 +22,7 @@ export default function Router() {
         <Route index element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route path="login" element={<LoginForm />} />
+        <Route path="contact" element={<ContactForm />} />
         <Route path="register" element={<RegisterForm />} />
         <Route path="projects" element={<Projects />} />
         <Route path="project/:libelle/:id" element={<Project />} />
