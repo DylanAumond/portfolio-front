@@ -9,7 +9,6 @@ export default function ContactForm() {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    console.log(form.current);
 
     emailjs
       .sendForm(
@@ -45,10 +44,10 @@ export default function ContactForm() {
 
   return (
     <>
-      <h2 className="ml-24">Me contacter !</h2>
+      <h2 className="ml-24 my-6">Me contacter !</h2>
       <form
         ref={form}
-        className="h-fit grid grid-cols-2 place-content-evenly place-items-center"
+        className="h-fit grid grid-cols-1 sm:grid-cols-2 sm:mx-12 my-4 mx-4 gap-4"
         style={{ minHeight: "24rem" }}
         onSubmit={sendEmail}
       >
@@ -56,48 +55,48 @@ export default function ContactForm() {
           type="text"
           name="user_firstName"
           placeholder="prénom"
-          className="w-72 lg:w-96 border-b-2 border-black-light"
+          className="border-b-2 border-black-light"
           required
         />
         <input
           type="text"
           name="user_lastName"
           placeholder="nom"
-          className="w-72 lg:w-96  border-b-2 border-black-light"
+          className=" border-b-2 border-black-light"
           required
         />
         <input
           type="email"
           name="user_email"
           placeholder="exemple@mail.com"
-          className="w-72 lg:w-96  border-b-2 border-black-light"
+          className="  border-b-2 border-black-light"
           required
         />
         <input
           type="tel"
           name="user_phone"
           placeholder="+33 x xx xx xx xx"
-          className="w-72 lg:w-96  border-b-2 border-black-light"
+          className="  border-b-2 border-black-light"
           required
         />
         <input
           type="text"
           name="object"
           placeholder="sujet de votre message"
-          className="w-72 lg:w-96  border-b-2 border-black-light"
+          className="  border-b-2 border-black-light sm:col-span-2"
           required
         />
 
         <textarea
           name="message"
           placeholder="écrivez votre message ici !"
-          className="w-11/12 border-b-2 border-black-light col-span-2"
+          className=" border-b-2 border-black-light sm:col-span-2"
           required
         />
         <button
           type="submit"
           value="Send"
-          className="bg-gray-900 text-white w-72 lg:w-96"
+          className="bg-gray-900 text-white sm:col-span-2"
         >
           Envoyer
         </button>

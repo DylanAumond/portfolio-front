@@ -21,7 +21,7 @@ export default function RegisterForm() {
     }
   };
   return (
-    <div>
+    <div className="mt-8">
       <h2 className="ml-24">Créer un compte</h2>
       <form
         onSubmit={(e) => handleSubmit(e)}

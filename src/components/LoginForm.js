@@ -16,7 +16,7 @@ export default function LoginForm() {
     setFormData(initForm);
   };
   return (
-    <div>
+    <div className="mt-8">
       <h2 className="ml-24">Se connecter</h2>
       <form
         className="flex flex-col items-center h-96 justify-around"
