@@ -56,12 +56,13 @@ export default function FormTechnology({ editTechnology }) {
           name="libelle"
           value={technology.libelle}
           onChange={(e) => handleChange(e)}
+          required = {true}
         />
         <input
           type={"file"}
           name="logo"
           onInput={(e) => handleFiles(e)}
-          multiple
+          required = {editTechnology !== null ? false : true}
         />
         {technology.logo ? (
           <div

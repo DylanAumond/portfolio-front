@@ -23,7 +23,7 @@ export default function TechnologyAdmin() {
           <div
             className="h-32 w-32 bg-cover bg-center"
             style={{
-              backgroundImage: `url(http://localhost:5000/public/images/${technology.logo})`,
+              backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${technology.logo})`,
             }}
           ></div>
         </div>

@@ -23,7 +23,7 @@ export default function CustomerAdmin() {
           <div
             className="h-32 w-32 bg-cover bg-center"
             style={{
-              backgroundImage: `url(http://localhost:5000/public/images/${customer.logo})`,
+              backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${customer.logo})`,
             }}
           ></div>
         </div>

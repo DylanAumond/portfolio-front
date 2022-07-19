@@ -33,7 +33,7 @@ export default function Project() {
                 return (
                   <img
                     className="w-10 h-10"
-                    src={`http://localhost:5000/public/images/${technology.logo}`}
+                    src={`${process.env.REACT_APP_API_URL}/public/images/${technology.logo}`}
                     alt={technology.libelle}
                     key={i}
                   />
@@ -48,7 +48,7 @@ export default function Project() {
             <div className="flex justify-around items-center">
               <img
                 className="w-10 h-10"
-                src={`http://localhost:5000/public/images/${project.customer.logo}`}
+                src={`${process.env.REACT_APP_API_URL}/public/images/${project.customer.logo}`}
                 alt={project.customer.libelle}
               />
               <p>{project.customer.libelle}</p>

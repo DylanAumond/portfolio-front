@@ -11,6 +11,7 @@ export default function FormCustomer({ editCustomer }) {
       return {
         libelle: "",
         logo: "",
+        url: "",
       };
     }
   };
@@ -52,6 +53,7 @@ export default function FormCustomer({ editCustomer }) {
         className="flex flex-col w-full h-72 mt-4"
         onSubmit={(e) => handleSubmit(e)}
       >
+
         <label htmlFor="libelle">Libelle</label>
         <input
           type={"text"}
@@ -60,13 +62,26 @@ export default function FormCustomer({ editCustomer }) {
           name="libelle"
           value={customer.libelle}
           onChange={(e) => handleChange(e)}
+          required={true}
         />
+
+        <label htmlFor="url">web site url</label>
+        <input
+          type={"text"}
+          placeholder="url"
+          className="w-72 "
+          name="url"
+          value={customer.url}
+          onChange={(e) => handleChange(e)}
+        />
+
         <input
           className="mt-4"
           type={"file"}
           name="logo"
           onInput={(e) => handleFiles(e)}
-          multiple
+          accept={"image/*"}
+          required={editCustomer !== null ? false : true}
         />
         {customer.logo ? (
           <div

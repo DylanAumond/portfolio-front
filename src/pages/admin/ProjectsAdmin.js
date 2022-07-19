@@ -20,7 +20,7 @@ export default function ProjectsAdmin() {
               <div
                 className=" h-20 w-20 bg-center bg-cover"
                 style={{
-                  backgroundImage: `url(http://localhost:5000/public/images/${project.imgs[0]})`,
+                  backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${project.imgs[0]})`,
                 }}
               ></div>
               <div>

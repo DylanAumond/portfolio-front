@@ -13,16 +13,19 @@ export default function Modal(props) {
   };
   return (
     <div
-      className={`h-fit lg:w-1/2 shadow-2xl sm:w-10/12 w-11/12 bg-white border-2 border-solid z-20 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${modalShow(
+      className={`bg-white border-2 border-solid shadow-2xl z-20 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${modalShow(
         props.state.show
       )}`}
+      style={{ maxHeight: '90%', width: 'inherit' ,maxWidth: '1000px', overflow: 'scroll' }}
     >
+      {/* ClOSEMODAL button */}
       <button
-        className="absolute top-4 right-4 cursor-pointer"
+        className="absolute top-4 right-4 cursor-pointer z-10"
         onClick={() => dispatch({ type: ClOSEMODAL })}
       >
         X
       </button>
+      {/* Modal's content*/}
       {props.state.component}
     </div>
   );

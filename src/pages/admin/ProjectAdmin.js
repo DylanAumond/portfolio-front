@@ -26,7 +26,7 @@ export default function ProjectAdmin() {
                   key={i}
                   className="h-20 w-20 bg-cover bg-center"
                   style={{
-                    backgroundImage: `url(http://localhost:5000/public/images/${technology})`,
+                    backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${technology})`,
                   }}
                 ></div>
               );

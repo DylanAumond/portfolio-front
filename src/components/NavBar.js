@@ -18,9 +18,9 @@ export default function NavBar() {
         <button className="mr-4" onClick={() => dispatch({ type: CONTACT })}>
           Contact
         </button>
-        <button className="mr-4" onClick={() => dispatch({ type: LOGIN })}>
+        {/*<button className="mr-4" onClick={() => dispatch({ type: LOGIN })}>
           Connexion
-        </button>
+          </button>*/}
       </nav>
     </div>
   );

@@ -17,30 +17,31 @@ export default function Caroussel({ images }) {
     }, 2500);
     return () => clearInterval(interval);
   }, [currentSlide]);
+
   return (
-    <div className="w-full relative h-full">
+    <div className="w-full flex h-96">
       {images.map((image, i) => (
         <img
           key={i}
           src={`http://localhost:5000/public/images/${image}`}
           className={
-            "w-auto h-full translate-x-1/2 right-1/2 " +
-            (i === currentSlide ? "absolute" : "hidden")
+            "w-full "+
+            (i === currentSlide ? "" : "hidden")
           }
         />
       ))}
-      <button
-        className="absolute left-0 h-full w-2 bg-blue-500"
+      {/*<button
+        className="absolute left-0 w-2 bg-blue-500"
         onClick={() => displaySlide(currentSlide - 1)}
       >
         -
       </button>
       <button
-        className="absolute right-0 h-full w-2 bg-red-500"
+        className="absolute right-0 h-full w-2 bg-red-500 h-full"
         onClick={() => displaySlide(currentSlide + 1)}
       >
         +
-      </button>
+      </button>*/}
     </div>
   );
 }

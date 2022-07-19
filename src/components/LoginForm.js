@@ -18,6 +18,7 @@ export default function LoginForm() {
   return (
     <div className="mt-8">
       <h2 className="ml-24">Se connecter</h2>
+      <p>Fonctionnalité pas encore accessible</p>
       <form
         className="flex flex-col items-center h-96 justify-around"
         onSubmit={(e) => handleSubmit(e)}
@@ -38,12 +39,12 @@ export default function LoginForm() {
           onChange={(e) => handleChange(e)}
           className="w-72 lg:w-96  border-b-2 border-black-light"
         />
-        <p
+        {/*<p
           onClick={() => dispatch({ type: REGISTER })}
           className="cursor-pointer"
         >
           Pas encore de compte ? Créer un compte
-        </p>
+        </p>*/}
         <button type="submit" className="bg-gray-900 text-white w-72 lg:w-96">
           connexion
         </button>
