@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCustomers, getTechnologies, postProject } from "../../api";
+import FormProjectTasks from "../FormProjectTasks";
 import SearchInput from "../SearchInput";
 
 export default function FormProject() {
@@ -20,15 +21,21 @@ export default function FormProject() {
   // initial values of project form
   const initForm = {
     libelle: "",
-    description: "",
+    description: {
+      fr:'',
+      en:''
+    },
     customer: "",
     technologies: [],
     tasks: []
   }
 
+  // value of project form
   const [project, setProject] = useState(initForm);
 
+  // value of selected customer
   const [selectedCustomer, setSelectedCustomer] = useState('')
+
   // set the project customer
   function setCustomer(customer){
     setProject({ ...project, customer:customer._id });
@@ -49,6 +56,11 @@ export default function FormProject() {
     }
   }
 
+  function setTasks(tasksList){
+    setProject({ ...project, tasks:tasksList });
+  }
+
+  //
   const handleChange = (e) => {
     setProject({ ...project, [e.target.name]: e.target.value });
   };
@@ -58,34 +70,41 @@ export default function FormProject() {
   };
 
   const handleSubmit = (e) => {
+    // prevent refresh
     e.preventDefault();
+    // create formData object
     var formData = new FormData();
-    console.log(project)
     for (const [key, value] of Object.entries(project)) {
-      console.log(key, value)
-      if (key === "imgs") {
-        for (const img of value) {
-          formData.append(key, img, img.name);
-        }
-      }
-      if (key === "technologies") {
-        for (const technologie of value) {
-          formData.append(key, technologie);
-        }
-      }
-      else {
-        formData.append(key, value);
+      switch(key){
+        case"tasks":
+          formData.append(key, JSON.stringify(value))
+          break
+        case 'technologies':
+          formData.append(key, JSON.stringify(value))
+          break
+        case 'imgs':
+          for (const img of value) {
+            // add the image to the formData
+            formData.append(key, img, img.name);
+          }
+          break
+        case 'description':
+          formData.append(key, JSON.stringify(value))
+          break
+        default:
+          formData.append(key, value);
       }
     }
-    dispatch(postProject(formData));
+    dispatch(postProject(formData))
   };
 
   return (
     <div>
       <p>FormProject</p>
+
       <form className="flex flex-col w-96" onSubmit={(e) => handleSubmit(e)}>
 
-        <label htmlFor="libelle">Libelle</label>
+        <p>Libelle du projet</p>
         <input
           type={"text"}
           placeholder="libelle"
@@ -93,7 +112,8 @@ export default function FormProject() {
           value={project.libelle}
           onChange={(e) => handleChange(e)}
         />
-        <p>Customer</p>
+
+        <p>client du projet</p>
         {project.customer === "" ? (
             <SearchInput 
               data={customers} 
@@ -116,15 +136,25 @@ export default function FormProject() {
           )
         }
 
-        <label htmlFor="description">description</label>
+        <p>description du projet fr</p>
         <textarea
-          placeholder="description"
-          name="description"
-          value={project.description}
-          onChange={(e) => handleChange(e)}
+          placeholder="description fr"
+          name="fr"
+          value={project.description.fr}
+          onChange={(e) => setProject({ ...project, description: {...project.description, fr: e.target.value} })}
         ></textarea>
 
-        <p>Ajouter une technologie</p>
+        <p>description du projet en</p>
+        <textarea
+          placeholder="description en"
+          name="en"
+          value={project.description.en}
+          onChange={(e) => setProject({ ...project, description: {...project.description, en: e.target.value} })}
+        ></textarea>
+
+        <FormProjectTasks projectTasks={project.tasks} save={setTasks}/>
+
+        <p>Technologies du projets</p>
         <SearchInput
           data={technologies}
           clickHandler={addTechnology}
