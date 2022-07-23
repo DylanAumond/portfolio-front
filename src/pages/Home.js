@@ -35,7 +35,7 @@ export default function Home() {
 
       <div className="bg-black-light h-fit sm:h-96 text-white text-center">
         <h2 className="mb-2">Projets</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-12 sm:gap-x-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-4 sm:gap-x-12 p-4 justify-center">
           {projects.map((project) => (
             <CardProject key={project._id} project={project} />
           ))}
@@ -68,7 +68,7 @@ export default function Home() {
         )}
       </div>
 
-      <div className="bg-black-light grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 py-6">
+      <div className="bg-black-light grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 py-6 justify-center">
         {technologies.map((technologie) => {
           return <Technocard key={technologie._id} technologie={technologie} />;
         })}

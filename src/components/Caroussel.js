@@ -19,18 +19,22 @@ export default function Caroussel({ images }) {
   }, [currentSlide]);
 
   return (
-    <div className="w-full flex h-96">
+    <div className="w-full h-48 sm:h-480 flex overflow-hidden">
       {images.map((image, i) => (
-        <img
+        <div key={i} className={"h-full  min-w-full bg-no-repeat bg-contain bg-center "+(i === currentSlide ? " order-0 " : " order-1")}
+         style={{backgroundImage:`url(${'http://localhost:5000/public/images/'+image})`}}>
+        </div>
+      ))}
+      {/*
+      *<img
           key={i}
           src={`http://localhost:5000/public/images/${image}`}
           className={
-            "w-full "+
-            (i === currentSlide ? "" : "hidden")
+            "h-full w-auto"+
+            (i === currentSlide ? "" : "")
           }
-        />
-      ))}
-      {/*<button
+        />*
+      <button
         className="absolute left-0 w-2 bg-blue-500"
         onClick={() => displaySlide(currentSlide - 1)}
       >
