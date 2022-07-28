@@ -1,9 +1,10 @@
 import React from 'react'
 import Caroussel from './Caroussel';
 import {FaCheck} from "react-icons/fa";
+import { useTranslation } from 'react-i18next';
 
 export const Project = ({project}) => {
-    console.log("modalShow", project)
+  const { t,i18n } = useTranslation('Project');
   return (
     <div className="overflow-y-scroll overflow-x-hidden py-4 px-4">
       {/* Project libelle */}
@@ -20,15 +21,15 @@ export const Project = ({project}) => {
       <div className="sm:flex mt-4">
         {/* Left content */}
         <div className="sm:flex-1">
-          <h2>Description:</h2>
-          <p className='my-2'>{project.description.fr}</p>
+          <h2>{t('Description')}:</h2>
+          <p className='my-2'>{project.description[i18n.language]}</p>
           {/* Tasks */}
-          <h2>Tâches:</h2>
+          <h2>{t('Tasks')}:</h2>
           {project.tasks.map((task,index)=>
             (
               <div key={index} className="flex items-center">
                 <FaCheck style={{fontSize: '8px'}} className="mx-4"/> 
-                <p>{task.fr}</p>
+                <p>{task[i18n.language]}</p>
               </div>
             )
           )}
@@ -36,9 +37,9 @@ export const Project = ({project}) => {
 
         {/* Right content */}
         <div className=" sm:w-1/3">
-          <h2>Informations:</h2>
+          <h2>{t('Description')}:</h2>
           {/* Techno*/}
-          <h2>Construit avec:</h2>
+          <h2>{t('BuiltWith')}:</h2>
             <div className=" flex">
               {project.technologies ? (
                 project.technologies.map((technology, i) => {
@@ -57,7 +58,7 @@ export const Project = ({project}) => {
             </div>
 
           {/*Client */}
-          <h2>Client :</h2>
+          <h2>{t('Customer')}:</h2>
           {project.customer !== undefined ? 
             (
               <div className="flex items-center">

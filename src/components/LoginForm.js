@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { login } from "../api";
 import { REGISTER } from "../constant/Modal";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
+  const { t } = useTranslation('LoginForm');
   const initForm = { mail: "", password: "" };
   const [formData, setFormData] = useState(initForm);
   const handleChange = (e) => {
@@ -17,7 +19,7 @@ export default function LoginForm() {
   };
   return (
     <div className="mt-8">
-      <h2 className="ml-24">Se connecter</h2>
+      <h2 className="ml-24">{t('SignIn')}</h2>
       <p>Fonctionnalité pas encore accessible</p>
       <form
         className="flex flex-col items-center h-96 justify-around"
@@ -34,7 +36,7 @@ export default function LoginForm() {
         <input
           type={"password"}
           name="password"
-          placeholder="mot de passe"
+          placeholder={t('Password')}
           value={formData.password}
           onChange={(e) => handleChange(e)}
           className="w-72 lg:w-96  border-b-2 border-black-light"
@@ -46,7 +48,7 @@ export default function LoginForm() {
           Pas encore de compte ? Créer un compte
         </p>*/}
         <button type="submit" className="bg-gray-900 text-white w-72 lg:w-96">
-          connexion
+          {t('Login')}
         </button>
       </form>
     </div>

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCustomers, getProjects, getTechnologies } from "../api";
@@ -8,6 +9,8 @@ import Technocard from "../components/Technocard";
 
 export default function Home() {
   const dispatch = useDispatch();
+
+  const { t } = useTranslation("Home");
 
   const customers = useSelector((state) => state.customersReducer);
   const projects = useSelector((state) => state.projectsReducer);
@@ -29,24 +32,24 @@ export default function Home() {
       >
         <div className="text-white text-center">
           <h1 className="text-4xl md:text-8xl">Dylan Aumond</h1>
-          <p className="text-2xl md:text-4xl">Développeur FullStack Junior</p>
+          <p className="text-2xl md:text-4xl">{t('Developer')} FullStack Junior</p>
         </div>
       </div>
 
       <div className="bg-black-light h-fit sm:h-96 text-white text-center">
-        <h2 className="mb-2">Projets</h2>
+        <h2 className="mb-2">{t('Projects')}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-4 sm:gap-x-12 p-4 justify-center">
           {projects.map((project) => (
             <CardProject key={project._id} project={project} />
           ))}
         </div>
         <Link to={`/projects`} className="bg-white text-black-light mt-4">
-          Voir plus
+          {t('ShowMore')}
         </Link>
       </div>
 
       <div className="text-center">
-        <h2>Clients</h2>
+        <h2>{t('Customers')}</h2>
         {customers.length > 4 ? (
           <CustomerSlider customers={customers} />
         ) : (

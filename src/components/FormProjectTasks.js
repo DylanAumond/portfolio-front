@@ -32,14 +32,17 @@ export default function FormProjectTasks({projectTasks, save}) {
         >Ajouter</div>
 
         {projectTasks.map((task,index) => (
-            <div key={index} className='flex'>
+            <div key={index} className='flex items-center'>
                 <div>
-                    {task.fr}
-                    {task.en}
+                    <div>FR: {task.fr}</div>
+                    <div>EN: {task.en}</div>
                 </div>
-                <div onClick={()=>{
-                    removeTask(task);
-                }}>X</div>
+                <div
+                    className='cursor-pointer ml-4'
+                    onClick={()=>{removeTask(task);}}
+                >
+                    X
+                </div>
             </div>
         ))}
     </div>

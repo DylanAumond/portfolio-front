@@ -1,0 +1,51 @@
+{
+    "NavBar":{
+        "Home" : "Home",
+        "Projects" : "Projects",
+        "Contact" : "Contact"
+    },
+
+    "Home": {
+        "Developer" : "Developer",
+        "Customers" : "Customers",
+        "Projects" : "Projects",
+        "ShowMore" : "Show More"
+    },
+
+    "Project" : {
+        "Description" : "Description",
+        "BuiltWith" : "Built with",
+        "Tasks" : "Tasks",
+        "Customer" : "Customer",
+        "Informations" : "Informations"
+    },
+
+    "ContactForm" : {
+        "GetInTouch" : "Get in touch",
+        "LastName" : "Last name",
+        "FirstName" : "First name",
+        "Subject" : "Message subject",
+        "WriteYourMessage" : "Write your message",
+        "Send" : "Send"
+    },
+
+    "LoginForm" : {
+        "SignIn" : "Sign in",
+        "Password" : "Password",
+        "Login" : "Login"
+    },
+
+    "RegisterForm" : {
+        "LastName" : "Last name",
+        "FirstName" : "First name",
+        "Password" : "Password",
+        "ComfirmPassword" : "Comfirm Password",
+        "Register" : "Register"
+    },
+
+    "Footer": {
+        "Social" : "Social networks",
+        "CreatedBy" : "Created by",
+        "Location" : "Location"
+    }
+}

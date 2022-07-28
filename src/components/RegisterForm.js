@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { register } from "../api";
 
 export default function RegisterForm() {
+  const { t } = useTranslation('RegisterForm');
   const initForm = {
     firstName: "",
     lastName: "",
@@ -22,7 +24,7 @@ export default function RegisterForm() {
   };
   return (
     <div className="mt-8">
-      <h2 className="ml-24">Créer un compte</h2>
+      <h2 className="ml-24">{t('register')}</h2>
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="flex flex-col items-center justify-around h-96"
@@ -30,46 +32,52 @@ export default function RegisterForm() {
         <input
           type={"text"}
           name="firstName"
-          placeholder="Prénom"
+          placeholder={t('FirstName')}
           value={formData.firstName}
           onChange={(e) => handleChange(e)}
           className="w-72 lg:w-96 border-b-2 border-black-light"
         />
+
         <input
           type={"text"}
           name="lastName"
-          placeholder="Nom"
+          placeholder={t('LastName')}
           value={formData.lastName}
           onChange={(e) => handleChange(e)}
           className="w-72 lg:w-96 border-b-2 border-black-light"
         />
+
         <input
           type={"email"}
           name="mail"
-          placeholder="Adresse e-mail"
+          placeholder="E-mail"
           value={formData.mail}
           onChange={(e) => handleChange(e)}
           className="w-72 lg:w-96 border-b-2 border-black-light"
         />
+
         <input
           type={"password"}
           name="password"
-          placeholder="mot de passe"
+          placeholder={t('Password')}
           value={formData.password}
           onChange={(e) => handleChange(e)}
           className="w-72 lg:w-96 border-b-2 border-black-light"
         />
+
         <input
           type={"password"}
           name="confirmPassword"
-          placeholder="confirmez mot de passe"
+          placeholder={t('ConfirmPassword')}
           value={formData.confirmPassword}
           onChange={(e) => handleChange(e)}
           className="w-72 lg:w-96 border-b-2 border-black-light"
         />
+
         <button type="submit" className="bg-gray-900 text-white w-72 lg:w-96">
-          Enregistrement
+          {t('Register')}
         </button>
+
       </form>
     </div>
   );

@@ -2,10 +2,13 @@ import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useDispatch } from "react-redux";
 import { ADD_TOAST } from "../constant/toasts";
+import { useTranslation } from "react-i18next";
 
 export default function ContactForm() {
   const form = useRef();
   const dispatch = useDispatch();
+
+  const { t } = useTranslation("ContactForm");
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -44,7 +47,7 @@ export default function ContactForm() {
 
   return (
     <>
-      <h2 className="ml-24 my-6">Me contacter !</h2>
+      <h2 className="ml-24 my-6">{t('GetInTouch')} !</h2>
       <form
         ref={form}
         className="h-fit grid grid-cols-1 sm:grid-cols-2 sm:mx-12 my-4 mx-4 gap-4"
@@ -54,51 +57,56 @@ export default function ContactForm() {
         <input
           type="text"
           name="user_firstName"
-          placeholder="prénom"
+          placeholder={t('FirstName')}
           className="border-b-2 border-black-light"
           required
         />
+
         <input
           type="text"
           name="user_lastName"
-          placeholder="nom"
-          className=" border-b-2 border-black-light"
+          placeholder={t('LastName')}
+          className="border-b-2 border-black-light"
           required
         />
+
         <input
           type="email"
           name="user_email"
           placeholder="exemple@mail.com"
-          className="  border-b-2 border-black-light"
+          className="border-b-2 border-black-light"
           required
         />
+
         <input
           type="tel"
           name="user_phone"
           placeholder="+33 x xx xx xx xx"
-          className="  border-b-2 border-black-light"
+          className="border-b-2 border-black-light"
           required
         />
+        
         <input
           type="text"
           name="object"
-          placeholder="sujet de votre message"
-          className="  border-b-2 border-black-light sm:col-span-2"
+          placeholder={t('Subject')}
+          className="border-b-2 border-black-light sm:col-span-2"
           required
         />
 
         <textarea
           name="message"
-          placeholder="écrivez votre message ici !"
-          className=" border-b-2 border-black-light sm:col-span-2"
+          placeholder={t('WriteYourMessage')}
+          className="border-b-2 border-black-light sm:col-span-2"
           required
         />
+
         <button
           type="submit"
           value="Send"
           className="bg-gray-900 text-white sm:col-span-2"
         >
-          Envoyer
+          {t('Send')}
         </button>
       </form>
     </>
