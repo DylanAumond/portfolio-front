@@ -4,17 +4,30 @@ import { ClOSEMODAL } from "../constant/Modal";
 
 export default function Modal(props) {
   const dispatch = useDispatch();
-  const modalShow = (show) => {
+  /*const modalShow = (show) => {
     if (show) {
       return "";
     } else {
-      return "none";
+      return "display: 'none'";
     }
-  };
+    "maxHeight: '90%', width: 'inherit' ,maxWidth: '1000px', overflow: 'scroll'"+
+  };*/
+  const modalStyle = {
+    minHeight: '50%',
+    maxHeight: '90%',
+    minWidth: '50%',
+    width: 'inherit',
+    maxWidth: '1000px',
+    overflow: 'scroll',
+    transform: props.state.show ? 'scale(1) translate(-50%, -50%)' : 'scale(0) translate(50%, 100%)',
+    opacity: props.state.show ? 1 : 0,
+    transition: "all .4s",
+    visibility: props.state.show ? "visible" : "hidden",
+  }
   return (
     <div
-      className={`bg-white border-2 border-solid shadow-2xl z-20 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}
-      style={{ maxHeight: '90%', width: 'inherit' ,maxWidth: '1000px', overflow: 'scroll', display:modalShow(props.state.show) }}
+      className={`bg-white border-2 border-solid shadow-2xl z-20 fixed left-1/2 top-1/2`}
+      style={modalStyle}
     >
       {/* ClOSEMODAL button */}
       <button
