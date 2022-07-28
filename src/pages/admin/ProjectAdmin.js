@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { getProjects } from "../../api";
+import FormProject from "../../components/admin/FormProject";
 
 export default function ProjectAdmin() {
-  const Projects = useSelector((state) => state.projectReducer);
+  const Projects = useSelector((state) => state.projectsReducer);
   const location = useLocation();
   const dispatch = useDispatch();
   const project = Projects.find(
@@ -15,27 +16,7 @@ export default function ProjectAdmin() {
   }, [dispatch]);
   return (
     <div>
-      <p>{project.libelle}</p>
-      <div>
-        <h2>technologies:</h2>
-        <div>
-          {project.technologies ? (
-            project.technologies.map((technology, i) => {
-              return (
-                <div
-                  key={i}
-                  className="h-20 w-20 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${technology})`,
-                  }}
-                ></div>
-              );
-            })
-          ) : (
-            <p>No technologies</p>
-          )}
-        </div>
-      </div>
+      <FormProject data={project}/>
     </div>
   );
 }

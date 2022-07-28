@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCustomers, getTechnologies, postProject } from "../../api";
+import { getCustomers, getTechnologies, postProject, updateProject } from "../../api";
 import FormProjectTasks from "../FormProjectTasks";
 import SearchInput from "../SearchInput";
 
-export default function FormProject() {
+export default function FormProject({data}) {
   // get customers from api reducer
   const customers = useSelector((state) => state.customersReducer)
   // get technologies from api reducer
@@ -18,6 +18,8 @@ export default function FormProject() {
     dispatch(getTechnologies()); // fill the reducer with all technologies
   }, [dispatch])
 
+
+
   // initial values of project form
   const initForm = {
     libelle: "",
@@ -30,20 +32,37 @@ export default function FormProject() {
     tasks: []
   }
 
-  // value of project form
-  const [project, setProject] = useState(initForm);
+  const formData = new FormData();
 
   // value of selected customer
-  const [selectedCustomer, setSelectedCustomer] = useState('')
+  const [selectedCustomer, setSelectedCustomer] = useState(data !== undefined ? data.customer :'')
+
+  // list of selected technologies
+  const [selectedTechnology, setSelectedTechnology] = useState(data !== undefined ? data.technologies : []);
+
+  const initUpdate = (data) => {
+    // convert customer's object into an id
+    if (data.customer instanceof Object) {
+      setSelectedCustomer(data.customer.libelle)
+      data.customer = data.customer._id
+    }
+    // convert technologies array of object into an array of id
+    data.technologies = data.technologies.map(technology => {
+      if(technology instanceof Object) return technology._id
+      return technology
+    })
+    return data
+  }
+
+   // value of project form
+   const [project, setProject] = useState(data !== undefined ? initUpdate(data) : initForm);
+
 
   // set the project customer
   function setCustomer(customer){
     setProject({ ...project, customer:customer._id });
     setSelectedCustomer( customer );
   }
-
-  // list of selected technologies
-  const [selectedTechnology, setSelectedTechnology] = useState([]);
 
   // add technology to the project
   function addTechnology(technology){
@@ -73,29 +92,27 @@ export default function FormProject() {
     // prevent refresh
     e.preventDefault();
     // create formData object
-    var formData = new FormData();
     for (const [key, value] of Object.entries(project)) {
       switch(key){
-        case"tasks":
-          formData.append(key, JSON.stringify(value))
-          break
+        case 'tasks':
         case 'technologies':
+        case 'description':
+        case 'customer':
           formData.append(key, JSON.stringify(value))
-          break
+        break
         case 'imgs':
           for (const img of value) {
-            // add the image to the formData
-            formData.append(key, img, img.name);
+            if(img instanceof Blob){
+              // add the image to the formData
+              formData.append(key, img, img.name);
+            }
           }
-          break
-        case 'description':
-          formData.append(key, JSON.stringify(value))
           break
         default:
           formData.append(key, value);
       }
     }
-    dispatch(postProject(formData))
+    data !== undefined ? dispatch(updateProject(formData, project._id)) : dispatch(postProject(formData))
   };
 
   return (
@@ -163,7 +180,7 @@ export default function FormProject() {
           {selectedTechnology
             .map((technology, i) => (
                 <div key={i} className="flex">
-                  <p>{technology.libelle}</p>
+                  <p>{technology}</p>
                   <div
                     className=" bg-red-600 text-white p-1 rounded-lg"
                     onClick={() => {
@@ -199,9 +216,9 @@ export default function FormProject() {
                   key={i}
                   className="w-32 h-32 bg-cover bg-center"
                   style={{
-                    backgroundImage: `url(${URL.createObjectURL(
-                      project.imgs[i]
-                    )})`,
+                    backgroundImage: `url(${data !== undefined ? process.env.REACT_APP_API_URL+'/public/images/'+img[1] 
+                    : URL.createObjectURL(project.imgs[i])
+                  })`,
                   }}
                 ></div>
               );

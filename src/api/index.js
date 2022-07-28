@@ -9,6 +9,7 @@ import {
   ADD_PROJECT,
   DELETE_PROJECT,
   GET_PROJECTS,
+  UPDATE_PROJECT,
 } from '../constant/projects'
 import { ADD_ROLE, DELETE_ROLE, GET_ROLES } from '../constant/roles'
 import {
@@ -127,6 +128,24 @@ export const postProject = (project) => {
       },
     })
       .then((res) => dispatch({ type: ADD_PROJECT, payload: res.data }))
+      .catch((err) => console.log(err))
+  }
+}
+
+export const updateProject = (project, projectId) => {
+  return (dispatch) => {
+    axios(process.env.REACT_APP_API_URL + '/projects/' + projectId, {
+      method: 'PATCH',
+      data: project,
+      withCredentials: true,
+      headers: {
+        'Content-type': 'multipart/form-data',
+        'x-xsrf-token': xsrf_token,
+      },
+    })
+      .then((res) => {
+        return dispatch({ type: UPDATE_PROJECT, payload: res.data })
+      })
       .catch((err) => console.log(err))
   }
 }
