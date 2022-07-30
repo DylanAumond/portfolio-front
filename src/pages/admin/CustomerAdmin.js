@@ -16,7 +16,7 @@ export default function CustomerAdmin() {
   }, [dispatch]);
   return (
     <div className="flex h-96">
-      <FormCustomer editCustomer={customer} />
+      <FormCustomer data={customer} />
       {customer ? (
         <div className="mt-28">
           <h2>{customer.libelle}</h2>

@@ -26,7 +26,8 @@
         "FirstName" : "Prénom",
         "Subject" : "Sujet du message",
         "WriteYourMessage" : "Écrivez votre message",
-        "Send" : "Envoyer"
+        "Send" : "Envoyer",
+        "MailSuccess" : "Courriel envoyé ! "
     },
 
     "LoginForm" : {

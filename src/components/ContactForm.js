@@ -11,28 +11,30 @@ export default function ContactForm() {
   const { t } = useTranslation("ContactForm");
 
   const sendEmail = (e) => {
+    // prevent from refreshing when submit
     e.preventDefault();
-
+    // use emailjs to send email
     emailjs
       .sendForm(
         "service_0tduqhg", //"YOUR_SERVICE_ID"
         "template_oyqjfhp", //"YOUR_TEMPLATE_ID"
-        form.current,
+        form.current, //data from the form
         "5qMHz2sw3-QCIpvLo" //"YOUR_PUBLIC_KEY"
       )
+      // display a toasts for success
       .then(
         () => {
           dispatch({
             type: ADD_TOAST,
             payload: {
-              text: "Mail envoyé !",
+              text: t('MailSuccess'),
               color: "green-600",
               icon: "checked",
             },
           });
         },
+        // display a toasts for error
         (error) => {
-          console.log(error.text);
           dispatch({
             type: ADD_TOAST,
             payload: {
@@ -85,7 +87,7 @@ export default function ContactForm() {
           className="border-b-2 border-black-light"
           required
         />
-        
+
         <input
           type="text"
           name="object"

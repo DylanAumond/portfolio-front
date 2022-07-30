@@ -26,7 +26,8 @@
         "FirstName" : "First name",
         "Subject" : "Message subject",
         "WriteYourMessage" : "Write your message",
-        "Send" : "Send"
+        "Send" : "Send",
+        "MailSuccess" : "Mail send ! "
     },
 
     "LoginForm" : {

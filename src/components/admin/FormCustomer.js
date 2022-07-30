@@ -2,50 +2,55 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postCustomer, updateCustomer } from "../../api";
 
-export default function FormCustomer({ editCustomer }) {
+export default function FormCustomer({ data }) {
   const dispatch = useDispatch();
-  const onEdit = () => {
-    if (editCustomer != null) {
-      return editCustomer;
-    } else {
-      return {
+
+  // default customer value
+  const initForm = {
         libelle: "",
         logo: "",
         url: "",
-      };
-    }
   };
-  const [initForm, setInitForm] = useState(onEdit);
-
+  // create a form data object
   const formData = new FormData();
 
-  const [customer, setCustomer] = useState(initForm);
+  // set the customer data
+  const [customer, setCustomer] = useState(data !== undefined ? data : initForm);
 
+  // handle the change
   const handleChange = (e) => {
     setCustomer({ ...customer, [e.target.name]: e.target.value });
   };
 
+  // handle files upload
   const handleFiles = (e) => {
     setCustomer({ ...customer, logo: e.target.files });
   };
 
   const handleSubmit = (e) => {
+    // prevent from refresh
     e.preventDefault();
+    // for each key in customer
     for (const [key, value] of Object.entries(customer)) {
+      // if key name is logo
       if (key === "logo") {
+        // append picture name to the customer logo field
         if (value[0] instanceof Blob) {
           formData.append(key, value[0], value[0].name);
         }
-      } else {
+      } 
+      else {
+        // append value to the customer
         formData.append(key, value);
       }
     }
-    if (editCustomer != null) {
-      dispatch(updateCustomer(formData, customer._id));
-    } else {
-      dispatch(postCustomer(formData));
+    // if data edit the current customer
+    if (data !== undefined){dispatch(updateCustomer(formData, customer._id));
     }
+    // else create a new customer 
+    else {dispatch(postCustomer(formData));}
   };
+
   return (
     <div className="ml-8 mt-28 w-1/2">
       <p>FormCustomer</p>
@@ -81,7 +86,7 @@ export default function FormCustomer({ editCustomer }) {
           name="logo"
           onInput={(e) => handleFiles(e)}
           accept={"image/*"}
-          required={editCustomer !== null ? false : true}
+          required={data !== undefined ? false : true}
         />
         {customer.logo ? (
           <div
@@ -103,7 +108,7 @@ export default function FormCustomer({ editCustomer }) {
         )}
 
         <button type="submit" className=" bg-green-400 w-48 m-8 rounded-lg">
-          {editCustomer ? "update customer" : "add customer"}
+          {data !== undefined ? "update customer" : "add customer"}
         </button>
       </form>
     </div>

@@ -29,29 +29,34 @@ export default function FormProject({data}) {
     },
     customer: "",
     technologies: [],
-    tasks: []
+    tasks: [],
+    imgs: [],
   }
 
+  // create formData object
   const formData = new FormData();
 
   // value of selected customer
-  const [selectedCustomer, setSelectedCustomer] = useState(data !== undefined ? data.customer :'')
+  const [selectedCustomer, setSelectedCustomer] = useState(data !== undefined ? data.customer : {})
 
   // list of selected technologies
   const [selectedTechnology, setSelectedTechnology] = useState(data !== undefined ? data.technologies : []);
 
   const initUpdate = (data) => {
-    // convert customer's object into an id
-    if (data.customer instanceof Object) {
-      setSelectedCustomer(data.customer.libelle)
-      data.customer = data.customer._id
+    return{
+      _id: data._id,
+      libelle: data.libelle,
+      description: data.description,
+      tasks: data.tasks,
+      imgs: data.imgs,
+      // convert customer's object into an id
+      customer : data.customer._id,
+      // convert technologies array of object into an array of id
+      technologies: data.technologies.map(technology => {
+        if(technology instanceof Object) return technology._id
+        return technology
+      }),
     }
-    // convert technologies array of object into an array of id
-    data.technologies = data.technologies.map(technology => {
-      if(technology instanceof Object) return technology._id
-      return technology
-    })
-    return data
   }
 
    // value of project form
@@ -75,23 +80,29 @@ export default function FormProject({data}) {
     }
   }
 
+  // set project task depending on FormTasks
   function setTasks(tasksList){
     setProject({ ...project, tasks:tasksList });
   }
 
-  //
+  // handle project value change
   const handleChange = (e) => {
     setProject({ ...project, [e.target.name]: e.target.value });
   };
 
+  // handle project image input
   const handleFiles = (e) => {
-    setProject({ ...project, imgs: e.target.files });
+    let newImgs = [...project.imgs]
+    for(const file of e.target.files) {
+      newImgs = [ ...newImgs, file ];
+    }
+    return setProject({ ...project, imgs: newImgs});
   };
 
   const handleSubmit = (e) => {
     // prevent refresh
     e.preventDefault();
-    // create formData object
+    // for each key bind the value to the formData
     for (const [key, value] of Object.entries(project)) {
       switch(key){
         case 'tasks':
@@ -105,6 +116,8 @@ export default function FormProject({data}) {
             if(img instanceof Blob){
               // add the image to the formData
               formData.append(key, img, img.name);
+            }else{
+              formData.append('imgs', img);
             }
           }
           break
@@ -112,23 +125,26 @@ export default function FormProject({data}) {
           formData.append(key, value);
       }
     }
+    // if project is not specified, create a new project else update project
     data !== undefined ? dispatch(updateProject(formData, project._id)) : dispatch(postProject(formData))
   };
 
   return (
-    <div>
+    <div style={{maxWidth: '1000px', minWidth:'300px', margin: 'auto'}}>
       <p>FormProject</p>
 
-      <form className="flex flex-col w-96" onSubmit={(e) => handleSubmit(e)}>
+      <form className="flex flex-col w-2/3 m-auto" onSubmit={(e) => handleSubmit(e)}>
 
-        <p>Libelle du projet</p>
-        <input
-          type={"text"}
-          placeholder="libelle"
-          name="libelle"
-          value={project.libelle}
-          onChange={(e) => handleChange(e)}
-        />
+        <div>
+          <p>Libelle du projet</p>
+          <input
+            type={"text"}
+            placeholder="libelle"
+            name="libelle"
+            value={project.libelle}
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
 
         <p>client du projet</p>
         {project.customer === "" ? (
@@ -137,7 +153,6 @@ export default function FormProject({data}) {
               clickHandler={setCustomer}
             />
           ) : (
-            <div>
               <p>
                 {selectedCustomer.libelle}{" "}
                 <button className=" bg-orange-600 text-white p-1 rounded-lg"
@@ -149,25 +164,31 @@ export default function FormProject({data}) {
                   update
                 </button>
               </p>
-            </div>
           )
         }
 
-        <p>description du projet fr</p>
-        <textarea
-          placeholder="description fr"
-          name="fr"
-          value={project.description.fr}
-          onChange={(e) => setProject({ ...project, description: {...project.description, fr: e.target.value} })}
-        ></textarea>
 
-        <p>description du projet en</p>
-        <textarea
-          placeholder="description en"
-          name="en"
-          value={project.description.en}
-          onChange={(e) => setProject({ ...project, description: {...project.description, en: e.target.value} })}
-        ></textarea>
+          <div className="flex-1">
+            <p>description du projet fr</p>
+            <textarea
+              placeholder="description fr"
+              name="fr"
+              className="w-full"
+              value={project.description.fr}
+              onChange={(e) => setProject({ ...project, description: {...project.description, fr: e.target.value} })}
+            ></textarea>
+          </div>
+
+          <div className="flex-1">
+            <p>description du projet en</p>
+            <textarea
+              placeholder="description en"
+              name="en"
+              className="w-full"
+              value={project.description.en}
+              onChange={(e) => setProject({ ...project, description: {...project.description, en: e.target.value} })}
+            ></textarea>
+          </div>
 
         <FormProjectTasks projectTasks={project.tasks} save={setTasks}/>
 
@@ -180,14 +201,18 @@ export default function FormProject({data}) {
           {selectedTechnology
             .map((technology, i) => (
                 <div key={i} className="flex">
-                  <p>{technology}</p>
+                  <p>{technology.libelle}</p>
                   <div
                     className=" bg-red-600 text-white p-1 rounded-lg"
                     onClick={() => {
+                        // add a technology to the project
                         setProject({...project,technologies: project.technologies
+                          // check if technology is already in the project
                           .filter((tech) => tech !== technology._id),
                         })
+                        // add a technology to the selected technology list
                         setSelectedTechnology(
+                          // check if technology is already selected
                           selectedTechnology.filter((tech) => tech !== technology)
                         )
                       }
@@ -208,7 +233,7 @@ export default function FormProject({data}) {
           onInput={(e) => handleFiles(e)}
           multiple
         />
-        {project.imgs ? (
+        {project.imgs !== [] ? (
           <div className="flex">
             {Object.entries(project.imgs).map((img, i) => {
               return (
@@ -216,8 +241,9 @@ export default function FormProject({data}) {
                   key={i}
                   className="w-32 h-32 bg-cover bg-center"
                   style={{
-                    backgroundImage: `url(${data !== undefined ? process.env.REACT_APP_API_URL+'/public/images/'+img[1] 
-                    : URL.createObjectURL(project.imgs[i])
+                    backgroundImage: `url(${img[1] instanceof Blob ? URL.createObjectURL(img[1]) :
+                      process.env.REACT_APP_API_URL+'/public/images/'+img[1]
+                    
                   })`,
                   }}
                 ></div>

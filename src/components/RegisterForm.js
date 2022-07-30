@@ -4,6 +4,8 @@ import { register } from "../api";
 
 export default function RegisterForm() {
   const { t } = useTranslation('RegisterForm');
+
+  // default values of registerForm
   const initForm = {
     firstName: "",
     lastName: "",
@@ -11,12 +13,20 @@ export default function RegisterForm() {
     password: "",
     confirmPassword: "",
   };
+
+  // get/set values registerForm
   const [formData, setFormData] = useState(initForm);
+
+  // handle change event from registerForm
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+
   const handleSubmit = (e) => {
+    // prevent from refreshing
     e.preventDefault();
+    // check if password and confirmPassword are equal
     if (formData.password === formData.confirmPassword) {
       register(formData);
       setFormData(initForm);

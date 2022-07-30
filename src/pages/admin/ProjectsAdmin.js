@@ -5,11 +5,17 @@ import { deleteProject, getProjects } from "../../api";
 import FormProject from "../../components/admin/FormProject";
 
 export default function ProjectsAdmin() {
-  const projects = useSelector((state) => state.projectsReducer);
   const dispatch = useDispatch();
+
+  // data from the project redcucer
+  const projects = useSelector((state) => state.projectsReducer);
+
+  // on dispatch change the project reducer value
   useEffect(() => {
+    // hydrate the project reducer with all the projects
     dispatch(getProjects());
   }, [dispatch]);
+
   return (
     <div>
       <FormProject />
