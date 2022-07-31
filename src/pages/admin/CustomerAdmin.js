@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-import { getCustomers } from "../../api/customers";
-//import { getCustomer, getCustomers } from "../../api";
+import {useParams } from "react-router-dom";
+import { getCustomer } from "../../api/customers";
 import FormCustomer from "../../components/admin/FormCustomer";
 
 export default function CustomerAdmin() {
-  const location = useLocation();
+  const {id} = useParams()
   const dispatch = useDispatch();
-  const customers = useSelector((state) => state.customersReducer);
-  const customer = customers.find(
-    (customer) => customer._id === location.state._id
-  );
+  const {customer} = useSelector((state) => state.customersReducer);
+  const [wait, setWait] = useState(true)
   useEffect(() => {
-    dispatch(getCustomers());
-  }, [dispatch]);
+    dispatch(getCustomer(id));
+  }, [dispatch,id]);
+
+  if (customer === undefined) {
+    return (<p>loading ...</p>)
+  }
   return (
     <div className="flex h-96">
       <FormCustomer data={customer} />

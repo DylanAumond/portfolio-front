@@ -13,7 +13,7 @@ export default function TechnologyAdmin() {
     dispatch(getTechnology(id))
   }, [dispatch,id]);
 
-  if (technology === {} || technology === undefined) {
+  if (technology === undefined) {
     return (<p>loading ...</p>)
   }
   return (

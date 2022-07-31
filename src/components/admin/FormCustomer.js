@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postCustomer, updateCustomer } from "../../api/customers";
-//import { postCustomer, updateCustomer } from "../../api";
 
 export default function FormCustomer({ data }) {
   const dispatch = useDispatch();
@@ -89,7 +88,7 @@ export default function FormCustomer({ data }) {
           accept={"image/*"}
           required={data !== undefined ? false : true}
         />
-        {customer.logo ? (
+        {customer.logo !== "" ? (
           <div
             className="w-16 h-16 bg-cover bg-center"
             style={

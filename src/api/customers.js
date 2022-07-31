@@ -11,6 +11,15 @@ export const getCustomers = () => {
   }
 }
 
+// get a customer by id
+export const getCustomer = (id) => {
+  return (dispatch) => {
+    API.get('/customers/' + id)
+    .then((res) => dispatch({ type: constant.GET_CUSTOMER, payload: res.data }))
+    .catch((err) => console.log(err))
+  }
+}
+
 // create a new customer
 export const postCustomer = (customer) => {
     return (dispatch) => {

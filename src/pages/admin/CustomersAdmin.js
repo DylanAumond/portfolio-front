@@ -6,11 +6,15 @@ import { deleteCustomer, getCustomers } from "../../api/customers";
 import FormCustomer from "../../components/admin/FormCustomer";
 
 export default function CustomersAdmin() {
-  const customers = useSelector((state) => state.customersReducer);
+  const {customers} = useSelector((state) => state.customersReducer);
   const dispatch = useDispatch();
+  
+  // hydrate customers reducer on dispatch action
   useEffect(() => {
     dispatch(getCustomers());
   }, [dispatch]);
+
+ 
   return (
     <div>
       <FormCustomer />
@@ -34,8 +38,7 @@ export default function CustomersAdmin() {
                 </button>
                 <Link
                   className="bg-orange-600 p-1 text-white text-sm"
-                  to={`/admin/customers/${customer.libelle}`}
-                  state={customer}
+                  to={`/admin/customers/${customer._id}`}
                 >
                   Update
                 </Link>

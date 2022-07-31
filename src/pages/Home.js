@@ -16,11 +16,11 @@ export default function Home() {
   const { t } = useTranslation("Home");
 
   // get the customers from the customers' reducer
-  const customers = useSelector((state) => state.customersReducer);
+  const {customers} = useSelector((state) => state.customersReducer);
   // get the projects from the projects' reducer
   const projects = useSelector((state) => state.projectsReducer);
   // get the technologies from the technologies' reducer
-  const technologies = useSelector((state) => state.technologiesReducer.technologies);
+  const {technologies} = useSelector((state) => state.technologiesReducer);
 
   // rehydrate the reducers on dispatch action
   useEffect(() => {

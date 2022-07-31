@@ -33,7 +33,7 @@ export default function Router() {
         {/* admin's pages */}
         <Route path="admin">
           <Route path="customers" element={<CustomersAdmin />} />
-          <Route path="customers/:libelle" element={<CustomerAdmin />} />
+          <Route path="customers/:id" element={<CustomerAdmin />} />
           <Route path="technologies" element={<TechnologiesAdmin />} />
           <Route path="technologies/:id" element={<TechnologyAdmin />} />
           <Route path="projects" element={<ProjectsAdmin />} />

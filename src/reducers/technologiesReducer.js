@@ -13,31 +13,36 @@ const initState = {
 
 export default function technologiesReducer(state = initState, action) {
   switch (action.type) {
+    // set the technologies state
     case GET_TECHNOLOGIES:
       return state = 
       {
-        ...state,
+        technology: undefined,
         technologies: action.payload
       };
 
+    // set the technology state
     case GET_TECHNOLOGY:
       return state = {
         ...state,
         technology: action.payload
       }
 
+    // add a new technology to the technologies state
     case ADD_TECHNOLOGY:
       return {
         ...state,
         technologies: [...state.technologies,action.payload]
       };
 
+    // remove a technology from the technologies state
     case DELETE_TECHNOLOGY:
       return {
         ...state,
         technologies: state.technologies.filter((technology) => technology._id !== action.payload)
       };
 
+    // update the technology state
     case UPDATE_TECHNOLOGY:
       return {
         ...state,
