@@ -4,7 +4,7 @@ import { getProjects } from "../api/projects";
 import CardProject from "../components/CardProject";
 
 export default function Projects() {
-  const projects = useSelector((state) => state.projectsReducer);
+  const {projects} = useSelector((state) => state.projectsReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProjects());

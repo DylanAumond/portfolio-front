@@ -14,7 +14,7 @@ export const getProjects = () => {
   export const getProject = (id) => {
     return (dispatch) => {
       API.get(`/projects/${id}`)
-        .then((res) => dispatch({ type: constant.GET_PROJECTS, payload: res.data }))
+        .then((res) => dispatch({ type: constant.GET_PROJECT, payload: res.data }))
         .catch((err) => console.log(err))
     }
   }

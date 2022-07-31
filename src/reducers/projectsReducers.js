@@ -1,26 +1,51 @@
 import {
   ADD_PROJECT,
   DELETE_PROJECT,
+  GET_PROJECT,
   GET_PROJECTS,
   UPDATE_PROJECT,
 } from "../constant/projects";
 
-export default function projectsReducer(state = [], action) {
+const initState = {
+  projects: [],
+  project: undefined
+}
+
+export default function projectsReducer(state = initState, action) {
   switch (action.type) {
+    // hydrate projects state with list of projects
     case GET_PROJECTS:
-      state = action.payload;
-      return state;
+      return state = {
+        project: undefined,
+        projects: action.payload
+      }
+    // hydrate project state with a project
+    case GET_PROJECT:
+      return state = {
+        ...state,
+        project: action.payload
+      }
+    
+    // add a project to the list of project
     case ADD_PROJECT:
-      return [...state, action.payload];
+      return state ={
+        ...state,
+        projects:[...state.projects, action.payload]
+      };
+
+    // update the project state
     case UPDATE_PROJECT:
-      console.log(action.payload);
-      return state.map((project) => {
-        if (project._id === action.payload._id) {
-          return action.payload;
-        } else return project;
-      });
+      return state = {
+        ...state,
+        project: action.payload
+      }
+
     case DELETE_PROJECT:
-      return state.filter((project) => project._id !== action.payload);
+      return {
+        ...state,
+        projects: state.projects.filter((project) => project._id !== action.payload)
+      }
+
     default:
       return state;
   }

@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-import { getProjects } from "../../api/projects";
+import { useParams } from "react-router-dom";
+import { getProject } from "../../api/projects";
 import FormProject from "../../components/admin/FormProject";
 
 export default function ProjectAdmin() {
-  const Projects = useSelector((state) => state.projectsReducer);
-  const location = useLocation();
+  const {id} = useParams()
+  const {project} = useSelector((state) => state.projectsReducer);
   const dispatch = useDispatch();
-  const project = Projects.find(
-    (project) => project._id === location.state._id
-  );
+
   useEffect(() => {
-    dispatch(getProjects());
-  }, [dispatch]);
+    dispatch(getProject(id));
+  }, [dispatch,id]);
+
+  if(project === undefined){
+    return (<p>loading ...</p>)
+  }
   return (
     <div>
       <FormProject data={project}/>

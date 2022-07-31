@@ -37,7 +37,7 @@ export default function Router() {
           <Route path="technologies" element={<TechnologiesAdmin />} />
           <Route path="technologies/:id" element={<TechnologyAdmin />} />
           <Route path="projects" element={<ProjectsAdmin />} />
-          <Route path="projects/:libelle" element={<ProjectAdmin />} />
+          <Route path="projects/:id" element={<ProjectAdmin />} />
           <Route path="roles" element={<RolesAdmin />} />
         </Route>
 

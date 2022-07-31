@@ -8,7 +8,7 @@ export default function ProjectsAdmin() {
   const dispatch = useDispatch();
 
   // data from the project redcucer
-  const projects = useSelector((state) => state.projectsReducer);
+  const {projects} = useSelector((state) => state.projectsReducer);
 
   // on dispatch change the project reducer value
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function ProjectsAdmin() {
                   Delete
                 </button>
                 <Link
-                  to={`/admin/projects/${project.libelle}`}
+                  to={`/admin/projects/${project._id}`}
                   state={project}
                   className="bg-orange-600 p-1 text-white text-sm"
                 >

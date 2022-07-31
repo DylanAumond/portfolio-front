@@ -8,9 +8,9 @@ import SearchInput from "../SearchInput";
 
 export default function FormProject({data}) {
   // get customers from api reducer
-  const customers = useSelector((state) => state.customersReducer)
+  const {customers} = useSelector((state) => state.customersReducer)
   // get technologies from api reducer
-  const technologies = useSelector((state) => state.technologiesReducer)
+  const {technologies} = useSelector((state) => state.technologiesReducer)
 
   const dispatch = useDispatch()
 

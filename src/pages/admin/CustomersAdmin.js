@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteCustomer, getCustomers } from "../../api/customers";
-//import { deleteCustomer, getCustomers } from "../../api";
 import FormCustomer from "../../components/admin/FormCustomer";
 
 export default function CustomersAdmin() {
