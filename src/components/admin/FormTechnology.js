@@ -2,24 +2,17 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postTechnology, updateTechnology } from "../../api/technologies";
 
-export default function FormTechnology({ editTechnology }) {
+export default function FormTechnology({ data }) {
   const dispatch = useDispatch();
-  const onEdit = () => {
-    if (editTechnology != null) {
-      return editTechnology;
-    } else {
-      return {
-        libelle: "",
-        logo: "",
-      };
-    }
+  const initTechnology =
+  {
+    libelle: "",
+    logo: "",
   };
-  const [initForm, setInitForm] = useState(onEdit);
 
   const formData = new FormData();
 
-  const [technology, setTechnology] = useState(initForm);
-
+  const [technology, setTechnology] = useState(data !== undefined ? data : initTechnology);
   const handleChange = (e) => {
     setTechnology({ ...technology, [e.target.name]: e.target.value });
   };
@@ -39,11 +32,8 @@ export default function FormTechnology({ editTechnology }) {
         formData.append(key, value);
       }
     }
-    if (editTechnology != null) {
-      dispatch(updateTechnology(formData, technology._id));
-    } else {
-      dispatch(postTechnology(formData));
-    }
+    data !== undefined ? dispatch(updateTechnology(formData, technology._id)) : dispatch(postTechnology(formData))
+    
   };
   return (
     <div>
@@ -62,9 +52,10 @@ export default function FormTechnology({ editTechnology }) {
           type={"file"}
           name="logo"
           onInput={(e) => handleFiles(e)}
-          required = {editTechnology !== null ? false : true}
+          required = {data !== undefined ? false : true}
         />
-        {technology.logo ? (
+
+        {technology.logo !== '' ? (
           <div
             className="w-16 h-16 bg-cover bg-center"
             style={
@@ -83,7 +74,7 @@ export default function FormTechnology({ editTechnology }) {
           <p>No image upload yet</p>
         )}
         <button type="submit">
-          {editTechnology ? "update technology" : "add technology"}
+          {data !== undefined ? "update technology" : "add technology"}
         </button>
       </form>
     </div>

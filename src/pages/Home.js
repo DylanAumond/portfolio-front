@@ -20,7 +20,7 @@ export default function Home() {
   // get the projects from the projects' reducer
   const projects = useSelector((state) => state.projectsReducer);
   // get the technologies from the technologies' reducer
-  const technologies = useSelector((state) => state.technologiesReducer);
+  const technologies = useSelector((state) => state.technologiesReducer.technologies);
 
   // rehydrate the reducers on dispatch action
   useEffect(() => {

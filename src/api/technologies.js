@@ -9,6 +9,14 @@ export const getTechnologies = () => {
         .catch((err) => console.log(err))
     }
   }
+
+export const getTechnology = (id) => {
+  return (dispatch) => {
+    API.get('/technologies/'+id)
+    .then((res) => dispatch({ type: constant.GET_TECHNOLOGY, payload: res.data }))
+    .catch((err) => console.log(err))
+  }
+}
   
   // create a new technology
   export const postTechnology = (technology) => {

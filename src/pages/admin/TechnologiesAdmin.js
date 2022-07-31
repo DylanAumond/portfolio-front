@@ -6,7 +6,7 @@ import FormTechnology from "../../components/admin/FormTechnology";
 
 export default function TechnologiesAdmin() {
   // get the technologies' reducer
-  const technologies = useSelector((state) => state.technologiesReducer);
+  const {technologies} = useSelector((state) => state.technologiesReducer);
   const dispatch = useDispatch();
 
   // rehydrate the technologies reducer on dispatch action
@@ -39,8 +39,7 @@ export default function TechnologiesAdmin() {
                 </button>
                 <Link
                   className="bg-orange-600 p-1 text-white text-sm"
-                  to={`/admin/technologies/${technology.libelle}`}
-                  state={technology}
+                  to={`/admin/technologies/${technology._id}`}
                 >
                   Update
                 </Link>

@@ -30,6 +30,7 @@ export const API_FORM_DATA = axios.create({
   },
 })
 
+/*
 // intercept http code from the response
 API.interceptors.response.use(
   // if code is not an error continue processing
@@ -52,4 +53,4 @@ API.interceptors.response.use(
       }
     }
   }
-)
+)*/
