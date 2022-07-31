@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { register } from "../api";
+import { register } from "../api/user";
 
 export default function RegisterForm() {
   const { t } = useTranslation('RegisterForm');

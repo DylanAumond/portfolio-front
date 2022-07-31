@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProjects } from "../api";
+import { getProjects } from "../api/projects";
 import CardProject from "../components/CardProject";
 
 export default function Projects() {

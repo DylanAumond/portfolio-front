@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { PROJECT } from "../constant/Modal";
 
 export default function CardProject({ project }) {

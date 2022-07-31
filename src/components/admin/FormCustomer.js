@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { postCustomer, updateCustomer } from "../../api";
+import { postCustomer, updateCustomer } from "../../api/customers";
+//import { postCustomer, updateCustomer } from "../../api";
 
 export default function FormCustomer({ data }) {
   const dispatch = useDispatch();

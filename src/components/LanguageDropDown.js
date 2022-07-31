@@ -6,8 +6,11 @@ const LanguageDropDown = () => {
   const [language, setLanguage] = useState("id");
 
   const handleLangChange = e => {
+    // get the value of the dropdown language
     const lang = e.target.value;
+    // set the dropdown language
     setLanguage(lang);
+    // change the i18n language variable
     i18n.changeLanguage(lang);
   };
 

@@ -41,6 +41,7 @@ export const Project = ({project}) => {
           {/* Techno*/}
           <h2>{t('BuiltWith')}:</h2>
             <div className=" flex">
+              {/* For each technology create a card */}
               {project.technologies ? (
                 project.technologies.map((technology, i) => {
                   return (

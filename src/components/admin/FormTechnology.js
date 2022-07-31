@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { postTechnology, updateTechnology } from "../../api";
+import { postTechnology, updateTechnology } from "../../api/technologies";
 
 export default function FormTechnology({ editTechnology }) {
   const dispatch = useDispatch();

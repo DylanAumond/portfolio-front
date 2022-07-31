@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getCustomer, getCustomers } from "../../api";
+import { getCustomers } from "../../api/customers";
+//import { getCustomer, getCustomers } from "../../api";
 import FormCustomer from "../../components/admin/FormCustomer";
 
 export default function CustomerAdmin() {

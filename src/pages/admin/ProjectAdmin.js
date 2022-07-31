@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getProjects } from "../../api";
+import { getProjects } from "../../api/projects";
 import FormProject from "../../components/admin/FormProject";
 
 export default function ProjectAdmin() {

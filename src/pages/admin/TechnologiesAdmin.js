@@ -1,18 +1,24 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteTechnology, getTechnologies } from "../../api";
+import { deleteTechnology, getTechnologies } from "../../api/technologies";
 import FormTechnology from "../../components/admin/FormTechnology";
 
 export default function TechnologiesAdmin() {
+  // get the technologies' reducer
   const technologies = useSelector((state) => state.technologiesReducer);
   const dispatch = useDispatch();
+
+  // rehydrate the technologies reducer on dispatch action
   useEffect(() => {
     dispatch(getTechnologies());
   }, [dispatch]);
+
   return (
     <div>
+      {/* form to add/update a technology */}
       <FormTechnology />
+      
       <div className=" grid xl:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2">
         {technologies.map((technology, i) => {
           return (

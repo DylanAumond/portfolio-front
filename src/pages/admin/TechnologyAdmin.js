@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getTechnologies } from "../../api";
+import { getTechnologies } from "../../api/technologies";
 import FormCustomer from "../../components/admin/FormTechnology";
 
 export default function TechnologyAdmin() {

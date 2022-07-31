@@ -3,11 +3,11 @@ import Slider from "react-slick";
 
 export default function CustomerSlider({ customers }) {
   const settings = {
-    infinite: true,
-    speed: 2000,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    lazyload: true,
+    infinite: true, // infinite loop
+    speed: 2000, // speed between each slide
+    slidesToShow: 4, // number of slides to show
+    slidesToScroll: 1, // number of slides to scroll
+    lazyload: true, // prevent from loading none display items
     autoplay: true,
     autoplaySpeed: 0,
   };

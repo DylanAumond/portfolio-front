@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getCustomers, getProjects, getTechnologies } from "../api";
+import { getCustomers } from "../api/customers";
+import { getProjects } from "../api/projects";
+import { getTechnologies } from "../api/technologies";
 import CardProject from "../components/CardProject";
 import CustomerSlider from "../components/CustomerSlider";
 import Technocard from "../components/Technocard";
@@ -10,24 +12,30 @@ import Technocard from "../components/Technocard";
 export default function Home() {
   const dispatch = useDispatch();
 
+  // get the translations from home
   const { t } = useTranslation("Home");
 
+  // get the customers from the customers' reducer
   const customers = useSelector((state) => state.customersReducer);
+  // get the projects from the projects' reducer
   const projects = useSelector((state) => state.projectsReducer);
+  // get the technologies from the technologies' reducer
   const technologies = useSelector((state) => state.technologiesReducer);
 
+  // rehydrate the reducers on dispatch action
   useEffect(() => {
     dispatch(getCustomers());
     dispatch(getProjects());
     dispatch(getTechnologies());
   }, [dispatch]);
+
   return (
     <div>
       <div
         className="w-full h-screen flex bg-center bg-cover items-center justify-center"
         style={{
           backgroundImage:
-            "url(https://img.freepik.com/free-photo/professional-programmer-working-late-dark-office_1098-18705.jpg?w=1380&t=st=1652811928~exp=1652812528~hmac=a525c29eaf2fa42e1eb77de567530cfed28ca51023dc4147bcc002185956eaa2)",
+            "url(https://img.freepik.com/free-photo/professional-programmer-working-late-dark-office_1098-18705.jpg?w=1380&t=st=1659210934~exp=1659211534~hmac=1b8dac234411a0b2d1ee6ac36cee1833660d0df2a6ea6e9112bd6c124ba7df34)",
         }}
       >
         <div className="text-white text-center">

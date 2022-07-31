@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createRole } from "../../api";
+import { createRole } from "../../api/roles";
 
 export default function FormRole() {
   const dispatch = useDispatch();

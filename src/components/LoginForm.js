@@ -1,22 +1,34 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { login } from "../api";
+import { login } from "../api/user";
 import { REGISTER } from "../constant/Modal";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
+
+  // import translation from LoginForm
   const { t } = useTranslation('LoginForm');
+
+  // initial values of the login form
   const initForm = { mail: "", password: "" };
+
+  // values of the login form
   const [formData, setFormData] = useState(initForm);
+
+  // handle change of the login form inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  // handle the submission of the form
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login(formData));
+    // reset the form data after the login
     setFormData(initForm);
   };
+  
   return (
     <div className="mt-8">
       <h2 className="ml-24">{t('SignIn')}</h2>

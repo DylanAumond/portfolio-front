@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 export default function FormProjectTasks({projectTasks, save}) {
+    // default task object
     const [task,setTask] = useState({
         fr : '',
         en : ''

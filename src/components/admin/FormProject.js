@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCustomers, getTechnologies, postProject, updateProject } from "../../api";
+import { getCustomers } from "../../api/customers";
+import { postProject, updateProject } from "../../api/projects";
+import { getTechnologies } from "../../api/technologies";
 import FormProjectTasks from "../FormProjectTasks";
 import SearchInput from "../SearchInput";
 
