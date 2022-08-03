@@ -11,18 +11,10 @@ export default function NavBar() {
 
   const dispatch = useDispatch();
   return (
-    <div className="w-full h-20 text-white bg-gray-900  flex items-center justify-between fixed top-0">
+    <div className="w-full h-20 text-white bg-gray-900  flex items-center justify-between fixed top-0 px-8">
       <h1>DA</h1>
       <nav>
-
-        <Link to={"/"} className="">
-          {t('Home')}
-        </Link>
-
-        <Link to={"/projects"} className="mx-4">
-          {t('Projects')}
-        </Link>
-
+        
         <button className="mr-4" onClick={() => dispatch({ type: CONTACT })}>
           {t('Contact')}
         </button>

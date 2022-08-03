@@ -79,7 +79,7 @@ export default function Home() {
         )}
       </div>
 
-      <div className="bg-black-light grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 py-6 justify-center">
+      <div className="bg-black-light flex flex-wrap py-6">
         {technologies.map((technologie) => {
           return <Technocard key={technologie._id} technologie={technologie} />;
         })}

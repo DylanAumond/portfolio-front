@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 // pages accessible for every user
 import LoginForm from "../components/LoginForm.js";
 import RegisterForm from "../components/RegisterForm.js";
-import Projects from "../pages/Projects.js";
 import Home from "../pages/Home.js";
 
 // admin pages
@@ -28,7 +27,6 @@ export default function Router() {
         <Route path="home" element={<Home />} />
         <Route path="login" element={<LoginForm />} />
         <Route path="register" element={<RegisterForm />} />
-        <Route path="projects" element={<Projects />} />
 
         {/* admin's pages */}
         <Route path="admin">

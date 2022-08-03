@@ -4,14 +4,6 @@ import { ClOSEMODAL } from "../constant/Modal";
 
 export default function Modal(props) {
   const dispatch = useDispatch();
-  /*const modalShow = (show) => {
-    if (show) {
-      return "";
-    } else {
-      return "display: 'none'";
-    }
-    "maxHeight: '90%', width: 'inherit' ,maxWidth: '1000px', overflow: 'scroll'"+
-  };*/
   const modalStyle = {
     minHeight: '50%',
     maxHeight: '90%',
