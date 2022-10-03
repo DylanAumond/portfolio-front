@@ -34,7 +34,7 @@ i18n
     resources, // list of languages translations files
     lng: supportedLanguages.FR, // default language
     fallbackLng: supportedLanguages.FR, // default fallback language
-    debug: true,
+    debug: false,
     keySeparator: '.', // to support nested translations
     interpolation: {
       escapeValue: false, // react already safes from xss

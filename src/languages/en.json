@@ -9,7 +9,8 @@
         "Developer" : "Developer",
         "Customers" : "Customers",
         "Projects" : "Projects",
-        "ShowMore" : "Show More"
+        "ShowMore" : "Show More",
+        "SeeProject" : "See the project"
     },
 
     "Project" : {

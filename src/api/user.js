@@ -32,3 +32,10 @@ export const login = (user) => {
   export const register = (user) => {
     API.post('users', user)
   }
+
+  // refresh the user token
+  export const refreshToken = () => {
+    API.post('/users/refreshToken')
+    .then((res)=>res)
+    .catch((err)=>console.log(err))
+  }

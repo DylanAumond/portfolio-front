@@ -20,7 +20,7 @@ export default function CustomerSlider({ customers }) {
               <div
                 className="w-16 h-16 md:w-32 md:h-32 m-auto bg-center bg-cover"
                 style={{
-                  backgroundImage: `url(http://localhost:5000/public/images/${customer.logo})`,
+                  backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${customer.logo})`,
                 }}
               ></div>
               <p className=" text-xs">{customer.libelle}</p>

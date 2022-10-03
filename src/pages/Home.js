@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getCustomers } from "../api/customers";
 import { getProjects } from "../api/projects";
 import { getTechnologies } from "../api/technologies";
@@ -51,9 +50,6 @@ export default function Home() {
             <CardProject key={project._id} project={project} />
           ))}
         </div>
-        <Link to={`/projects`} className="bg-white text-black-light mt-4">
-          {t('ShowMore')}
-        </Link>
       </div>
 
       <div className="text-center">

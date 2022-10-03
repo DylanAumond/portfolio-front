@@ -28,7 +28,7 @@ export default function Caroussel({ images }) {
       {/* for each image create a new slide */}
       {images.map((image, i) => (
         <div key={i} className={"h-full  min-w-full bg-no-repeat bg-contain bg-center "+(i === currentSlide ? " order-0 " : " order-1")}
-         style={{backgroundImage:`url(${'http://localhost:5000/public/images/'+image})`}}>
+         style={{backgroundImage:`url(${process.env.REACT_APP_API_URL+'/public/images/'+image})`}}>
         </div>
       ))}
       {/*

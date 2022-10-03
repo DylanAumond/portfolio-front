@@ -99,7 +99,7 @@ export default function FormCustomer({ data }) {
                     )})`,
                   }
                 : {
-                    backgroundImage: `url(http://localhost:5000/public/images/${customer.logo})`,
+                    backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${customer.logo})`,
                   }
             }
           ></div>
