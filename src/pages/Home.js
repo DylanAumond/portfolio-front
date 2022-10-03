@@ -15,11 +15,11 @@ export default function Home() {
   const { t } = useTranslation("Home");
 
   // get the customers from the customers' reducer
-  const {customers} = useSelector((state) => state.customersReducer);
+  const { customers } = useSelector(state => state.customersReducer);
   // get the projects from the projects' reducer
-  const {projects} = useSelector((state) => state.projectsReducer);
+  const { projects } = useSelector(state => state.projectsReducer);
   // get the technologies from the technologies' reducer
-  const {technologies} = useSelector((state) => state.technologiesReducer);
+  const { technologies } = useSelector(state => state.technologiesReducer);
 
   // rehydrate the reducers on dispatch action
   useEffect(() => {
@@ -30,30 +30,20 @@ export default function Home() {
 
   return (
     <div>
-      <div
-        className="w-full h-screen flex bg-center bg-cover items-center justify-center"
-        style={{
-          backgroundImage:
-            "url(https://img.freepik.com/free-photo/professional-programmer-working-late-dark-office_1098-18705.jpg?w=1380&t=st=1659210934~exp=1659211534~hmac=1b8dac234411a0b2d1ee6ac36cee1833660d0df2a6ea6e9112bd6c124ba7df34)",
-        }}
-      >
-        <div className="text-white text-center">
-          <h1 className="text-4xl md:text-8xl">Dylan Aumond</h1>
-          <p className="text-2xl md:text-4xl">{t('Developer')} FullStack Junior</p>
+      <div className="w-full h-screen flex justify-center">
+        <div className="text-center h-96">
+          <img src={process.env.PUBLIC_URL + "/imgs/DADev.svg"} />
+          <button className=" bg-red px-8 py-3 rounded-lg text-white ">
+            View More
+          </button>
         </div>
       </div>
 
-      <div className="bg-black-light h-fit sm:h-96 text-white text-center">
-        <h2 className="mb-2">{t('Projects')}</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-4 sm:gap-x-12 p-4 justify-center">
-          {projects.map((project) => (
-            <CardProject key={project._id} project={project} />
-          ))}
+      <div className="text-center mb-10">
+        <div className="w-24 h-auto m-auto">
+          <h2 className=" text-2xl">{t("Customers")}</h2>
+          <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
-      </div>
-
-      <div className="text-center">
-        <h2>{t('Customers')}</h2>
         {customers.length > 4 ? (
           <CustomerSlider customers={customers} />
         ) : (
@@ -62,7 +52,7 @@ export default function Home() {
               return (
                 <div className="w-1/4" data-index={i} key={i}>
                   <div
-                    className="w-16 h-16 md:w-32 md:h-32 m-auto bg-center bg-cover"
+                    className="w-16 h-16 md:w-20 md:h-20 m-auto bg-center bg-cover rounded-full"
                     style={{
                       backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${customer.logo})`,
                     }}
@@ -75,10 +65,30 @@ export default function Home() {
         )}
       </div>
 
-      <div className="bg-black-light flex flex-wrap py-6">
-        {technologies.map((technologie) => {
-          return <Technocard key={technologie._id} technologie={technologie} />;
-        })}
+      <div className="bg-white h-fit sm:h-screen text-black mt-32">
+        <div className="w-24 h-auto m-auto">
+          <h2 className=" text-2xl">{t("Projects")}</h2>
+          <div className="h-1 bg-red w-8 mb-5 "></div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 sm:grid-rows-6 h-96 sm:h-5/6 gap-y-4 sm:gap-x-12 p-4 justify-center">
+          {projects.map(project => (
+            <CardProject key={project._id} project={project} />
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-white mb-10 mt-10">
+        <div className="w-24 h-auto m-auto">
+          <h2 className=" text-2xl">{t("Technology")}</h2>
+          <div className="h-1 bg-red w-8 mb-5 "></div>
+        </div>
+        <div className="flex flex-wrap py-6">
+          {technologies.map(technologie => {
+            return (
+              <Technocard key={technologie._id} technologie={technologie} />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

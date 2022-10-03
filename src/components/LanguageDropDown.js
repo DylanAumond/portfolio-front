@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { IoLanguage, IoCheckmarkDoneOutline } from "react-icons/io5";
+
 const LanguageDropDown = () => {
   const { i18n } = useTranslation();
   const [language, setLanguage] = useState("id");
@@ -15,9 +17,23 @@ const LanguageDropDown = () => {
   };
 
   return (
-    <select style={{backgroundColor: 'black'}} className="cursor-pointer"  onChange={handleLangChange} value={language}>
-      <option value="fr">FR</option>
-      <option value="en">EN</option>
+    <select
+      className="cursor-pointer w-12"
+      onChange={handleLangChange}
+      value={language}
+    >
+      <option value="fr">
+        <i>
+          <IoLanguage />
+        </i>{" "}
+        FR
+      </option>
+      <option value="en">
+        <i>
+          <IoCheckmarkDoneOutline />
+        </i>
+        EN
+      </option>
     </select>
   );
 };

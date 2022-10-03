@@ -3,10 +3,10 @@ module.exports = {
   theme: {
     extend: {
       minWidth: {
-        '1/2': '50%',
+        "1/2": "50%",
       },
       height: {
-        '480': '480px',
+        480: "480px",
       },
       fontFamily: {
         sans: ["Russo One", "sans-serif"],
@@ -15,6 +15,7 @@ module.exports = {
         black: {
           light: "#2C2C2C",
         },
+        red: "#FF1616",
       },
     },
   },
