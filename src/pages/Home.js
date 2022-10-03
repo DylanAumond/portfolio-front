@@ -65,15 +65,15 @@ export default function Home() {
         )}
       </div>
 
-      <div className="bg-white h-fit sm:h-screen text-black mt-32">
+      <div className="bg-white h-fit text-black mt-32">
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Projects")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 sm:grid-rows-6 h-96 sm:h-5/6 gap-y-4 sm:gap-x-12 p-4 justify-center">
-          {projects.map(project => (
-            <CardProject key={project._id} project={project} />
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-4 sm:gap-x-10 p-4 justify-center">
+          {projects.map((project, index) => 
+            <CardProject key={index} project={project} index={index} />
+          )}
         </div>
       </div>
 
