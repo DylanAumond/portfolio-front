@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+
+import { CONTACT } from "../constant/Modal";
+
 import { getCustomers } from "../api/customers";
 import { getProjects } from "../api/projects";
 import { getTechnologies } from "../api/technologies";
+
 import CardProject from "../components/CardProject";
 import CustomerSlider from "../components/CustomerSlider";
 import Technocard from "../components/Technocard";
@@ -30,19 +34,22 @@ export default function Home() {
 
   return (
     <div>
-      <div className="w-full h-480 flex justify-center items-center">
+      <div className="w-full sm:h-480 sm:flex sm:justify-center sm:items-center">
         <div className="text-center">
           <img src={process.env.PUBLIC_URL + "/imgs/DADev.svg"} />
         </div>
-        <div>
+        <div className="text-center -mt-16 sm:mt-0">
           <h1>{t("TextHome")}</h1>
-          <button className="bg-red px-6 py-3 rounded-lg mt-6 text-sm">
+          <button
+            className="bg-red px-6 py-3 rounded-lg mt-6 text-sm"
+            onClick={() => dispatch({ type: CONTACT })}
+          >
             {t("GetInTouch")}
           </button>
         </div>
       </div>
 
-      <div className="text-center mb-10">
+      <div className="text-center mb-10 mt-16 sm:mt-0">
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Customers")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
@@ -74,18 +81,18 @@ export default function Home() {
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-4 sm:gap-x-10 p-4 justify-center">
-          {projects.map((project, index) => 
+          {projects.map((project, index) => (
             <CardProject key={index} project={project} index={index} />
-          )}
+          ))}
         </div>
       </div>
 
-      <div className="bg-white mb-10 mt-10">
+      <div className="bg-white mb-10 mt-60">
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Technology")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
-        <div className="flex flex-wrap py-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 py-6">
           {technologies.map(technologie => {
             return (
               <Technocard key={technologie._id} technologie={technologie} />

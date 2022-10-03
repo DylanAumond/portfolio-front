@@ -8,7 +8,9 @@ export const Project = ({ project, index }) => {
   return (
     <div className="overflow-y-scroll overflow-x-hidden py-4 px-4">
       {/* Project libelle */}
-      <h1>{project.libelle} {index}</h1>
+      <h1>
+        {project.libelle} {index}
+      </h1>
 
       {/* Project caroussel */}
       {project.imgs ? (
@@ -34,7 +36,7 @@ export const Project = ({ project, index }) => {
         </div>
 
         {/* Right content */}
-        <div className=" sm:w-1/3 sm:ml-10 sm:text-center ">
+        <div className=" sm:w-1/3 sm:ml-10 sm:text-center  ">
           <h2>{t("Description")}:</h2>
           {/* Techno*/}
           <h2 className="sm:mt-4">{t("BuiltWith")}:</h2>
@@ -57,19 +59,21 @@ export const Project = ({ project, index }) => {
           </div>
 
           {/*Client */}
-          <h2 className="sm:mt-4">{t("Customer")}:</h2>
-          {project.customer !== undefined ? (
-            <div className="flex items-center justify-center">
-              <img
-                className="w-10 h-10"
-                src={`${process.env.REACT_APP_API_URL}/public/images/${project.customer.logo}`}
-                alt={project.customer.libelle}
-              />
-              <p>{project.customer.libelle}</p>
-            </div>
-          ) : (
-            <p>Pas de client associé</p>
-          )}
+          <div className="flex justify-center items-center mt-6">
+            <h2 className="sm:mt-4 mr-7">{t("Customer")}:</h2>
+            {project.customer !== undefined ? (
+              <div className="flex items-center justify-center">
+                <img
+                  className="w-10 h-10"
+                  src={`${process.env.REACT_APP_API_URL}/public/images/${project.customer.logo}`}
+                  alt={project.customer.libelle}
+                />
+                <p>{project.customer.libelle}</p>
+              </div>
+            ) : (
+              <p>Pas de client associé</p>
+            )}
+          </div>
         </div>
       </div>
     </div>
