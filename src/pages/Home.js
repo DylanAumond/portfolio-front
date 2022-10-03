@@ -30,11 +30,14 @@ export default function Home() {
 
   return (
     <div>
-      <div className="w-full h-screen flex justify-center">
-        <div className="text-center h-96">
+      <div className="w-full h-480 flex justify-center items-center">
+        <div className="text-center">
           <img src={process.env.PUBLIC_URL + "/imgs/DADev.svg"} />
-          <button className=" bg-red px-8 py-3 rounded-lg text-white ">
-            View More
+        </div>
+        <div>
+          <h1>{t("TextHome")}</h1>
+          <button className="bg-red px-6 py-3 rounded-lg mt-6 text-sm">
+            {t("GetInTouch")}
           </button>
         </div>
       </div>

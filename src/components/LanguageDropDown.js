@@ -23,15 +23,15 @@ const LanguageDropDown = () => {
       value={language}
     >
       <option value="fr">
-        <i>
-          <IoLanguage />
-        </i>{" "}
+        <span
+          style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL}/imgs/DADev.svg)`,
+          }}
+        ></span>
         FR
       </option>
       <option value="en">
-        <i>
-          <IoCheckmarkDoneOutline />
-        </i>
+        <span></span>
         EN
       </option>
     </select>

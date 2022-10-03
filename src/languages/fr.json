@@ -1,53 +1,55 @@
 {
-    "NavBar":{
-        "Home" : "Accueil",
-        "Projects" : "Projets",
-        "Contact" : "Contact"
-    },
+  "NavBar": {
+    "Home": "Accueil",
+    "Projects": "Projets",
+    "Contact": "Contact"
+  },
 
-    "Home": {
-        "Developer" : "Développeur",
-        "Customers" : "Clients",
-        "Projects" : "Projets",
-        "ShowMore" : "Voir plus",
-        "SeeProject": "Voir le projet"
-    },
+  "Home": {
+    "Developer": "Développeur",
+    "Customers": "Clients",
+    "Projects": "Projets",
+    "ShowMore": "Voir plus",
+    "SeeProject": "Voir le projet",
+    "TextHome": "Un projet web ou d'application",
+    "GetInTouch": "Me Contacter"
+  },
 
-    "Project" : {
-        "Description" : "Description",
-        "BuiltWith" : "Construit avec",
-        "Tasks" : "Tâches",
-        "Customer" : "Client",
-        "Informations" : "Informations"
-    },
+  "Project": {
+    "Description": "Description",
+    "BuiltWith": "Construit avec",
+    "Tasks": "Tâches",
+    "Customer": "Client",
+    "Informations": "Informations"
+  },
 
-    "ContactForm" : {
-        "GetInTouch" : "Me Contacter",
-        "LastName" : "Nom",
-        "FirstName" : "Prénom",
-        "Subject" : "Sujet du message",
-        "WriteYourMessage" : "Écrivez votre message",
-        "Send" : "Envoyer",
-        "MailSuccess" : "Courriel envoyé ! "
-    },
+  "ContactForm": {
+    "GetInTouch": "Me Contacter",
+    "LastName": "Nom",
+    "FirstName": "Prénom",
+    "Subject": "Sujet du message",
+    "WriteYourMessage": "Écrivez votre message",
+    "Send": "Envoyer",
+    "MailSuccess": "Courriel envoyé ! "
+  },
 
-    "LoginForm" : {
-        "SignIn" : "Se connecter",
-        "Password" : "Mot de passe",
-        "Login" : "Connexion"
-    },
+  "LoginForm": {
+    "SignIn": "Se connecter",
+    "Password": "Mot de passe",
+    "Login": "Connexion"
+  },
 
-    "RegisterForm" : {
-        "LastName" : "Nom",
-        "FirstName" : "Prénom",
-        "Password" : "Mot de passe",
-        "ComfirmPassword" : "Comfirmez votre mot de passe",
-        "Register" : "Créer un compte"
-    },
+  "RegisterForm": {
+    "LastName": "Nom",
+    "FirstName": "Prénom",
+    "Password": "Mot de passe",
+    "ComfirmPassword": "Comfirmez votre mot de passe",
+    "Register": "Créer un compte"
+  },
 
-    "Footer": {
-        "Social" : "Réseaux sociaux",
-        "CreatedBy" : "Créer par",
-        "Location" : "Localisation"
-    }
+  "Footer": {
+    "Social": "Réseaux sociaux",
+    "CreatedBy": "Créer par",
+    "Location": "Localisation"
+  }
 }
