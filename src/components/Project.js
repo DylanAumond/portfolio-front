@@ -3,12 +3,12 @@ import Caroussel from "./Caroussel";
 import { FaCheck } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
-export const Project = ({ project }) => {
+export const Project = ({ project, index }) => {
   const { t, i18n } = useTranslation("Project");
   return (
     <div className="overflow-y-scroll overflow-x-hidden py-4 px-4">
       {/* Project libelle */}
-      <h1>{project.libelle}</h1>
+      <h1>{project.libelle} {index}</h1>
 
       {/* Project caroussel */}
       {project.imgs ? (

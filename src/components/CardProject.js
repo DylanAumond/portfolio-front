@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { PROJECT } from "../constant/Modal";
 
-export default function CardProject({ project }) {
+export default function CardProject({ project, index}) {
   // get the translations from home
   const { t } = useTranslation("Home");
   const dispatch = useDispatch();
@@ -14,7 +14,9 @@ export default function CardProject({ project }) {
       onMouseLeave={()=>setHover(false)}
       className="h-full w-full bg-cover bg-center cursor-pointer"
       style={{
+        backgroundColor: "blue",
         backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${project.imgs[0]})`,
+        marginTop: (index%3)*4 + 'rem'
       }}
     >
       <div
