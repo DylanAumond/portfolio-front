@@ -12,11 +12,23 @@ const LanguageDropDown = () => {
     i18n.changeLanguage(e);
   };
 
-  return language === "fr" ?
-    <div onClick={() => handleLangChange('en')}> fr </div>
-    :
-    <div onClick={() => handleLangChange('fr')}> en </div> 
-
+  return language === "fr" ? (
+    <div className=" cursor-pointer " onClick={() => handleLangChange("en")}>
+      {" "}
+      <img
+        className="w-7 h-7"
+        src={process.env.PUBLIC_URL + "/imgs/france.png"}
+      />{" "}
+    </div>
+  ) : (
+    <div className=" cursor-pointer " onClick={() => handleLangChange("fr")}>
+      {" "}
+      <img
+        className="w-7 h-7"
+        src={process.env.PUBLIC_URL + "/imgs/united-kingdom.png"}
+      />{" "}
+    </div>
+  );
 };
 
 export default LanguageDropDown;
