@@ -2,3 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+.octan {
+  height: 10vh;
+  overflow: hidden;
+  position: relative;
+  width: 10vh;
+  -webkit-transform: rotate(45deg);
+}
+
+.octan::after {
+  background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg");
+  background-position: center center;
+  background-size: cover;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}

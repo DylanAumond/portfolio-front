@@ -6,9 +6,9 @@ import { useTranslation } from "react-i18next";
 export const Project = ({ project, index }) => {
   const { t, i18n } = useTranslation("Project");
   return (
-    <div className="overflow-y-scroll overflow-x-hidden py-4 px-4">
+    <div className="overflow-y-scroll overflow-x-hidden md:w-4/6 md:m-auto px-4 py-4">
       {/* Project libelle */}
-      <h1>
+      <h1 className="mb-5 sm:mb-0 sm:text-center">
         {project.libelle} {index}
       </h1>
 
@@ -20,9 +20,9 @@ export const Project = ({ project, index }) => {
       )}
 
       {/* Project information */}
-      <div className="sm:flex mt-4  sm:w-full  sm:justify-between sm:items-center ">
+      <div className="mt-4 md:mt-0 ">
         {/* Left content */}
-        <div className="sm:flex-1 sm:ml-10">
+        <div className="sm:flex-1">
           <h2>{t("Description")}:</h2>
           <p className="my-2">{project.description[i18n.language]}</p>
           {/* Tasks */}
@@ -36,11 +36,11 @@ export const Project = ({ project, index }) => {
         </div>
 
         {/* Right content */}
-        <div className=" sm:w-1/3 sm:ml-10 sm:text-center  ">
+        <div className=" sm:w-full ">
           <h2>{t("Description")}:</h2>
           {/* Techno*/}
-          <h2 className="sm:mt-4">{t("BuiltWith")}:</h2>
-          <div className="sm:flex sm:justify-center ">
+          <h2 className="sm:mt-2">{t("BuiltWith")}:</h2>
+          <div className="sm:mt-4 sm:flex  sm:items-center ">
             {/* For each technology create a card */}
             {project.technologies ? (
               project.technologies.map((technology, i) => {
@@ -60,7 +60,7 @@ export const Project = ({ project, index }) => {
 
           {/*Client */}
           <div className="flex justify-center items-center mt-6">
-            <h2 className="sm:mt-4 mr-7">{t("Customer")}:</h2>
+            <h2 className=" mr-7">{t("Customer")}:</h2>
             {project.customer !== undefined ? (
               <div className="flex items-center justify-center">
                 <img
