@@ -52,7 +52,6 @@ export default function Home() {
 
       {/* cutomers' Section */}
       <div className="text-center mb-10 mt-16 sm:mt-0">
-
         {/* customer's section title */}
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Customers")}</h2>
@@ -83,7 +82,6 @@ export default function Home() {
 
       {/* Projects' Section */}
       <div className="text-black mt-32">
-
         {/* Project's section tilte */}
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Projects")}</h2>
@@ -92,22 +90,19 @@ export default function Home() {
 
         {/* Projects' list */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-x-10 p-4 justify-center">
-
           {/* For each project */}
           {projects.map((project, index) => (
             <CardProject key={index} project={project} index={index} />
           ))}
-
         </div>
-
       </div>
 
-      <div className="bg-white mb-10 mt-60">
-        <div className="w-24 h-auto m-auto">
+      <div className="bg-white mb-10 ">
+        <div className="w-40 h-auto m-auto">
           <h2 className=" text-2xl">{t("Technology")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 py-6">
+        <div className="flex flex-wrap  technocard">
           {technologies.map(technologie => {
             return (
               <Technocard key={technologie._id} technologie={technologie} />
