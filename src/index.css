@@ -3,7 +3,7 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 
-.octan {
+/* .octan {
   height: 10vh;
   overflow: hidden;
   position: relative;
@@ -12,7 +12,7 @@
 }
 
 .octan::after {
-  background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg");
+  background-image: url("https://www.neorobos.co.in/sites/default/files/LOGO-Programming-Language.jpg");
   background-position: center center;
   background-size: cover;
   bottom: 0;
@@ -23,4 +23,39 @@
   top: 0;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+}
+ */
+
+.octan {
+  width: 100px;
+  height: 55px;
+  position: relative;
+  background: #32557f;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.octan:before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 25px solid #32557f;
+}
+
+.octan:after {
+  content: "";
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 25px solid #32557f;
 }
