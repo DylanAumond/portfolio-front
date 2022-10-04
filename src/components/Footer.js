@@ -12,16 +12,16 @@ export default function Footer() {
   const year = today.getFullYear();
 
   return (
-    <div className="h-auto static bottom-0 text-center bg-red text-white">
-      <div className="sm:w-5/6 sm:m-auto sm:flex sm:justify-between sm:items-center w-full mt-4">
+    <div className="h-auto w-full static bottom-0 text-center bg-red text-white">
+      <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-4 sm:gap-x-10 p-4 justify-center items-center">
         {/* Social Networks */}
         <h1>DADEV</h1>
         <div>
           <h3>{t("Social")}:</h3>
-          <div className="flex justify-around sm:w-full">
+          <div className="flex justify-center sm:w-full">
             {/* Linkedin */}
             <a
-              className=" text-3xl"
+              className=" text-3xl mr-10"
               href="https://www.linkedin.com/in/dylan-aumond-0786b91b2/"
               target={"_blank"}
               rel="noreferrer"

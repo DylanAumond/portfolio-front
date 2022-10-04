@@ -10,7 +10,7 @@ export default function NavBar() {
   const dispatch = useDispatch();
   return (
     <div className="w-full h-20 text-black bg-white  flex items-center justify-between fixed top-0 px-8">
-      <h1>DADEV</h1>
+      <h1 className="text-red">DADEV</h1>
       <nav>
         <button className="mr-4" onClick={() => dispatch({ type: CONTACT })}>
           {t("Contact")}
