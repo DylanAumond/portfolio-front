@@ -18,6 +18,7 @@ const LanguageDropDown = () => {
       <img
         className="w-7 h-7"
         src={process.env.PUBLIC_URL + "/imgs/france.png"}
+        alt="img"
       />{" "}
     </div>
   ) : (
@@ -26,6 +27,7 @@ const LanguageDropDown = () => {
       <img
         className="w-7 h-7"
         src={process.env.PUBLIC_URL + "/imgs/united-kingdom.png"}
+        alt="img"
       />{" "}
     </div>
   );
