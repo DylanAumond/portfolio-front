@@ -1,8 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { CGU } from "../constant/Modal";
 
 export default function Footer() {
+  const dispatch = useDispatch();
   const { t } = useTranslation("Footer");
 
   // get the current date
@@ -54,6 +57,7 @@ export default function Footer() {
       <p className="mt-10">
         Copyright {year} - {t("CreatedBy")} Dylan Aumond
       </p>
+      <p className="cursor-pointer" onClick={() => dispatch({ type: CGU })}>CGU</p>
     </div>
   );
 }
