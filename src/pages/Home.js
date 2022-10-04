@@ -34,6 +34,7 @@ export default function Home() {
 
   return (
     <div>
+      {/* Main banner */}
       <div className="w-full sm:h-480 sm:flex sm:justify-center sm:items-center">
         <div className="text-center">
           <img src={process.env.PUBLIC_URL + "/imgs/DADev.svg"} />
@@ -49,11 +50,16 @@ export default function Home() {
         </div>
       </div>
 
+      {/* cutomers' Section */}
       <div className="text-center mb-10 mt-16 sm:mt-0">
+
+        {/* customer's section title */}
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Customers")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
+
+        {/* customers' carrousel */}
         {customers.length > 4 ? (
           <CustomerSlider customers={customers} />
         ) : (
@@ -75,16 +81,25 @@ export default function Home() {
         )}
       </div>
 
-      <div className="bg-white h-fit text-black mt-32">
+      {/* Projects' Section */}
+      <div className="text-black mt-32">
+
+        {/* Project's section tilte */}
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Projects")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-4 sm:gap-x-10 p-4 justify-center">
+
+        {/* Projects' list */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-x-10 p-4 justify-center">
+
+          {/* For each project */}
           {projects.map((project, index) => (
             <CardProject key={index} project={project} index={index} />
           ))}
+
         </div>
+
       </div>
 
       <div className="bg-white mb-10 mt-60">
