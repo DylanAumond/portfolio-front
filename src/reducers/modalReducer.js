@@ -1,8 +1,9 @@
+import Cgu from "../components/Cgu";
 import ContactForm from "../components/ContactForm";
 import LoginForm from "../components/LoginForm";
 import { Project } from "../components/Project";
 import RegisterForm from "../components/RegisterForm";
-import { ClOSEMODAL, CONTACT, LOGIN, PROJECT, REGISTER } from "../constant/Modal";
+import { CGU, ClOSEMODAL, CONTACT, LOGIN, PROJECT, REGISTER } from "../constant/Modal";
 
 export default function modalReducer(state = [], action) {
   switch (action.type) {
@@ -18,6 +19,9 @@ export default function modalReducer(state = [], action) {
     // show a project
     case PROJECT :
       return { show: true, component: <Project project={action.project} /> };
+    // show the CGU
+    case CGU:
+      return { show: true, component: <Cgu /> };
     // close the modal
     case ClOSEMODAL:
       return { show: false };
