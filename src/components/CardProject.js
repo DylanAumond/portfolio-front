@@ -12,11 +12,10 @@ export default function CardProject({ project, index}) {
     <div
       onMouseOver={()=>setHover(true)}
       onMouseLeave={()=>setHover(false)}
-      className="h-full w-full bg-cover bg-center cursor-pointer"
+      className={`w-full bg-cover bg-center cursor-pointer h-96 sm:h-60 lg:h-96 mt-8 sm:mt-${index%3*4}`}
       style={{
-        backgroundColor: "blue",
         backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${project.imgs[0]})`,
-        marginTop: (index%3)*4 + 'rem'
+        //marginTop: (index%3)*4 + 'rem'
       }}
     >
       <div
