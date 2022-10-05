@@ -12,6 +12,8 @@ import CardProject from "../components/CardProject";
 import CustomerSlider from "../components/CustomerSlider";
 import Technocard from "../components/Technocard";
 
+import ScreenAnalizer from "../ScreenAnalizer";
+
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -24,6 +26,33 @@ export default function Home() {
   const { projects } = useSelector(state => state.projectsReducer);
   // get the technologies from the technologies' reducer
   const { technologies } = useSelector(state => state.technologiesReducer);
+  
+  const nestCalculator = (width) => {
+    if( width >= 1400 ) {return 12}
+    if( width <= 1400 && width >= 1000) {return 8}
+    if( width <= 1000 && width >= 600) {return 6}
+    if( width <= 600 ) {return 4}
+  }
+
+  const itemNum = nestCalculator(ScreenAnalizer().x)-1
+  const colSize = ScreenAnalizer().x/nestCalculator(ScreenAnalizer().x)
+
+  //const colSize = (width) => width/nestCalculator(width);
+  const retrievRowsByColNum = (data) => {
+    const rows = [];
+    let cols = [];
+    for (let i = 0; i < data.length; i++) {
+      cols.push(data[i]);
+      if ((i + 1) % (itemNum) === 0) {
+        rows.push(cols);
+        cols = [];
+      }
+    }
+    if (cols && cols.length > 0) {
+      rows.push(cols);
+    }
+    return rows;
+  }
 
   // rehydrate the reducers on dispatch action
   useEffect(() => {
@@ -32,12 +61,13 @@ export default function Home() {
     dispatch(getTechnologies());
   }, [dispatch]);
 
+
   return (
     <div>
       {/* Main banner */}
       <div className="w-full sm:h-480 sm:flex sm:justify-center sm:items-center">
         <div className="text-center">
-          <img src={process.env.PUBLIC_URL + "/imgs/DADev.svg"} />
+          <img src={process.env.PUBLIC_URL + "/imgs/DADev.svg"} alt='img'/>
         </div>
         <div className="text-center -mt-16 sm:mt-0">
           <h1>{t("TextHome")}</h1>
@@ -97,18 +127,26 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-white mb-10 ">
-        <div className="w-40 h-auto m-auto">
+      <div className="bg-white mb-10 flex flex-col justify-center items-center">
+        <div className="w-40">
           <h2 className=" text-2xl">{t("Technology")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
-        <div className="flex flex-wrap  technocard">
-          {technologies.map(technologie => {
-            return (
-              <Technocard key={technologie._id} technologie={technologie} />
-            );
-          })}
+
+        <div>
+          {
+            retrievRowsByColNum(technologies).map((row, index) => (
+              <div className="flex" style={index % 2 !== 0 ? {marginLeft:colSize/2} : {marginLeft:0}} key={index}>
+                {
+                  row.map((item,index) => (
+                      <Technocard key={index} technologie={item} size={colSize} />
+                  ))
+                }
+              </div>
+            ))
+          }
         </div>
+
       </div>
     </div>
   );
