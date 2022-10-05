@@ -26,24 +26,32 @@ export default function Home() {
   const { projects } = useSelector(state => state.projectsReducer);
   // get the technologies from the technologies' reducer
   const { technologies } = useSelector(state => state.technologiesReducer);
-  
-  const nestCalculator = (width) => {
-    if( width >= 1400 ) {return 12}
-    if( width <= 1400 && width >= 1000) {return 8}
-    if( width <= 1000 && width >= 600) {return 6}
-    if( width <= 600 ) {return 4}
-  }
 
-  const itemNum = nestCalculator(ScreenAnalizer().x)-1
-  const colSize = ScreenAnalizer().x/nestCalculator(ScreenAnalizer().x)
+  const nestCalculator = width => {
+    if (width >= 1400) {
+      return 12;
+    }
+    if (width <= 1400 && width >= 1000) {
+      return 8;
+    }
+    if (width <= 1000 && width >= 600) {
+      return 6;
+    }
+    if (width <= 600) {
+      return 4;
+    }
+  };
+
+  const itemNum = nestCalculator(ScreenAnalizer().x) - 1;
+  const colSize = ScreenAnalizer().x / nestCalculator(ScreenAnalizer().x);
 
   //const colSize = (width) => width/nestCalculator(width);
-  const retrievRowsByColNum = (data) => {
+  const retrievRowsByColNum = data => {
     const rows = [];
     let cols = [];
     for (let i = 0; i < data.length; i++) {
       cols.push(data[i]);
-      if ((i + 1) % (itemNum) === 0) {
+      if ((i + 1) % itemNum === 0) {
         rows.push(cols);
         cols = [];
       }
@@ -52,7 +60,7 @@ export default function Home() {
       rows.push(cols);
     }
     return rows;
-  }
+  };
 
   // rehydrate the reducers on dispatch action
   useEffect(() => {
@@ -61,13 +69,12 @@ export default function Home() {
     dispatch(getTechnologies());
   }, [dispatch]);
 
-
   return (
     <div>
       {/* Main banner */}
       <div className="w-full sm:h-480 sm:flex sm:justify-center sm:items-center">
         <div className="text-center">
-          <img src={process.env.PUBLIC_URL + "/imgs/DADev.svg"} alt='img'/>
+          <img src={process.env.PUBLIC_URL + "/imgs/DADev.svg"} alt="img" />
         </div>
         <div className="text-center -mt-16 sm:mt-0">
           <h1>{t("TextHome")}</h1>
@@ -111,7 +118,7 @@ export default function Home() {
       </div>
 
       {/* Projects' Section */}
-      <div className="text-black  sm:mx-8 mt-32">
+      <div className="text-black  sm:mx-8 mt-16">
         {/* Project's section tilte */}
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Projects")}</h2>
@@ -127,26 +134,29 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-white mb-10 flex flex-col justify-center items-center">
+      <div className="bg-white mb-10 mt-16 flex flex-col justify-center items-center">
         <div className="w-40">
           <h2 className=" text-2xl">{t("Technology")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
 
         <div>
-          {
-            retrievRowsByColNum(technologies).map((row, index) => (
-              <div className="flex" style={index % 2 !== 0 ? {marginLeft:colSize/2} : {marginLeft:0}} key={index}>
-                {
-                  row.map((item,index) => (
-                      <Technocard key={index} technologie={item} size={colSize} />
-                  ))
-                }
-              </div>
-            ))
-          }
+          {retrievRowsByColNum(technologies).map((row, index) => (
+            <div
+              className="flex"
+              style={
+                index % 2 !== 0
+                  ? { marginLeft: colSize / 2 }
+                  : { marginLeft: 0 }
+              }
+              key={index}
+            >
+              {row.map((item, index) => (
+                <Technocard key={index} technologie={item} size={colSize} />
+              ))}
+            </div>
+          ))}
         </div>
-
       </div>
     </div>
   );

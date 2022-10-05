@@ -11,7 +11,7 @@ export default function NavBar() {
 
   const dispatch = useDispatch();
   return (
-    <div className="w-full h-20 text-black bg-white  flex items-center justify-between fixed top-0 px-8">
+    <div className="w-full h-20 text-black bg-white  flex items-center justify-between fixed z-10 top-0 px-8">
       <h1>
         DA<span className="text-red">DEV</span>
       </h1>
