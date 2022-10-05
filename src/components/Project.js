@@ -49,9 +49,9 @@ export const Project = ({ project, index }) => {
           {/* Right content */}
           <div className=" sm:w-full ">
             {/* Techno*/}
-            <div className="sm:flex sm:items-center">
+            <div className="mt-5 sm:mt-0 sm:flex sm:items-center">
               <h2 className="sm:mt-2 ">{t("BuiltWith")}:</h2>
-              <div className="sm:mt-4 sm:flex  sm:items-center ">
+              <div className="mt-4 flex items-center ">
                 {/* For each technology create a card */}
                 {project.technologies ? (
                   project.technologies.map((technology, i) => {

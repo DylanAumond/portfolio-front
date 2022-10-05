@@ -67,7 +67,7 @@ export default function Home() {
               return (
                 <div className="w-1/4" data-index={i} key={i}>
                   <div
-                    className="w-16 h-16 md:w-20 md:h-20 m-auto bg-center bg-cover rounded-full"
+                    className="w-16 h-16 md:w-20 md:h-20 m-auto bg-center bg-cover "
                     style={{
                       backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${customer.logo})`,
                     }}

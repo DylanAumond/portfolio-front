@@ -10,7 +10,7 @@ export default function ContactForm() {
 
   const { t } = useTranslation("ContactForm");
 
-  const sendEmail = (e) => {
+  const sendEmail = e => {
     // prevent from refreshing when submit
     e.preventDefault();
     // use emailjs to send email
@@ -27,14 +27,14 @@ export default function ContactForm() {
           dispatch({
             type: ADD_TOAST,
             payload: {
-              text: t('MailSuccess'),
+              text: t("MailSuccess"),
               color: "green-600",
               icon: "checked",
             },
           });
         },
         // display a toasts for error
-        (error) => {
+        error => {
           dispatch({
             type: ADD_TOAST,
             payload: {
@@ -49,7 +49,10 @@ export default function ContactForm() {
 
   return (
     <>
-      <h2 className="ml-24 my-6">{t('GetInTouch')} !</h2>
+      <div className=" ml-4 mt-2 sm:ml-12 sm:mt-5">
+        <h2 className=" sm:text-2xl">{t("GetInTouch")} !</h2>
+        <div className="h-1 bg-red w-8 mb-5 "></div>
+      </div>
       <form
         ref={form}
         className="h-fit grid grid-cols-1 sm:grid-cols-2 sm:mx-12 my-4 mx-4 gap-4"
@@ -59,7 +62,7 @@ export default function ContactForm() {
         <input
           type="text"
           name="user_firstName"
-          placeholder={t('FirstName')}
+          placeholder={t("FirstName")}
           className="border-b-2 border-black-light"
           required
         />
@@ -67,7 +70,7 @@ export default function ContactForm() {
         <input
           type="text"
           name="user_lastName"
-          placeholder={t('LastName')}
+          placeholder={t("LastName")}
           className="border-b-2 border-black-light"
           required
         />
@@ -91,14 +94,14 @@ export default function ContactForm() {
         <input
           type="text"
           name="object"
-          placeholder={t('Subject')}
+          placeholder={t("Subject")}
           className="border-b-2 border-black-light sm:col-span-2"
           required
         />
 
         <textarea
           name="message"
-          placeholder={t('WriteYourMessage')}
+          placeholder={t("WriteYourMessage")}
           className="border-b-2 border-black-light sm:col-span-2"
           required
         />
@@ -108,7 +111,7 @@ export default function ContactForm() {
           value="Send"
           className="bg-gray-900 text-white sm:col-span-2"
         >
-          {t('Send')}
+          {t("Send")}
         </button>
       </form>
     </>

@@ -18,7 +18,7 @@ export default function CustomerSlider({ customers }) {
           return (
             <div className="w-1/4" data-index={i} key={i}>
               <div
-                className="w-16 h-16 md:w-32 md:h-32 m-auto bg-center bg-cover"
+                className="w-16 h-16 md:w-20 md:h-20 m-auto bg-center bg-cover rounded-full mt-7"
                 style={{
                   backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${customer.logo})`,
                 }}

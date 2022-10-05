@@ -25,7 +25,7 @@ export default function Modal(props) {
     >
       {/* ClOSEMODAL button */}
       <button
-        className="absolute top-4 right-4 cursor-pointer z-10"
+        className="absolute top-4 right-4 cursor-pointer z-10 text-red"
         onClick={() => dispatch({ type: ClOSEMODAL })}
       >
         X
