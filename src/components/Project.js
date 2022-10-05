@@ -51,13 +51,13 @@ export const Project = ({ project, index }) => {
             {/* Techno*/}
             <div className="mt-5 sm:mt-0 sm:flex sm:items-center">
               <h2 className="sm:mt-2 ">{t("BuiltWith")}:</h2>
-              <div className="mt-4 flex items-center ">
+              <div className="mt-4 w-full sm:w-4/6 flex justify-around items-center ">
                 {/* For each technology create a card */}
                 {project.technologies ? (
                   project.technologies.map((technology, i) => {
                     return (
                       <img
-                        className="h-10"
+                        className="h-10 bg-red p-2"
                         src={`${process.env.REACT_APP_API_URL}/public/images/${technology.logo}`}
                         alt={technology.libelle}
                         key={i}
