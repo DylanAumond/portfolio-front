@@ -8,11 +8,13 @@ export default function CardProject({ project, index}) {
   const { t } = useTranslation("Home");
   const dispatch = useDispatch();
   const [hover,setHover] = useState(false);
+  const margin = `sm:pt-${(index%3)*8}`;
+  if (margin === undefined) return (<p>Loading ...</p>)
   return (
     <div
       onMouseOver={()=>setHover(true)}
       onMouseLeave={()=>setHover(false)}
-      className={`w-full bg-cover bg-center cursor-pointer h-96 sm:h-60 lg:h-96 mt-8 sm:mt-${index%3*4}`}
+      className={'w-full bg-cover bg-center cursor-pointer h-96 sm:h-60 lg:h-96 ' +`mt-${(index%3)*4}`}
       style={{
         backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${project.imgs[0]})`,
         //marginTop: (index%3)*4 + 'rem'
