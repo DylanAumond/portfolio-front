@@ -4,7 +4,7 @@ export default function Caroussel({ images }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // get the value of the next slide
-  const displaySlide = (newCurrentSlide) => {
+  const displaySlide = newCurrentSlide => {
     if (newCurrentSlide > images.length - 1) {
       return setCurrentSlide(0);
     } else if (newCurrentSlide < 0) {
@@ -27,9 +27,18 @@ export default function Caroussel({ images }) {
     <div className="w-full h-48 sm:h-480 flex overflow-hidden">
       {/* for each image create a new slide */}
       {images.map((image, i) => (
-        <div key={i} className={"h-full  min-w-full bg-no-repeat bg-contain bg-center "+(i === currentSlide ? " order-0 " : " order-1")}
-         style={{backgroundImage:`url(${process.env.REACT_APP_API_URL+'/public/images/'+image})`}}>
-        </div>
+        <div
+          key={i}
+          className={
+            "h-full  min-w-full bg-no-repeat bg-contain bg-center " +
+            (i === currentSlide ? " order-0 " : " order-1")
+          }
+          style={{
+            backgroundImage: `url(${
+              process.env.REACT_APP_API_URL + "/public/images/" + image
+            })`,
+          }}
+        ></div>
       ))}
       {/*
       *<img
