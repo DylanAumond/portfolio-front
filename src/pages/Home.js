@@ -81,7 +81,7 @@ export default function Home() {
       </div>
 
       {/* Projects' Section */}
-      <div className="text-black mt-32">
+      <div className="text-black  sm:mx-8 mt-32">
         {/* Project's section tilte */}
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Projects")}</h2>
