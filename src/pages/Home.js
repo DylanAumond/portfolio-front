@@ -29,7 +29,7 @@ export default function Home() {
 
   const nestCalculator = width => {
     if (width >= 1400) {
-      return 12;
+      return 10;
     }
     if (width <= 1400 && width >= 1000) {
       return 8;
@@ -155,7 +155,7 @@ export default function Home() {
                 <Technocard key={index} technologie={item} size={colSize} />
               ))}
             </div>
-          ))}
+              ))}
         </div>
       </div>
     </div>
