@@ -2,7 +2,6 @@ import React from "react";
 import glamorous from "glamorous"
 
 export default function Technocard({ technologie,size }) {
-  console.log('fix',size)
   const Hexa = glamorous.div(
   {
     marginTop: `${size/4+5}px`,
