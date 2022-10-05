@@ -18,7 +18,9 @@ export default function Footer() {
     <div className="h-auto w-full static bottom-0 mt-32 text-center bg-red text-white">
       <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-4 sm:gap-x-10 p-4 justify-center items-center">
         {/* Social Networks */}
-        <h1>DADEV</h1>
+        <div className="w-24 h-24 bg-white rounded-full m-auto">
+          <img src={process.env.PUBLIC_URL + "/imgs/DADev.svg"} alt="img" />
+        </div>
         <div>
           <h3>{t("Social")}:</h3>
           <div className="flex justify-center sm:w-full">
