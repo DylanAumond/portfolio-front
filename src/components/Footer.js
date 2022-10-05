@@ -15,7 +15,7 @@ export default function Footer() {
   const year = today.getFullYear();
 
   return (
-    <div className="h-auto w-full static bottom-0 text-center bg-red text-white">
+    <div className="h-auto w-full static bottom-0 mt-32 text-center bg-red text-white">
       <div className="grid grid-cols-1 sm:grid-cols-3 h-96 sm:h-5/6 gap-y-4 sm:gap-x-10 p-4 justify-center items-center">
         {/* Social Networks */}
         <h1>DADEV</h1>
@@ -57,7 +57,9 @@ export default function Footer() {
       <p className="mt-10">
         Copyright {year} - {t("CreatedBy")} Dylan Aumond
       </p>
-      <p className="cursor-pointer" onClick={() => dispatch({ type: CGU })}>CGU</p>
+      <p className="cursor-pointer" onClick={() => dispatch({ type: CGU })}>
+        CGU
+      </p>
     </div>
   );
 }
