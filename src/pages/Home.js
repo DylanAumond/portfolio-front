@@ -16,6 +16,7 @@ import ScreenAnalizer from "../ScreenAnalizer";
 
 export default function Home() {
   const dispatch = useDispatch();
+  
 
   // get the translations from home
   const { t } = useTranslation("Home");
