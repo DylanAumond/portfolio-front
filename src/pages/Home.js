@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,12 +11,13 @@ import { getTechnologies } from "../api/technologies";
 import CardProject from "../components/CardProject";
 import CustomerSlider from "../components/CustomerSlider";
 import Technocard from "../components/Technocard";
+import Loader from "../components/Loader";
 
 import ScreenAnalizer from "../ScreenAnalizer";
 
 export default function Home() {
   const dispatch = useDispatch();
-  
+  const [isLoading, setIsLoading] = useState(true);
 
   // get the translations from home
   const { t } = useTranslation("Home");
@@ -65,12 +66,19 @@ export default function Home() {
 
   // rehydrate the reducers on dispatch action
   useEffect(() => {
-    dispatch(getCustomers());
-    dispatch(getProjects());
-    dispatch(getTechnologies());
+    async function getDataFromApi() {
+      setIsLoading(true);
+      dispatch(getCustomers());
+      dispatch(getProjects());
+      dispatch(getTechnologies());
+    }
+
+    setTimeout(() => getDataFromApi().then(() => setIsLoading(false)), 2000);
   }, [dispatch]);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div>
       {/* Main banner */}
       <div className="w-full sm:h-480 sm:flex sm:justify-center sm:items-center">
@@ -156,7 +164,7 @@ export default function Home() {
                 <Technocard key={index} technologie={item} size={colSize} />
               ))}
             </div>
-              ))}
+          ))}
         </div>
       </div>
     </div>
