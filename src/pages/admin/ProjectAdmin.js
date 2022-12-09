@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProject } from "../../api/projects";
 import FormProject from "../../components/admin/FormProject";
-import { NavBar } from "../../components/admin/NavBar";
+import NavBar from "../../components/admin/NavBar";
 
 export default function ProjectAdmin() {
   const { id } = useParams();
