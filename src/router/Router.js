@@ -23,6 +23,7 @@ import RolesAdmin from "../pages/admin/RolesAdmin.js";
 
 import TechnologiesAdmin from "../pages/admin/TechnologiesAdmin.js";
 import TechnologyAdmin from "../pages/admin/TechnologyAdmin.js";
+import AddTechnologyAdmin from "../pages/admin/AddTechnologyAdmin.js";
 
 // error pages
 import Page403 from "../pages/Page403.js";
@@ -48,6 +49,7 @@ export default function Router() {
 
           <Route path="technologies" element={<TechnologiesAdmin />} />
           <Route path="technologies/:id" element={<TechnologyAdmin />} />
+          <Route path="technology/new" element={<AddTechnologyAdmin />} />
 
           <Route path="projects" element={<ProjectsAdmin />} />
           <Route path="projects/:id" element={<ProjectAdmin />} />
