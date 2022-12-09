@@ -36,7 +36,7 @@ export default function ProjectsAdmin() {
                   <p>{project.libelle}</p>
                   <button
                     onClick={() => dispatch(deleteProject(project._id))}
-                    className="bg-red-600 p-1 text-white text-sm"
+                    className="bg-red p-1 text-white text-sm"
                   >
                     Delete
                   </button>
