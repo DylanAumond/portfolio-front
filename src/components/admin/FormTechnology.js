@@ -73,7 +73,7 @@ export default function FormTechnology({ data }) {
         ) : (
           <p>No image upload yet</p>
         )}
-        <button type="submit">
+        <button type="submit"  className=" bg-green-400  m-4 rounded-lg">
           {data !== undefined ? "update technology" : "add technology"}
         </button>
       </form>

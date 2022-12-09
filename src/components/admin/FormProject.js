@@ -254,7 +254,7 @@ export default function FormProject({data}) {
           </div>
         ) : ("")
         }
-        <button type="submit">create</button>
+        <button type="submit"  className=" bg-green-400 h-8 m-8 rounded-lg">create</button>
       </form>
     </div>
   );

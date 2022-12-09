@@ -25,7 +25,7 @@ export default function FormRole() {
           value={role.libelle}
           onChange={(e) => handleChange(e)}
         />
-        <button type="submit" className="bg-green-600 text-white">
+        <button type="submit"  className=" bg-green-400 w-48 mx-8 rounded-lg">
           Créer un role
         </button>
       </form>
