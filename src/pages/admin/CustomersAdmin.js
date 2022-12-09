@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteCustomer, getCustomers } from "../../api/customers";
-import FormCustomer from "../../components/admin/FormCustomer";
-import { NavBar } from "../../components/admin/NavBar";
+import NavBar from "../../components/admin/NavBar";
 
 export default function CustomersAdmin() {
   const { customers } = useSelector(state => state.customersReducer);
@@ -18,7 +17,6 @@ export default function CustomersAdmin() {
     <div className="flex">
       <NavBar />
       <div>
-        <FormCustomer />
         <div className=" mt-8  grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-2">
           {customers.map((customer, i) => {
             return (

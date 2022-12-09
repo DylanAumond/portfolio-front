@@ -9,9 +9,16 @@ import Home from "../pages/Home.js";
 // admin pages
 import CustomerAdmin from "../pages/admin/CustomerAdmin.js";
 import CustomersAdmin from "../pages/admin/CustomersAdmin.js";
+import addCustomerAdmin from "../pages/admin/addCustomerAdmin.js";
+
+
 import ProjectAdmin from "../pages/admin/ProjectAdmin.js";
 import ProjectsAdmin from "../pages/admin/ProjectsAdmin.js";
+
+
 import RolesAdmin from "../pages/admin/RolesAdmin.js";
+
+
 import TechnologiesAdmin from "../pages/admin/TechnologiesAdmin.js";
 import TechnologyAdmin from "../pages/admin/TechnologyAdmin.js";
 
@@ -19,6 +26,7 @@ import TechnologyAdmin from "../pages/admin/TechnologyAdmin.js";
 import Page403 from "../pages/Page403.js";
 import Page404 from "../pages/Page404.js";
 import { HomeAdmin } from "../pages/admin/HomeAdmin.js";
+import AddCustomerAdmin from "../pages/admin/addCustomerAdmin.js";
 
 export default function Router() {
   return (
@@ -32,12 +40,17 @@ export default function Router() {
         {/* admin's pages */}
         <Route path="admin">
           <Route index element={<HomeAdmin />} />
+
           <Route path="customers" element={<CustomersAdmin />} />
+          <Route path="customer/new" element={<AddCustomerAdmin />} />
           <Route path="customers/:id" element={<CustomerAdmin />} />
+
           <Route path="technologies" element={<TechnologiesAdmin />} />
           <Route path="technologies/:id" element={<TechnologyAdmin />} />
+
           <Route path="projects" element={<ProjectsAdmin />} />
           <Route path="projects/:id" element={<ProjectAdmin />} />
+
           <Route path="roles" element={<RolesAdmin />} />
         </Route>
 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getTechnology } from "../../api/technologies";
 import FormCustomer from "../../components/admin/FormTechnology";
-import { NavBar } from "../../components/admin/NavBar";
+import NavBar from "../../components/admin/NavBar";
 
 export default function TechnologyAdmin() {
   const { id } = useParams();

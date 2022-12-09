@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteTechnology, getTechnologies } from "../../api/technologies";
 import FormTechnology from "../../components/admin/FormTechnology";
-import { NavBar } from "../../components/admin/NavBar";
+import NavBar from "../../components/admin/NavBar";
 
 export default function TechnologiesAdmin() {
   // get the technologies' reducer

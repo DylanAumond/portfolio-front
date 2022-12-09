@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteRole, getRoles } from "../../api/roles";
 import FormRole from "../../components/admin/FormRole";
-import { NavBar } from "../../components/admin/NavBar";
+import NavBar from "../../components/admin/NavBar";
 
 export default function RolesAdmin() {
   // get the roles from the roles' reducer
