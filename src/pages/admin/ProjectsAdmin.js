@@ -20,8 +20,6 @@ export default function ProjectsAdmin() {
   return (
     <div className="flex">
       <NavBar />
-      <div>
-        <FormProject />
         <div className=" grid xl:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2">
           {projects.map((project, i) => {
             return (
@@ -52,7 +50,6 @@ export default function ProjectsAdmin() {
             );
           })}
         </div>
-      </div>
     </div>
   );
 }
