@@ -17,6 +17,7 @@ export default function CustomersAdmin() {
     <div className="flex">
       <NavBar />
       <div>
+        <h1 className="text-center text-xl">Costomers</h1>
         <div className=" mt-8  grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-2">
           {customers.map((customer, i) => {
             return (
