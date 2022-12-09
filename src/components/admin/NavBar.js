@@ -21,14 +21,24 @@ export default function NavBar() {
             Add Customer
           </NavLink>
         </li>
+
         <li className="mt-10 border-y-2">
           <NavLink
             to="/admin/projects"
             style={{ color: "white", margin: "50px" }}
           >
+            See Project
+          </NavLink>
+        </li>
+        <li className="mt-10 border-y-2">
+          <NavLink
+            to="/admin/project/new"
+            style={{ color: "white", margin: "50px" }}
+          >
             Add Project
           </NavLink>
         </li>
+        
         <li className="mt-10 border-y-2">
           <NavLink
             to="/admin/technologies"
