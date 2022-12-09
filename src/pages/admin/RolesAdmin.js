@@ -14,29 +14,20 @@ export default function RolesAdmin() {
     dispatch(getRoles());
   }, [dispatch]);
 
-  return (
-    <div className="flex">
-      <NavBar />
-      <div>
-        <h2>Roles</h2>
-        {/* form to add/update a role */}
-        <FormRole />
-
-        <div className="flex justify-around">
-          {roles.map((role, i) => {
-            return (
-              <div key={i}>
-                <p>{role.libelle}</p>
-                <button
-                  className="bg-red-600 text-white"
-                  onClick={() => dispatch(deleteRole(role._id))}
-                >
-                  Delete
-                </button>
-              </div>
-            );
-          })}
-        </div>
+      <div className="flex justify-around">
+        {roles.map((role, i) => {
+          return (
+            <div key={i}>
+              <p>{role.libelle}</p>
+              <button
+                className="bg-red text-white"
+                onClick={() => dispatch(deleteRole(role._id))}
+              >
+                Delete
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

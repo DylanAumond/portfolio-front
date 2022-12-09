@@ -138,18 +138,19 @@ export default function FormProject({ data }) {
 
   return (
     <div style={{ maxWidth: "1000px", minWidth: "300px", margin: "auto" }}>
-      <p>FormProject</p>
+      <p>{data !== undefined ? "Edit" : "Add"} a project</p>
 
       <form
         className="flex flex-col w-2/3 m-auto"
         onSubmit={e => handleSubmit(e)}
       >
         <div>
-          <p>Libelle du projet</p>
+          <p>Libelle</p>
           <input
             type={"text"}
             placeholder="libelle"
             name="libelle"
+            className="border-y-2"
             value={project.libelle}
             onChange={e => handleChange(e)}
           />
@@ -190,11 +191,27 @@ export default function FormProject({ data }) {
         </div>
 
         <div className="flex-1">
+          <p>description du projet fr</p>
+          <textarea
+            placeholder="description FR"
+            name="fr"
+            className="w-full border-y-2 h-32"
+            value={project.description.fr}
+            onChange={e =>
+              setProject({
+                ...project,
+                description: { ...project.description, fr: e.target.value },
+              })
+            }
+          ></textarea>
+        </div>
+
+        <div className="flex-1">
           <p>description du projet en</p>
           <textarea
-            placeholder="description en"
+            placeholder="description EN"
             name="en"
-            className="w-full"
+            className="w-full border-y-2 h-32"
             value={project.description.en}
             onChange={e =>
               setProject({
@@ -209,12 +226,15 @@ export default function FormProject({ data }) {
 
         <p>Technologies du projets</p>
         <SearchInput data={technologies} clickHandler={addTechnology} />
-        <div>
+
+        <div className="flex gap-4">
           {selectedTechnology.map((technology, i) => (
-            <div key={i} className="flex">
+            <div key={i} className="flex items-center gap-1">
               <p>{technology.libelle}</p>
+
+              {/* Button to delete a technologie */}
               <div
-                className=" bg-red-600 text-white p-1 rounded-lg"
+                className="bg-red text-white p-1 rounded-lg cursor-pointer"
                 onClick={() => {
                   // add a technology to the project
                   setProject({
@@ -243,8 +263,9 @@ export default function FormProject({ data }) {
           onInput={e => handleFiles(e)}
           multiple
         />
+
         {project.imgs !== [] ? (
-          <div className="flex">
+          <div className="flex gap-4 mt-2">
             {Object.entries(project.imgs).map((img, i) => {
               return (
                 <div
@@ -266,7 +287,12 @@ export default function FormProject({ data }) {
         ) : (
           ""
         )}
-        <button type="submit">create</button>
+        <button
+          type="submit"
+          className="bg-green-600 text-white p-4 mt-8 rounded-lg"
+        >
+          create
+        </button>
       </form>
     </div>
   );

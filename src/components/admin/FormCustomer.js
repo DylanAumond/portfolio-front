@@ -57,7 +57,7 @@ export default function FormCustomer({ data }) {
 
   return (
     <div className="ml-8  w-1/2">
-      <p>FormCustomer</p>
+      <h1>{data !== undefined ? "Edit" : "Add"} a customer</h1>
       <form
         className="flex flex-col w-full gap-6 "
         onSubmit={e => handleSubmit(e)}

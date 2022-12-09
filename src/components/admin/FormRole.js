@@ -4,20 +4,27 @@ import { createRole } from "../../api/roles";
 
 export default function FormRole() {
   const dispatch = useDispatch();
+
   const initRole = {
     libelle: "",
   };
+
   const [role, setRole] = useState(initRole);
+
   const handleChange = (e) => {
     setRole({ ...role, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createRole(role));
   };
+
   return (
     <div>
+      <h1>Add a role</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
+        
         <input
           type={"text"}
           placeholder="role libelle"
@@ -25,9 +32,11 @@ export default function FormRole() {
           value={role.libelle}
           onChange={(e) => handleChange(e)}
         />
-        <button type="submit" className="bg-green-600 text-white">
-          Créer un role
+
+        <button type="submit"  className=" bg-green-400 w-48 mx-8 rounded-lg">
+          create
         </button>
+
       </form>
     </div>
   );
