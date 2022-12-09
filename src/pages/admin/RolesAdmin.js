@@ -25,7 +25,7 @@ export default function RolesAdmin() {
             <div key={i}>
               <p>{role.libelle}</p>
               <button
-                className="bg-red-600 text-white"
+                className="bg-red text-white"
                 onClick={() => dispatch(deleteRole(role._id))}
               >
                 Delete
