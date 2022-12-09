@@ -56,64 +56,68 @@ export default function FormCustomer({ data }) {
   };
 
   return (
-    <div className="ml-8  w-1/2">
-      <h1>{data !== undefined ? "Edit" : "Add"} a customer</h1>
-      <form
-        className="flex flex-col w-full gap-6 "
-        onSubmit={e => handleSubmit(e)}
-      >
-        <label htmlFor="libelle">Libelle</label>
-        <input
-          type={"text"}
-          placeholder="libelle"
-          className="w-72 border-y-2"
-          name="libelle"
-          value={customer.libelle}
-          onChange={e => handleChange(e)}
-          required={true}
-        />
+    <div className="ml-8 mt-8 w-5/6 flex justify-center">
+      <div>
+        <h1 className=" text-xl mb-8">
+          {data !== undefined ? "Edit" : "Add"} a customer
+        </h1>
+        <form
+          className="flex flex-col w-full gap-6 "
+          onSubmit={e => handleSubmit(e)}
+        >
+          <label htmlFor="libelle">Libelle</label>
+          <input
+            type={"text"}
+            placeholder="libelle"
+            className="w-72 border-y-2"
+            name="libelle"
+            value={customer.libelle}
+            onChange={e => handleChange(e)}
+            required={true}
+          />
 
-        <label htmlFor="url">web site url</label>
-        <input
-          type={"text"}
-          placeholder="url"
-          className="w-72 border-y-2 "
-          name="url"
-          value={customer.url}
-          onChange={e => handleChange(e)}
-        />
+          <label htmlFor="url">web site url</label>
+          <input
+            type={"text"}
+            placeholder="url"
+            className="w-72 border-y-2 "
+            name="url"
+            value={customer.url}
+            onChange={e => handleChange(e)}
+          />
 
-        <input
-          className="my-4"
-          type={"file"}
-          name="logo"
-          onInput={e => handleFiles(e)}
-          accept={"image/*"}
-          required={data !== undefined ? false : true}
-        />
-        {customer.logo !== "" ? (
-          <div
-            className="w-16 h-16 bg-cover bg-center"
-            style={
-              customer.logo[0] instanceof Blob
-                ? {
-                    backgroundImage: `url(${URL.createObjectURL(
-                      customer.logo[0]
-                    )})`,
-                  }
-                : {
-                    backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${customer.logo})`,
-                  }
-            }
-          ></div>
-        ) : (
-          <p>No image upload yet</p>
-        )}
+          <input
+            className="my-4"
+            type={"file"}
+            name="logo"
+            onInput={e => handleFiles(e)}
+            accept={"image/*"}
+            required={data !== undefined ? false : true}
+          />
+          {customer.logo !== "" ? (
+            <div
+              className="w-16 h-16 bg-cover bg-center"
+              style={
+                customer.logo[0] instanceof Blob
+                  ? {
+                      backgroundImage: `url(${URL.createObjectURL(
+                        customer.logo[0]
+                      )})`,
+                    }
+                  : {
+                      backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${customer.logo})`,
+                    }
+              }
+            ></div>
+          ) : (
+            <p>No image upload yet</p>
+          )}
 
-        <button type="submit" className=" bg-green-400 w-48 m-8 rounded-lg">
-          {data !== undefined ? "update customer" : "add customer"}
-        </button>
-      </form>
+          <button type="submit" className=" bg-green-400 w-48 m-8 rounded-lg">
+            {data !== undefined ? "update customer" : "add customer"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
