@@ -33,6 +33,7 @@ export default function SearchInput({data,clickHandler}) {
               placeholder="search"
               name="inputSearch"
               autoComplete="off"
+              className='border-y-2'
               value={inputSearch}
               onChange={(e) => {
                 setInputSearch(e.target.value)

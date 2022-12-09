@@ -33,12 +33,13 @@ export default function FormTechnology({ data }) {
       }
     }
     data !== undefined ? dispatch(updateTechnology(formData, technology._id)) : dispatch(postTechnology(formData))
-    
   };
   return (
     <div>
-      <p>FormTechnology</p>
+      <h1>{data !== undefined ? 'Edit' : 'Add'} a technology</h1>
+
       <form className="flex flex-col w-96" onSubmit={(e) => handleSubmit(e)}>
+
         <label htmlFor="libelle">Libelle</label>
         <input
           type={"text"}
@@ -48,6 +49,7 @@ export default function FormTechnology({ data }) {
           onChange={(e) => handleChange(e)}
           required = {true}
         />
+
         <input
           type={"file"}
           name="logo"
@@ -55,27 +57,31 @@ export default function FormTechnology({ data }) {
           required = {data !== undefined ? false : true}
         />
 
-        {technology.logo !== '' ? (
+        {technology.logo !== '' ? 
+        (
           <div
             className="w-16 h-16 bg-cover bg-center"
-            style={
-              technology.logo[0] instanceof Blob
-                ? {
-                    backgroundImage: `url(${URL.createObjectURL(
-                      technology.logo[0]
-                    )})`,
-                  }
-                : {
-                    backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${technology.logo})`,
-                  }
+            style=
+            {
+              technology.logo[0] instanceof Blob ? 
+                {
+                  backgroundImage: `url(${URL.createObjectURL(technology.logo[0])})`,
+                }
+                : 
+                {
+                  backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${technology.logo})`,
+                }
             }
           ></div>
-        ) : (
+        ) : 
+        (
           <p>No image upload yet</p>
         )}
+
         <button type="submit"  className=" bg-green-400  m-4 rounded-lg">
           {data !== undefined ? "update technology" : "add technology"}
         </button>
+
       </form>
     </div>
   );

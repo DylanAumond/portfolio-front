@@ -27,12 +27,13 @@ export default function FormProjectTasks({projectTasks, save}) {
   return (
     <div>
         <div>
-            <div>Ajouter un tâche</div>
+            <div>Tasks</div>
 
-            <input type='text' name='fr' placeholder='fr' value={task.fr} onChange={(e)=>handleChange(e)}/>
-            <input type='text' name='en' placeholder='en' value={task.en} onChange={(e)=>handleChange(e)}/>
-            <div onClick={()=>{addTask()}}>
-                Ajouter
+            <input type='text' name='fr' placeholder='FR' className='w-1/2 border-y-2' value={task.fr} onChange={(e)=>handleChange(e)}/>
+            <input type='text' name='en' placeholder='EN' className='w-1/2 border-y-2' value={task.en} onChange={(e)=>handleChange(e)}/>
+            
+            <div onClick={()=>{addTask()}} className="bg-blue-600 p-2 m-2 rounded-lg text-center text-white cursor-pointer">
+                Add
             </div>
         </div>
 
@@ -43,7 +44,7 @@ export default function FormProjectTasks({projectTasks, save}) {
                     <div>EN: {task.en}</div>
                 </div>
                 <div
-                    className='cursor-pointer ml-4'
+                    className='cursor-pointer ml-4 bg-red text-white p-1 rounded-lg cursor-pointer'
                     onClick={()=>{removeTask(task);}}
                 >
                     X

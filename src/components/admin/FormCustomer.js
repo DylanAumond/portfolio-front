@@ -53,7 +53,7 @@ export default function FormCustomer({ data }) {
 
   return (
     <div className="ml-8 mt-28 w-1/2">
-      <p>FormCustomer</p>
+      <h1>{data !== undefined ? 'Edit' : 'Add'} a customer</h1>
       <form
         className="flex flex-col w-full h-72 mt-4"
         onSubmit={(e) => handleSubmit(e)}
@@ -63,7 +63,7 @@ export default function FormCustomer({ data }) {
         <input
           type={"text"}
           placeholder="libelle"
-          className="w-72 "
+          className="w-72"
           name="libelle"
           value={customer.libelle}
           onChange={(e) => handleChange(e)}
