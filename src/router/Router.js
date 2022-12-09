@@ -18,6 +18,7 @@ import TechnologyAdmin from "../pages/admin/TechnologyAdmin.js";
 // error pages
 import Page403 from "../pages/Page403.js";
 import Page404 from "../pages/Page404.js";
+import { HomeAdmin } from "../pages/admin/HomeAdmin.js";
 
 export default function Router() {
   return (
@@ -30,6 +31,7 @@ export default function Router() {
 
         {/* admin's pages */}
         <Route path="admin">
+          <Route index element={<HomeAdmin />} />
           <Route path="customers" element={<CustomersAdmin />} />
           <Route path="customers/:id" element={<CustomerAdmin />} />
           <Route path="technologies" element={<TechnologiesAdmin />} />

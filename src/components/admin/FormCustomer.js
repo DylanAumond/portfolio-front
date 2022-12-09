@@ -7,27 +7,29 @@ export default function FormCustomer({ data }) {
 
   // default customer value
   const initForm = {
-        libelle: "",
-        logo: "",
-        url: "",
+    libelle: "",
+    logo: "",
+    url: "",
   };
   // create a form data object
   const formData = new FormData();
 
   // set the customer data
-  const [customer, setCustomer] = useState(data !== undefined ? data : initForm);
+  const [customer, setCustomer] = useState(
+    data !== undefined ? data : initForm
+  );
 
   // handle the change
-  const handleChange = (e) => {
+  const handleChange = e => {
     setCustomer({ ...customer, [e.target.name]: e.target.value });
   };
 
   // handle files upload
-  const handleFiles = (e) => {
+  const handleFiles = e => {
     setCustomer({ ...customer, logo: e.target.files });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     // prevent from refresh
     e.preventDefault();
     // for each key in customer
@@ -38,35 +40,36 @@ export default function FormCustomer({ data }) {
         if (value[0] instanceof Blob) {
           formData.append(key, value[0], value[0].name);
         }
-      } 
-      else {
+      } else {
         // append value to the customer
         formData.append(key, value);
       }
     }
     // if data edit the current customer
-    if (data !== undefined){dispatch(updateCustomer(formData, customer._id));
+    if (data !== undefined) {
+      dispatch(updateCustomer(formData, customer._id));
     }
-    // else create a new customer 
-    else {dispatch(postCustomer(formData));}
+    // else create a new customer
+    else {
+      dispatch(postCustomer(formData));
+    }
   };
 
   return (
-    <div className="ml-8 mt-28 w-1/2">
+    <div className="ml-8  w-1/2">
       <p>FormCustomer</p>
       <form
-        className="flex flex-col w-full h-72 mt-4"
-        onSubmit={(e) => handleSubmit(e)}
+        className="flex flex-col w-full gap-6 "
+        onSubmit={e => handleSubmit(e)}
       >
-
         <label htmlFor="libelle">Libelle</label>
         <input
           type={"text"}
           placeholder="libelle"
-          className="w-72 "
+          className="w-72 border-y-2"
           name="libelle"
           value={customer.libelle}
-          onChange={(e) => handleChange(e)}
+          onChange={e => handleChange(e)}
           required={true}
         />
 
@@ -74,17 +77,17 @@ export default function FormCustomer({ data }) {
         <input
           type={"text"}
           placeholder="url"
-          className="w-72 "
+          className="w-72 border-y-2 "
           name="url"
           value={customer.url}
-          onChange={(e) => handleChange(e)}
+          onChange={e => handleChange(e)}
         />
 
         <input
-          className="mt-4"
+          className="my-4"
           type={"file"}
           name="logo"
-          onInput={(e) => handleFiles(e)}
+          onInput={e => handleFiles(e)}
           accept={"image/*"}
           required={data !== undefined ? false : true}
         />
