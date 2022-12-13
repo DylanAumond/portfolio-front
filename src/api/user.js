@@ -1,5 +1,6 @@
 import { API} from '.'
 import { ADD_TOAST } from '../constant/toasts'
+import * as constant from "../constant/users";
 
 
 // login the user
@@ -38,4 +39,13 @@ export const login = (user) => {
     API.post('/users/refreshToken')
     .then((res)=>res)
     .catch((err)=>console.log(err))
+  }
+
+  // get users
+  export const getUsers = () => {
+    return (dispatch) => {
+      API.get('users')
+      .then(res =>dispatch({ type: constant.GET_USERS, payload: res.data }))
+      .catch((err)=>console.log(err))
+    }
   }

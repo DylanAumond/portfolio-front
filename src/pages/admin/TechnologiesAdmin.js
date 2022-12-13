@@ -17,31 +17,36 @@ export default function TechnologiesAdmin() {
   return (
     <div className="flex">
       <NavBar />
-      <div className="flex flex-wrap">
+      <div className="w-full flex flex-wrap">
         {technologies.map((technology, i) => {
           return (
-            <div key={i} className="flex items-center">
+            <div key={i} className="flex">
               <div
                 className=" h-20 w-20 bg-center bg-cover"
                 style={{
                   backgroundImage: `url(${process.env.REACT_APP_API_URL}/public/images/${technology.logo})`,
                 }}
               ></div>
+
               <div>
                 <p>{technology.libelle}</p>
+                
                 <button
                   onClick={() => dispatch(deleteTechnology(technology._id))}
                   className="bg-red p-1 text-white text-sm"
                 >
                   Delete
                 </button>
+
                 <Link
                   className="bg-orange-600 p-1 text-white text-sm"
                   to={`/admin/technologies/${technology._id}`}
                 >
                   Update
                 </Link>
+
               </div>
+
             </div>
           );
         })}

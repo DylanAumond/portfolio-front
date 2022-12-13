@@ -25,6 +25,8 @@ import TechnologiesAdmin from "../pages/admin/TechnologiesAdmin.js";
 import TechnologyAdmin from "../pages/admin/TechnologyAdmin.js";
 import AddTechnologyAdmin from "../pages/admin/AddTechnologyAdmin.js";
 
+import UsersAdmin from "../pages/admin/UsersAdmin.js";
+
 // error pages
 import Page403 from "../pages/Page403.js";
 import Page404 from "../pages/Page404.js";
@@ -56,6 +58,9 @@ export default function Router() {
           < Route path="project/new" element={<AddProjectAdmin />} />
 
           <Route path="roles" element={<RolesAdmin />} />
+
+          <Route path="users" element={<UsersAdmin />} />
+
         </Route>
 
         {/*catch all routes*/}

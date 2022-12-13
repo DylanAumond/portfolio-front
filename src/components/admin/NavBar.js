@@ -62,6 +62,16 @@ export default function NavBar() {
             Add Role
           </NavLink>
         </li>
+
+        <li className="mt-10 border-y-2">
+          <NavLink
+            to="/admin/users"
+            style={{ color: "white", margin: "50px" }}
+          >
+            See Users
+          </NavLink>
+        </li>
+
       </ul>
     </div>
   );
