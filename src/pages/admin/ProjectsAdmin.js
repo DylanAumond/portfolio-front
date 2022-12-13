@@ -20,10 +20,12 @@ export default function ProjectsAdmin() {
   return (
     <div className="flex">
       <NavBar />
-        <div className=" grid xl:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2">
+      <div>
+        <h1 className="text-center text-xl">Projects</h1>
+        <div className="mt-8 flex flex-wrap gap-6 ">
           {projects.map((project, i) => {
             return (
-              <div key={i} className="flex items-center">
+              <div key={i} className="flex">
                 <div
                   className=" h-20 w-20 bg-center bg-cover"
                   style={{
@@ -50,6 +52,7 @@ export default function ProjectsAdmin() {
             );
           })}
         </div>
+      </div>
     </div>
   );
 }

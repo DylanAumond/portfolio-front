@@ -27,7 +27,7 @@ export default function NavBar() {
             to="/admin/projects"
             style={{ color: "white", margin: "50px" }}
           >
-            See Project
+            See Projects
           </NavLink>
         </li>
         <li className="mt-10 border-y-2">
@@ -38,7 +38,7 @@ export default function NavBar() {
             Add Project
           </NavLink>
         </li>
-        
+
         <li className="mt-10 border-y-2">
           <NavLink
             to="/admin/technologies"
@@ -55,4 +55,4 @@ export default function NavBar() {
       </ul>
     </div>
   );
-};
+}

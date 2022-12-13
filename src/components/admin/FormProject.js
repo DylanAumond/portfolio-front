@@ -137,163 +137,162 @@ export default function FormProject({ data }) {
   };
 
   return (
-    <div style={{ maxWidth: "1000px", minWidth: "300px", margin: "auto" }}>
-      <p>{data !== undefined ? "Edit" : "Add"} a project</p>
+    <div className=" w-11/12 flex justify-center">
+      <div>
+        <p>{data !== undefined ? "Edit" : "Add"} a project</p>
 
-      <form
-        className="flex flex-col w-2/3 m-auto"
-        onSubmit={e => handleSubmit(e)}
-      >
-        <div>
-          <p>Libelle</p>
-          <input
-            type={"text"}
-            placeholder="libelle"
-            name="libelle"
-            className="border-y-2"
-            value={project.libelle}
-            onChange={e => handleChange(e)}
-          />
-        </div>
+        <form className="flex flex-col m-auto" onSubmit={e => handleSubmit(e)}>
+          <div>
+            <p>Libelle</p>
+            <input
+              type={"text"}
+              placeholder="libelle"
+              name="libelle"
+              className="border-y-2"
+              value={project.libelle}
+              onChange={e => handleChange(e)}
+            />
+          </div>
 
-        <p>client du projet</p>
-        {project.customer === "" ? (
-          <SearchInput data={customers} clickHandler={setCustomer} />
-        ) : (
-          <p>
-            {selectedCustomer.libelle}{" "}
-            <button
-              className=" bg-orange-600 text-white p-1 rounded-lg"
-              onClick={() => {
-                setProject({ ...project, customer: "" });
-                setSelectedCustomer("");
-              }}
-            >
-              update
-            </button>
-          </p>
-        )}
-
-        <div className="flex-1">
-          <p>description du projet fr</p>
-          <textarea
-            placeholder="description fr"
-            name="fr"
-            className="w-full"
-            value={project.description.fr}
-            onChange={e =>
-              setProject({
-                ...project,
-                description: { ...project.description, fr: e.target.value },
-              })
-            }
-          ></textarea>
-        </div>
-
-        <div className="flex-1">
-          <p>description du projet fr</p>
-          <textarea
-            placeholder="description FR"
-            name="fr"
-            className="w-full border-y-2 h-32"
-            value={project.description.fr}
-            onChange={e =>
-              setProject({
-                ...project,
-                description: { ...project.description, fr: e.target.value },
-              })
-            }
-          ></textarea>
-        </div>
-
-        <div className="flex-1">
-          <p>description du projet en</p>
-          <textarea
-            placeholder="description EN"
-            name="en"
-            className="w-full border-y-2 h-32"
-            value={project.description.en}
-            onChange={e =>
-              setProject({
-                ...project,
-                description: { ...project.description, en: e.target.value },
-              })
-            }
-          ></textarea>
-        </div>
-
-        <FormProjectTasks projectTasks={project.tasks} save={setTasks} />
-
-        <p>Technologies du projets</p>
-        <SearchInput data={technologies} clickHandler={addTechnology} />
-
-        <div className="flex gap-4">
-          {selectedTechnology.map((technology, i) => (
-            <div key={i} className="flex items-center gap-1">
-              <p>{technology.libelle}</p>
-
-              {/* Button to delete a technologie */}
-              <div
-                className="bg-red text-white p-1 rounded-lg cursor-pointer"
+          <p>client du projet</p>
+          {project.customer === "" ? (
+            <SearchInput data={customers} clickHandler={setCustomer} />
+          ) : (
+            <p>
+              {selectedCustomer.libelle}{" "}
+              <button
+                className=" bg-orange-600 text-white p-1 rounded-lg"
                 onClick={() => {
-                  // add a technology to the project
-                  setProject({
-                    ...project,
-                    technologies: project.technologies
-                      // check if technology is already in the project
-                      .filter(tech => tech !== technology._id),
-                  });
-                  // add a technology to the selected technology list
-                  setSelectedTechnology(
-                    // check if technology is already selected
-                    selectedTechnology.filter(tech => tech !== technology)
-                  );
+                  setProject({ ...project, customer: "" });
+                  setSelectedCustomer("");
                 }}
               >
-                X
-              </div>
-            </div>
-          ))}
-        </div>
+                update
+              </button>
+            </p>
+          )}
 
-        <p>Images</p>
-        <input
-          type={"file"}
-          name="imgs"
-          onInput={e => handleFiles(e)}
-          multiple
-        />
-
-        {project.imgs !== [] ? (
-          <div className="flex gap-4 mt-2">
-            {Object.entries(project.imgs).map((img, i) => {
-              return (
-                <div
-                  key={i}
-                  className="w-32 h-32 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url(${
-                      img[1] instanceof Blob
-                        ? URL.createObjectURL(img[1])
-                        : process.env.REACT_APP_API_URL +
-                          "/public/images/" +
-                          img[1]
-                    })`,
-                  }}
-                ></div>
-              );
-            })}
+          <div className="flex-1">
+            <p>description du projet fr</p>
+            <textarea
+              placeholder="description fr"
+              name="fr"
+              className="w-full"
+              value={project.description.fr}
+              onChange={e =>
+                setProject({
+                  ...project,
+                  description: { ...project.description, fr: e.target.value },
+                })
+              }
+            ></textarea>
           </div>
-        ) : (
-          ""
-        )}
-        <button
-          type="submit"
-          className="bg-green-600 text-white p-4 mt-8 rounded-lg"
-        >
-          create
-        </button>
-      </form>
+
+          <div className="flex-1">
+            <p>description du projet fr</p>
+            <textarea
+              placeholder="description FR"
+              name="fr"
+              className="w-full border-y-2 h-32"
+              value={project.description.fr}
+              onChange={e =>
+                setProject({
+                  ...project,
+                  description: { ...project.description, fr: e.target.value },
+                })
+              }
+            ></textarea>
+          </div>
+
+          <div className="flex-1">
+            <p>description du projet en</p>
+            <textarea
+              placeholder="description EN"
+              name="en"
+              className="w-full border-y-2 h-32"
+              value={project.description.en}
+              onChange={e =>
+                setProject({
+                  ...project,
+                  description: { ...project.description, en: e.target.value },
+                })
+              }
+            ></textarea>
+          </div>
+
+          <FormProjectTasks projectTasks={project.tasks} save={setTasks} />
+
+          <p>Technologies du projets</p>
+          <SearchInput data={technologies} clickHandler={addTechnology} />
+
+          <div className="flex gap-4">
+            {selectedTechnology.map((technology, i) => (
+              <div key={i} className="flex items-center gap-1">
+                <p>{technology.libelle}</p>
+
+                {/* Button to delete a technologie */}
+                <div
+                  className="bg-red text-white p-1 rounded-lg cursor-pointer"
+                  onClick={() => {
+                    // add a technology to the project
+                    setProject({
+                      ...project,
+                      technologies: project.technologies
+                        // check if technology is already in the project
+                        .filter(tech => tech !== technology._id),
+                    });
+                    // add a technology to the selected technology list
+                    setSelectedTechnology(
+                      // check if technology is already selected
+                      selectedTechnology.filter(tech => tech !== technology)
+                    );
+                  }}
+                >
+                  X
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p>Images</p>
+          <input
+            type={"file"}
+            name="imgs"
+            onInput={e => handleFiles(e)}
+            multiple
+          />
+
+          {project.imgs !== [] ? (
+            <div className="flex gap-4 mt-2">
+              {Object.entries(project.imgs).map((img, i) => {
+                return (
+                  <div
+                    key={i}
+                    className="w-32 h-32 bg-cover bg-center"
+                    style={{
+                      backgroundImage: `url(${
+                        img[1] instanceof Blob
+                          ? URL.createObjectURL(img[1])
+                          : process.env.REACT_APP_API_URL +
+                            "/public/images/" +
+                            img[1]
+                      })`,
+                    }}
+                  ></div>
+                );
+              })}
+            </div>
+          ) : (
+            ""
+          )}
+          <button
+            type="submit"
+            className="bg-green-600 text-white p-4 mt-8 rounded-lg"
+          >
+            create
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
