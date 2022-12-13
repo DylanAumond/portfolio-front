@@ -44,9 +44,19 @@ export default function NavBar() {
             to="/admin/technologies"
             style={{ color: "white", margin: "50px" }}
           >
+            See Technologies
+          </NavLink>
+        </li>
+        <li className="mt-10 border-y-2">
+          <NavLink
+            to="/admin/technology/new"
+            style={{ color: "white", margin: "50px" }}
+          >
             Add Technology
           </NavLink>
         </li>
+
+        
         <li className="mt-10 border-y-2">
           <NavLink to="/admin/roles" style={{ color: "white", margin: "50px" }}>
             Add Role
