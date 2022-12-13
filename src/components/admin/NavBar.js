@@ -38,7 +38,7 @@ export default function NavBar() {
             Add Project
           </NavLink>
         </li>
-        
+
         <li className="mt-10 border-y-2">
           <NavLink
             to="/admin/technologies"
@@ -75,4 +75,4 @@ export default function NavBar() {
       </ul>
     </div>
   );
-};
+}

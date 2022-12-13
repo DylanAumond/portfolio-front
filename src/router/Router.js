@@ -10,16 +10,13 @@ import Home from "../pages/Home.js";
 // admin pages
 import CustomerAdmin from "../pages/admin/CustomerAdmin.js";
 import CustomersAdmin from "../pages/admin/CustomersAdmin.js";
-import AddCustomerAdmin from "../pages/admin/AddCustomerAdmin.js";
-
+import AddCustomerAdmin from "../pages/admin/addCustomerAdmin.js";
 
 import ProjectAdmin from "../pages/admin/ProjectAdmin.js";
 import ProjectsAdmin from "../pages/admin/ProjectsAdmin.js";
 import AddProjectAdmin from "../pages/admin/AddProjectAdmin.js";
 
-
 import RolesAdmin from "../pages/admin/RolesAdmin.js";
-
 
 import TechnologiesAdmin from "../pages/admin/TechnologiesAdmin.js";
 import TechnologyAdmin from "../pages/admin/TechnologyAdmin.js";
@@ -55,7 +52,7 @@ export default function Router() {
 
           <Route path="projects" element={<ProjectsAdmin />} />
           <Route path="projects/:id" element={<ProjectAdmin />} />
-          < Route path="project/new" element={<AddProjectAdmin />} />
+          <Route path="project/new" element={<AddProjectAdmin />} />
 
           <Route path="roles" element={<RolesAdmin />} />
 
