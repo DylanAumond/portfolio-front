@@ -10,7 +10,7 @@ import Home from "../pages/Home.js";
 // admin pages
 import CustomerAdmin from "../pages/admin/CustomerAdmin.js";
 import CustomersAdmin from "../pages/admin/CustomersAdmin.js";
-import AddCustomerAdmin from "../pages/admin/addCustomerAdmin.js";
+import AddCustomerAdmin from "../pages/admin/AddCustomerAdmin.js";
 
 import ProjectAdmin from "../pages/admin/ProjectAdmin.js";
 import ProjectsAdmin from "../pages/admin/ProjectsAdmin.js";

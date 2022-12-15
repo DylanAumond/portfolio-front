@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <div className="w-72 h-screen bg-red flex justify-center ">
+    <div className="w-96 h-screen bg-red flex justify-center ">
       <ul>
         <li className="mt-10 border-y-2">
           <NavLink
