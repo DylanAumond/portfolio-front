@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,16 +8,19 @@ import { getCustomers } from "../api/customers";
 import { getProjects } from "../api/projects";
 import { getTechnologies } from "../api/technologies";
 
-import CardProject from "../components/CardProject";
-import CustomerSlider from "../components/CustomerSlider";
-import Technocard from "../components/Technocard";
+//import CardProject from "../components/CardProject";
+//import CustomerSlider from "../components/CustomerSlider";
+//import Technocard from "../components/Technocard";
 import Loader from "../components/Loader";
 
 import ScreenAnalizer from "../ScreenAnalizer";
 
+const CardProject = React.lazy(()=> import('../components/CardProject'))
+const CustomerSlider  = React.lazy(()=> import('../components/CustomerSlider'))
+const Technocard = React.lazy(()=> import('../components/Technocard'))
+
 export default function Home() {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true);
 
   // get the translations from home
   const { t } = useTranslation("Home");
@@ -66,19 +69,12 @@ export default function Home() {
 
   // rehydrate the reducers on dispatch action
   useEffect(() => {
-    async function getDataFromApi() {
-      setIsLoading(true);
       dispatch(getCustomers());
       dispatch(getProjects());
       dispatch(getTechnologies());
-    }
-
-    setTimeout(() => getDataFromApi().then(() => setIsLoading(false)), 2000);
   }, [dispatch]);
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <div>
       {/* Main banner */}
       <div className="w-full sm:h-480 sm:flex sm:justify-center sm:items-center">
@@ -106,7 +102,9 @@ export default function Home() {
 
         {/* customers' carrousel */}
         {customers.length > 4 ? (
-          <CustomerSlider customers={customers} />
+          <Suspense fallback={<Loader/>}>
+            <CustomerSlider customers={customers} />
+          </Suspense>
         ) : (
           <div className="flex justify-around">
             {customers.map((customer, i) => {
@@ -133,12 +131,13 @@ export default function Home() {
           <h2 className=" text-2xl">{t("Projects")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
-
         {/* Projects' list */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-x-10 p-4 justify-center">
           {/* For each project */}
           {projects.map((project, index) => (
-            <CardProject key={index} project={project} index={index} />
+            <Suspense fallback={<Loader/>}>
+              <CardProject key={index} project={project} index={index} />
+            </Suspense>
           ))}
         </div>
       </div>
@@ -161,7 +160,9 @@ export default function Home() {
               key={index}
             >
               {row.map((item, index) => (
-                <Technocard key={index} technologie={item} size={colSize} />
+                <Suspense fallback={<Loader/>}>
+                  <Technocard key={index} technologie={item} size={colSize} />
+                </Suspense>
               ))}
             </div>
           ))}
