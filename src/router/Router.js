@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-// pages accessible for every user
+// pages accessible from every user
 import LoginForm from "../components/LoginForm.js";
 import RegisterForm from "../components/RegisterForm.js";
 
@@ -27,7 +27,7 @@ import UsersAdmin from "../pages/admin/UsersAdmin.js";
 // error pages
 import Page403 from "../pages/Page403.js";
 import Page404 from "../pages/Page404.js";
-import { HomeAdmin } from "../pages/admin/HomeAdmin.js";
+import HomeAdmin from "../pages/admin/HomeAdmin.js";
 
 export default function Router() {
   return (

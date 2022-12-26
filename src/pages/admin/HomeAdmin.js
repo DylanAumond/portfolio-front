@@ -1,10 +1,10 @@
 import React from "react";
 import NavBar from "../../components/admin/NavBar";
 
-export const HomeAdmin = () => {
+export default function HomeAdmin(){
   return (
-    <div>
+    <>
       <NavBar />
-    </div>
+    </>
   );
 };

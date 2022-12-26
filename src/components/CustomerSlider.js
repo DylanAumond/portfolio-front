@@ -12,7 +12,7 @@ export default function CustomerSlider({ customers }) {
     autoplaySpeed: 0,
   };
   return (
-    <div className=" overflow-hidden">
+    <div className="overflow-hidden">
       <Slider {...settings}>
         {customers.map((customer, i) => {
           return (
