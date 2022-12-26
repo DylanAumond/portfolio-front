@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-// pages accessible for every user
+// pages accessible from every user
 import LoginForm from "../components/LoginForm.js";
 import RegisterForm from "../components/RegisterForm.js";
 
@@ -10,7 +10,7 @@ import Home from "../pages/Home.js";
 // admin pages
 import CustomerAdmin from "../pages/admin/CustomerAdmin.js";
 import CustomersAdmin from "../pages/admin/CustomersAdmin.js";
-import AddCustomerAdmin from "../pages/admin/addCustomerAdmin.js";
+import AddCustomerAdmin from "../pages/admin/AddCustomerAdmin.js";
 
 import ProjectAdmin from "../pages/admin/ProjectAdmin.js";
 import ProjectsAdmin from "../pages/admin/ProjectsAdmin.js";
@@ -27,7 +27,7 @@ import UsersAdmin from "../pages/admin/UsersAdmin.js";
 // error pages
 import Page403 from "../pages/Page403.js";
 import Page404 from "../pages/Page404.js";
-import { HomeAdmin } from "../pages/admin/HomeAdmin.js";
+import HomeAdmin from "../pages/admin/HomeAdmin.js";
 
 export default function Router() {
   return (
