@@ -10,6 +10,12 @@ import { getTechnologies } from "../api/technologies";
 
 import Loader from "../components/Loader";
 
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
 const CustomerSlider = React.lazy(() => import("../components/CustomerSlider"));
 const CardProject = React.lazy(() => import("../components/CardProject"));
 const Technocard = React.lazy(() => import("../components/Technocard"));
@@ -27,11 +33,57 @@ export default function Home() {
   // get the technologies from the technologies' reducer
   const { technologies } = useSelector(state => state.technologiesReducer);
 
+  // animation technologies
+  const slideInTop = (elem, delay, duration) => {
+    gsap.fromTo(
+      elem,
+      {
+        opacity: 0,
+        y: -200,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        delay: delay || 0.4,
+        duration: duration || 0.6,
+        scrollTrigger: {
+          trigger: elem,
+          start: "top center",
+          end: "bottom center",
+        },
+      }
+    );
+  };
+
+  const slideInLeft = (elem, delay, duration) => {
+    gsap.fromTo(
+      elem,
+      {
+        opacity: 0,
+        x: -200,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        delay: delay || 0.4,
+        duration: duration || 0.6,
+        scrollTrigger: {
+          trigger: elem,
+          start: "top center",
+          end: "bottom center",
+        },
+      }
+    );
+  };
+
   // rehydrate the reducers on dispatch action
   useEffect(() => {
     dispatch(getCustomers());
     dispatch(getProjects());
     dispatch(getTechnologies());
+    slideInTop("#customers", "1", "1");
+    slideInLeft("#project", "1", "1");
+    slideInLeft("#cardTechno", "1", "1");
   }, [dispatch]);
 
   return (
@@ -53,7 +105,7 @@ export default function Home() {
       </div>
 
       {/* cutomers' Section */}
-      <div className="text-center p-4 sm:mt-0">
+      <div id="customers" className="text-center p-4 sm:mt-0">
         {/* customer's section title */}
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Customers")}</h2>
@@ -67,7 +119,7 @@ export default function Home() {
       </div>
 
       {/* Projects' Section */}
-      <div className="text-black  sm:mx-8 mt-16">
+      <div id="project" className="text-black lg:mt-24 sm:mx-8 mt-16">
         {/* Project's section tilte */}
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Projects")}</h2>
@@ -84,14 +136,17 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-white mb-10 mt-16 flex flex-col justify-center items-center">
+      <div className="bg-white mb-10 lg:mt-24 flex flex-col justify-center items-center">
         <div className="w-40">
           <h2 className=" text-2xl">{t("Technology")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
 
         {/* Technologies' list */}
-        <div className="grid md:grid-cols-4  grid-cols-2 gap-2 md:gap-4 ">
+        <div
+          id="cardTechno"
+          className="grid md:grid-cols-4  grid-cols-2 gap-2 md:gap-4 "
+        >
           {technologies.map((technology, index) => (
             <Suspense key={index} fallback={<Loader />}>
               <Technocard key={index} technology={technology} />
