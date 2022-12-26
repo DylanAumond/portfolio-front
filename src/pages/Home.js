@@ -10,10 +10,9 @@ import { getTechnologies } from "../api/technologies";
 
 import Loader from "../components/Loader";
 
-
-const CustomerSlider  = React.lazy(()=> import('../components/CustomerSlider'))
-const CardProject = React.lazy(()=> import('../components/CardProject'))
-const Technocard = React.lazy(()=> import('../components/Technocard'))
+const CustomerSlider = React.lazy(() => import("../components/CustomerSlider"));
+const CardProject = React.lazy(() => import("../components/CardProject"));
+const Technocard = React.lazy(() => import("../components/Technocard"));
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -30,9 +29,9 @@ export default function Home() {
 
   // rehydrate the reducers on dispatch action
   useEffect(() => {
-      dispatch(getCustomers());
-      dispatch(getProjects());
-      dispatch(getTechnologies());
+    dispatch(getCustomers());
+    dispatch(getProjects());
+    dispatch(getTechnologies());
   }, [dispatch]);
 
   return (
@@ -59,12 +58,12 @@ export default function Home() {
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Customers")}</h2>
           <div className="h-1 bg-red w-8 mb-5"></div>
-        </div>        
+        </div>
 
         {/* customers' carrousel */}
-          <Suspense fallback={<Loader/>}>
-            <CustomerSlider customers={customers} />
-          </Suspense>
+        <Suspense fallback={<Loader />}>
+          <CustomerSlider customers={customers} />
+        </Suspense>
       </div>
 
       {/* Projects' Section */}
@@ -78,7 +77,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-x-10 p-4 justify-center">
           {/* For each project */}
           {projects.map((project, index) => (
-            <Suspense key={index} fallback={<Loader/>}>
+            <Suspense key={index} fallback={<Loader />}>
               <CardProject key={index} project={project} index={index} />
             </Suspense>
           ))}
@@ -92,17 +91,14 @@ export default function Home() {
         </div>
 
         {/* Technologies' list */}
-        <div className="grid grid-cols-6 sm:grid-cols-8">
-          {technologies.map((technology,index)=>(
-            <Suspense key={index} fallback={<Loader/>}>
+        <div className="grid md:grid-cols-4  grid-cols-2 gap-2 md:gap-4 ">
+          {technologies.map((technology, index) => (
+            <Suspense key={index} fallback={<Loader />}>
               <Technocard key={index} technology={technology} />
             </Suspense>
-          ))
-          }
+          ))}
         </div>
-
       </div>
-
     </div>
   );
 }
