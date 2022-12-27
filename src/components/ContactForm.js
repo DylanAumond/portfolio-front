@@ -63,7 +63,7 @@ export default function ContactForm() {
           type="text"
           name="user_firstName"
           placeholder={t("FirstName")}
-          className="border-b-2 border-black-light"
+          className="border-b-2 border-black-light bg-transparent"
           required
         />
 
@@ -71,7 +71,7 @@ export default function ContactForm() {
           type="text"
           name="user_lastName"
           placeholder={t("LastName")}
-          className="border-b-2 border-black-light"
+          className="border-b-2 border-black-light bg-transparent"
           required
         />
 
@@ -79,7 +79,7 @@ export default function ContactForm() {
           type="email"
           name="user_email"
           placeholder="exemple@mail.com"
-          className="border-b-2 border-black-light"
+          className="border-b-2 border-black-light bg-transparent"
           required
         />
 
@@ -87,7 +87,7 @@ export default function ContactForm() {
           type="tel"
           name="user_phone"
           placeholder="+33 x xx xx xx xx"
-          className="border-b-2 border-black-light"
+          className="border-b-2 border-black-light bg-transparent"
           required
         />
 
@@ -95,14 +95,14 @@ export default function ContactForm() {
           type="text"
           name="object"
           placeholder={t("Subject")}
-          className="border-b-2 border-black-light sm:col-span-2"
+          className="border-b-2 border-black-light sm:col-span-2 bg-transparent"
           required
         />
 
         <textarea
           name="message"
           placeholder={t("WriteYourMessage")}
-          className="border-b-2 border-black-light sm:col-span-2"
+          className="border-b-2 border-black-light sm:col-span-2 bg-transparent"
           required
         />
 

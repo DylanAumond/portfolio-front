@@ -15,8 +15,9 @@ module.exports = {
         black: {
           light: "#2C2C2C",
         },
-        white: '#EDEDED',
+        white: "#EDEDED",
         red: "#DA0037",
+        whiteCard: "#FFFF",
       },
     },
   },

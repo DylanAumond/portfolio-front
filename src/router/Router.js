@@ -57,7 +57,6 @@ export default function Router() {
           <Route path="roles" element={<RolesAdmin />} />
 
           <Route path="users" element={<UsersAdmin />} />
-
         </Route>
 
         {/*catch all routes*/}
