@@ -12,6 +12,7 @@ import Loader from "../components/Loader";
 
 
 const CustomerSlider  = React.lazy(()=> import('../components/CustomerSlider'))
+const Services = React.lazy(()=> import('../components/Services'))
 const CardProject = React.lazy(()=> import('../components/CardProject'))
 const Technocard = React.lazy(()=> import('../components/Technocard'))
 
@@ -66,6 +67,21 @@ export default function Home() {
             <CustomerSlider customers={customers} />
           </Suspense>
       </div>
+
+      {/* Services' Section */}
+      <div className="text-center p-4 sm:mt-0">
+        {/* customer's section title */}
+        <div className="w-24 h-auto m-auto">
+          <h2 className=" text-2xl">{t("Services")}</h2>
+          <div className="h-1 bg-red w-8 mb-5"></div>
+        </div>
+
+        {/* Services */}
+        <Suspense fallback={<Loader/>}>
+          <Services/>
+        </Suspense>
+      </div>
+
 
       {/* Projects' Section */}
       <div className="text-black  sm:mx-8 mt-16">
