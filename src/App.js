@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
@@ -23,7 +23,9 @@ function App() {
       >
         <Toasts state={toasts} />
         <Modal state={modal} />
-        <Router />
+        <Suspense fallback={<p>...loading</p>}>
+          <Router />
+        </Suspense>
       </div>
       <Footer />
     </div>
