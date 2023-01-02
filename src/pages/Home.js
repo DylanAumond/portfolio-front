@@ -14,13 +14,11 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-const CustomerSlider  = React.lazy(()=> import('../components/CustomerSlider'))
-const Services = React.lazy(()=> import('../components/Services'))
-const CardProject = React.lazy(()=> import('../components/CardProject'))
-const Technocard = React.lazy(()=> import('../components/Technocard'))
+const CustomerSlider = React.lazy(() => import("../components/CustomerSlider"));
+const Services = React.lazy(() => import("../components/Services"));
+const CardProject = React.lazy(() => import("../components/CardProject"));
+const Technocard = React.lazy(() => import("../components/Technocard"));
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -84,7 +82,7 @@ export default function Home() {
     dispatch(getProjects());
     dispatch(getTechnologies());
     slideInTop("#customers", "1", "1");
-    slideInLeft("#project", "1", "1");
+    slideInLeft("#project");
     slideInLeft("#cardTechno", "1", "1");
   }, [dispatch]);
 
@@ -129,11 +127,10 @@ export default function Home() {
         </div>
 
         {/* Services */}
-        <Suspense fallback={<Loader/>}>
-          <Services/>
+        <Suspense fallback={<Loader />}>
+          <Services />
         </Suspense>
       </div>
-
 
       {/* Projects' Section */}
       <div id="project" className="text-black lg:mt-24 sm:mx-8 mt-16">
