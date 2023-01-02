@@ -1,33 +1,35 @@
-import React from "react";
+import React, {lazy} from "react";
 import { Routes, Route } from "react-router-dom";
 
 // pages accessible from every user
 import LoginForm from "../components/LoginForm.js";
 import RegisterForm from "../components/RegisterForm.js";
 
-import Home from "../pages/Home.js";
+const Home = lazy(()=>import("../pages/Home.js"))
+
 
 // admin pages
-import CustomerAdmin from "../pages/admin/CustomerAdmin.js";
-import CustomersAdmin from "../pages/admin/CustomersAdmin.js";
-import AddCustomerAdmin from "../pages/admin/AddCustomerAdmin.js";
+const CustomerAdmin = lazy( ()=>import("../pages/admin/CustomerAdmin.js"))
+const CustomersAdmin = lazy( () =>import("../pages/admin/CustomersAdmin.js"))
+const AddCustomerAdmin = lazy( () =>import("../pages/admin/AddCustomerAdmin.js"))
 
-import ProjectAdmin from "../pages/admin/ProjectAdmin.js";
-import ProjectsAdmin from "../pages/admin/ProjectsAdmin.js";
-import AddProjectAdmin from "../pages/admin/AddProjectAdmin.js";
+const ProjectAdmin = lazy( () => import("../pages/admin/ProjectAdmin.js"))
+const ProjectsAdmin = lazy( () => import("../pages/admin/ProjectsAdmin.js"))
+const AddProjectAdmin = lazy( () => import("../pages/admin/AddProjectAdmin.js"))
 
-import RolesAdmin from "../pages/admin/RolesAdmin.js";
+const RolesAdmin = lazy( () => import("../pages/admin/RolesAdmin.js"))
 
-import TechnologiesAdmin from "../pages/admin/TechnologiesAdmin.js";
-import TechnologyAdmin from "../pages/admin/TechnologyAdmin.js";
-import AddTechnologyAdmin from "../pages/admin/AddTechnologyAdmin.js";
+const TechnologiesAdmin = lazy( () => import("../pages/admin/TechnologiesAdmin.js"))
+const TechnologyAdmin = lazy( () => import("../pages/admin/TechnologyAdmin.js"))
+const AddTechnologyAdmin = lazy( () => import("../pages/admin/AddTechnologyAdmin.js"))
 
-import UsersAdmin from "../pages/admin/UsersAdmin.js";
+const UsersAdmin = lazy( () => import("../pages/admin/UsersAdmin.js"))
+
 
 // error pages
-import Page403 from "../pages/Page403.js";
-import Page404 from "../pages/Page404.js";
-import HomeAdmin from "../pages/admin/HomeAdmin.js";
+const Page403 = lazy( () => import("../pages/Page403.js"))
+const Page404 = lazy( () => import("../pages/Page403.js"))
+const HomeAdmin = lazy( () => import("../pages/admin/HomeAdmin.js"))
 
 export default function Router() {
   return (
