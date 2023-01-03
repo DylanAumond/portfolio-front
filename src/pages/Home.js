@@ -18,6 +18,7 @@ const CustomerSlider = React.lazy(() => import("../components/CustomerSlider"));
 const Services = React.lazy(() => import("../components/Services"));
 const CardProject = React.lazy(() => import("../components/CardProject"));
 const Technocard = React.lazy(() => import("../components/Technocard"));
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function Home() {
@@ -140,7 +141,7 @@ export default function Home() {
           <div className="h-1 bg-red w-8 mb-5 "></div>
         </div>
         {/* Projects' list */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-x-10 p-4 justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-x-10 p-4 justify-center sm:[&>*:nth-child(3n-2)]:mt-0 sm:[&>*:nth-child(3n-1)]:mt-16 sm:[&>*:nth-child(3n)]:mt-32 [&>*]:mt-8">
           {/* For each project */}
           {projects.map((project, index) => (
             <Suspense key={index} fallback={<Loader />}>
@@ -159,7 +160,7 @@ export default function Home() {
         {/* Technologies' list */}
         <div
           id="cardTechno"
-          className="grid md:grid-cols-4  grid-cols-2 gap-2 md:gap-4 "
+          className="grid md:grid-cols-4  grid-cols-2 gap-2 md:gap-4"
         >
           {technologies.map((technology, index) => (
             <Suspense key={index} fallback={<Loader />}>

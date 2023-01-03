@@ -9,7 +9,7 @@ export default function CardProject({ project, index }) {
   const dispatch = useDispatch();
   const [hover, setHover] = useState(false);
   return (
-    <div className={`mt-${(index % 3) * 8}`}>
+    <div>
       <div
         onMouseOver={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
