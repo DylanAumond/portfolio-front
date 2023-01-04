@@ -171,23 +171,7 @@ export default function FormProject({ data }) {
               </button>
             </p>
           )}
-
-          <div className="flex-1">
-            <p>description du projet fr</p>
-            <textarea
-              placeholder="description fr"
-              name="fr"
-              className="w-full"
-              value={project.description.fr}
-              onChange={e =>
-                setProject({
-                  ...project,
-                  description: { ...project.description, fr: e.target.value },
-                })
-              }
-            ></textarea>
-          </div>
-
+          
           <div className="flex-1">
             <p>description du projet fr</p>
             <textarea

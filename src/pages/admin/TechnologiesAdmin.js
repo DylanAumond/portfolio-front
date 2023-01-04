@@ -22,7 +22,7 @@ export default function TechnologiesAdmin() {
         <div className="flex flex-wrap gap-6 m-8">
           {technologies.map((technology, i) => {
             return (
-              <div key={i} className="bg-gray-900">
+              <div key={i} className="bg-whiteCard">
                 <div
                   className="h-20 w-20 bg-center bg-cover"
                   style={{

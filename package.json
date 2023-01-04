@@ -9,8 +9,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
-    "glamor": "^2.20.40",
-    "glamorous": "^5.0.0",
     "gsap": "^3.11.4",
     "i18next": "^21.8.14",
     "i18next-browser-languagedetector": "^6.1.4",

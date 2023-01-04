@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Technocard({ technology }) {
   return (
-    <div className="h-auto w-30 rounded-lg p-2 text-center">
+    <div className="bg-whiteCard h-auto w-30 rounded-lg p-2 text-center">
       <div
         className="h-24 w-24 bg-center bg-cover m-auto"
         style={{

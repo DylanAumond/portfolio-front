@@ -1,38 +1,40 @@
-import React, { useEffect, Suspense } from "react";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, Suspense } from "react"
+import { useTranslation } from "react-i18next"
+import { useDispatch, useSelector } from "react-redux"
 
-import { CONTACT } from "../constant/Modal";
+import { CONTACT } from "../constant/Modal"
 
-import { getCustomers } from "../api/customers";
-import { getProjects } from "../api/projects";
-import { getTechnologies } from "../api/technologies";
+import { getCustomers } from "../api/customers"
+import { getProjects } from "../api/projects"
+import { getTechnologies } from "../api/technologies"
 
-import Loader from "../components/Loader";
+import Loader from "../components/Loader"
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 
-const CustomerSlider = React.lazy(() => import("../components/CustomerSlider"));
-const Services = React.lazy(() => import("../components/Services"));
-const CardProject = React.lazy(() => import("../components/CardProject"));
-const Technocard = React.lazy(() => import("../components/Technocard"));
+const CustomerSlider = React.lazy(() => import("../components/CustomerSlider"))
+const Services = React.lazy(() => import("../components/Services"))
+const CardProject = React.lazy(() => import("../components/CardProject"))
+const Technocard = React.lazy(() => import("../components/Technocard"))
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function Home() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   // get the translations from home
-  const { t } = useTranslation("Home");
+  const { t } = useTranslation("Home")
 
   // get the customers from the customers' reducer
-  const { customers } = useSelector(state => state.customersReducer);
+  const { customers } = useSelector(state => state.customersReducer)
+
   // get the projects from the projects' reducer
-  const { projects } = useSelector(state => state.projectsReducer);
+  const { projects } = useSelector(state => state.projectsReducer)
+
   // get the technologies from the technologies' reducer
-  const { technologies } = useSelector(state => state.technologiesReducer);
+  const { technologies } = useSelector(state => state.technologiesReducer)
 
   // animation technologies
   const slideInTop = (elem, delay, duration) => {
@@ -53,8 +55,8 @@ export default function Home() {
           end: "bottom center",
         },
       }
-    );
-  };
+    )
+  }
 
   const slideInLeft = (elem, delay, duration) => {
     gsap.fromTo(
@@ -74,21 +76,21 @@ export default function Home() {
           end: "bottom center",
         },
       }
-    );
-  };
+    )
+  }
 
   // rehydrate the reducers on dispatch action
   useEffect(() => {
-    dispatch(getCustomers());
-    dispatch(getProjects());
-    dispatch(getTechnologies());
-    slideInTop("#customers", "1", "1");
-    slideInLeft("#project");
-    slideInLeft("#cardTechno", "1", "1");
-  }, [dispatch]);
-
+    dispatch(getCustomers())
+    dispatch(getProjects())
+    dispatch(getTechnologies())
+    slideInTop("#customers", "1", "1")
+    slideInLeft("#project")
+    slideInLeft("#cardTechno", "1", "1")
+  }, [dispatch])
+  
   return (
-    <div>
+    <div className="[&>*]:my-16">
       {/* Main banner */}
       <div className="w-full sm:h-480 sm:flex sm:justify-center sm:items-center">
         <div className="text-center">
@@ -106,7 +108,7 @@ export default function Home() {
       </div>
 
       {/* cutomers' Section */}
-      <div id="customers" className="text-center p-4 sm:mt-0">
+      <div id="customers" className="text-center p-4">
         {/* customer's section title */}
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Customers")}</h2>
@@ -134,7 +136,7 @@ export default function Home() {
       </div>
 
       {/* Projects' Section */}
-      <div id="project" className="text-black lg:mt-24 sm:mx-8 mt-16">
+      <div id="project" className="text-black sm:mx-8">
         {/* Project's section tilte */}
         <div className="w-24 h-auto m-auto">
           <h2 className=" text-2xl">{t("Projects")}</h2>
@@ -151,7 +153,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-white mb-10 lg:mt-24 flex flex-col justify-center items-center">
+      <div className="bg-white flex flex-col justify-center items-center">
         <div className="w-40">
           <h2 className=" text-2xl">{t("Technology")}</h2>
           <div className="h-1 bg-red w-8 mb-5 "></div>
@@ -160,7 +162,7 @@ export default function Home() {
         {/* Technologies' list */}
         <div
           id="cardTechno"
-          className="grid md:grid-cols-4  grid-cols-2 gap-2 md:gap-4"
+          className="grid md:grid-cols-4 grid-cols-2 gap-2 md:gap-4"
         >
           {technologies.map((technology, index) => (
             <Suspense key={index} fallback={<Loader />}>
@@ -168,6 +170,7 @@ export default function Home() {
             </Suspense>
           ))}
         </div>
+
       </div>
     </div>
   );
